@@ -41,10 +41,33 @@
       As {Job Title} at {Company}, you get           -> You get
       your next event in {City}                      -> your next event
 
-    The four tags in the footer (*|UNSUB|*, *|UPDATE_PROFILE|*, *|LIST:ADDRESS|*,
-    *|CURRENT_YEAR|*) are Mailchimp SYSTEM tags, not personalisation. They are
-    legally required, they resolve automatically on send, and they will look
-    unresolved in preview. That is expected and is not a bug.
+  FOOTER TAGS: TWO LEFT, AND BOTH ARE LOAD-BEARING
+    This footer used to carry four Mailchimp system tags. Two of them were doing
+    no work that plain text could not do, so they are now written out:
+
+      *|LIST:ADDRESS|*   -> the postal address, spelled out. It is legally
+                            required to appear, and it was already sitting a few
+                            lines above in the Head Office block, so the tag was
+                            duplicating content AND depending on an Audience
+                            setting being filled in correctly. Written out, it
+                            renders in every client, every preview, every ESP.
+      *|CURRENT_YEAR|*   -> 2026. A sent email is frozen the moment it lands, so
+                            there is nothing for a dynamic year to keep current.
+
+    The two that remain CANNOT be hardcoded:
+
+      *|UNSUB|*          -> the recipient's one-click opt-out
+      *|UPDATE_PROFILE|* -> preference centre
+
+    These are per-recipient URLs the sending platform generates. They resolve on
+    send and WILL look unresolved in preview; that is expected. They sit inside
+    href attributes, so if the platform does not resolve them the footer still
+    LOOKS correct while the unsubscribe link is dead. That is a legal problem,
+    not a cosmetic one, so check a real seed send rather than a preview.
+
+    NOT SENDING FROM MAILCHIMP? These two are Mailchimp syntax and nothing else
+    resolves them. Apollo, Brevo, HubSpot and the rest each use their own token.
+    Swap both for the sending platform's unsubscribe tokens before you send.
 
   DEPARTURES FROM THE BASE TEMPLATE (all deliberate)
     Header bar      Cream ground, not navy, with a 5px yellow rule capping the
@@ -88,14 +111,17 @@
             without them, so with images blocked you get a gap rather than a
             stray word sitting next to the heading.
 
-    !! THE ICONS ARE NOT ON ORIGIN YET. They are pinned to the tag
-       campaign/2026-organizer-pitch, which does not exist until you run:
-         git add assets/icons
-         git commit -m "Add outreach module icons"
-         git tag campaign/2026-organizer-pitch
-         git push origin main campaign/2026-organizer-pitch
-       Until that tag is pushed, all four icons in this email 404. Confirm one
-       URL returns HTTP 200 before you send.
+    Both the logo and the icons are pinned to a COMMIT SHA, never @main.
+    jsDelivr caches @main for up to 7 days, so a swapped file can show one
+    version to one subscriber and another version to the next. A SHA cannot
+    move. Icons are pinned to 5defe7e, the commit that added them; all 12 were
+    verified live (HTTP 200, image/png, sha256 matching the file on disk).
+
+    Because of that pin, the repo's optimize-images workflow cannot alter an
+    email that has already gone out. If that workflow recompresses these PNGs
+    and the result is merged, the bytes change at a NEW commit and this email
+    keeps serving the originals. To adopt the optimized versions, repoint
+    ICON_BASE at the new SHA and rebuild, deliberately.
 
   LINKS
     Primary CTA     mailto:support@ticketmagic.me. The copy's ask is a reply, so
@@ -262,7 +288,7 @@
               <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E9DEC9; border-radius:6px;">
                   <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
-                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@campaign/2026-organizer-pitch/assets/icons/a1-schedules.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@5defe7ee3ea75eac96b395ea30f5ee01915d5a63/assets/icons/a1-schedules.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
                   </td></tr>
                   <tr><td style="padding:12px 16px 17px 16px;">
                     <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Schedules</p>
@@ -274,7 +300,7 @@
               <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E9DEC9; border-radius:6px;">
                   <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
-                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@campaign/2026-organizer-pitch/assets/icons/a2-roles.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@5defe7ee3ea75eac96b395ea30f5ee01915d5a63/assets/icons/a2-roles.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
                   </td></tr>
                   <tr><td style="padding:12px 16px 17px 16px;">
                     <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Role assignments</p>
@@ -293,7 +319,7 @@
               <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E9DEC9; border-radius:6px;">
                   <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
-                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@campaign/2026-organizer-pitch/assets/icons/a3-coordination.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@5defe7ee3ea75eac96b395ea30f5ee01915d5a63/assets/icons/a3-coordination.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
                   </td></tr>
                   <tr><td style="padding:12px 16px 17px 16px;">
                     <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Real-time coordination</p>
@@ -305,7 +331,7 @@
               <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E9DEC9; border-radius:6px;">
                   <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
-                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@campaign/2026-organizer-pitch/assets/icons/a4-ticketing.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@5defe7ee3ea75eac96b395ea30f5ee01915d5a63/assets/icons/a4-ticketing.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
                   </td></tr>
                   <tr><td style="padding:12px 16px 17px 16px;">
                     <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Alongside your ticketing</p>
@@ -392,10 +418,10 @@
                   Ticket Magic is an event management and ticketing platform based in Dubai, UAE.<br>
                   You&rsquo;re receiving this because we work with event organizers and entertainment companies across the UAE.<br>
                   Not the right person? Reply and tell us who is.<br>
-                  *|LIST:ADDRESS|*<br>
+                  Ticket Magic, Office 1506, Saheel Tower 02, Al Nahda 01, Dubai, United Arab Emirates<br>
                   <a href="*|UNSUB|*" style="color:#9aabbd; text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
                   <a href="*|UPDATE_PROFILE|*" style="color:#9aabbd; text-decoration:underline;">Update preferences</a><br><br>
-                  *|CURRENT_YEAR|* &copy; Ticket Magic. All rights reserved.<br>
+                  2026 &copy; Ticket Magic. All rights reserved.<br>
                   Developed by Pure Magic Information Technology Services.
                 </td>
               </tr>
