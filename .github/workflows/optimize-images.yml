@@ -1,0 +1,63 @@
+name: Optimize campaign images
+
+# Compresses any image pushed to the repo and opens a PR with the results.
+# Opens a PR rather than committing directly so you always review before
+# an asset that may already be referenced in a sent email is altered.
+#
+# Weight budgets are documented in README.md. This workflow gets most assets
+# under budget automatically; oversized heroes may still need a manual pass
+# in Squoosh (https://squoosh.app).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.jpg'
+      - '**.jpeg'
+      - '**.png'
+      - '**.webp'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Third-party actions are pinned to full commit SHAs, not tags or branches.
+      # A tag or branch can be moved to point at new code; a SHA cannot. These
+      # steps run with a token that can write to this repo, so an unpinned ref
+      # would let a compromised upstream repo push to ours.
+      # To upgrade: check the upstream release notes, then update BOTH the SHA
+      # and the trailing version comment together.
+      - name: Compress images
+        # calibreapp/image-actions v1.5.0
+        uses: calibreapp/image-actions@9d037c06280028c110ff61c433ad4dc7d33c3c43
+        with:
+          # compressOnly leaves the compressed files in the workspace without
+          # committing, so this step needs no token — the PR step below handles
+          # the write. Keeps the credential off the third-party action entirely.
+          compressOnly: true
+          jpegQuality: '80'
+          pngQuality: '80'
+          webpQuality: '80'
+
+      - name: Open PR with optimized images
+        # peter-evans/create-pull-request v8.1.1
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1
+        with:
+          title: 'chore: compress campaign images'
+          body: |
+            Automated image compression.
+
+            Review before merging — if any of these assets are already
+            referenced by a **sent** email at a pinned jsDelivr tag, the tag
+            still points at the original bytes, so merging is safe. Only
+            re-tag after you have confirmed nothing live depends on the old file.
+          commit-message: 'chore: compress campaign images'
+          branch: chore/optimize-images
+          delete-branch: true

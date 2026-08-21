@@ -1,0 +1,349 @@
+<!--
+================================================================================
+  SUMMER CAMPAIGN EMAIL — DTM-2026-08-SUMMER
+  Built from email/templates/email.html
+  Send: Thu 13 Aug 2026, 17:00-19:00 GST
+================================================================================
+
+  FIXED IN THIS VERSION (the previous draft would have shipped broken)
+  1. All 7 image URLs were 404. They pointed at assets/<file>, but the files
+     moved to assets/summer_is_here_campaign/ in commit ec8ba53. Repointed.
+  2. raw.githubusercontent.com -> jsDelivr CDN.
+  3. Pinned to commit @ec8ba53 instead of @main, so the images can never
+     change under an email that has already been sent.
+  4. {{UNSUBSCRIBE_URL}} / {{PREFERENCES_URL}} -> *|UNSUB|* / *|UPDATE_PROFILE|*.
+     Mailchimp does not resolve custom tokens; the unsubscribe link would
+     have been dead, which is a legal problem.
+  5. Added *|LIST:ADDRESS|* (physical address is legally required) and
+     *|CURRENT_YEAR|*.
+
+  STILL TO DO BEFORE SENDING
+  [ ] Fill the 7 {{..._URL}} booking links (see assets-manifest.md).
+      Include the base UTM in each value, e.g.
+        https://ticketmagic.me/desert-safari?utm_source=mailchimp&utm_medium=email&utm_campaign=summer_2026
+      This file appends &utm_content=... per position. Do not add utm_content
+      yourself or it will appear twice.
+  [ ] COMPRESS THE IMAGES. Current total is ~5.4 MB across 7 files
+      (680-850 KB each). Target: hero <=150 KB, cards <=80 KB. On UAE mobile
+      data this email currently takes many seconds to render.
+  [ ] Re-pin to a proper campaign tag after compressing:
+        git tag campaign/2026-summer && git push origin campaign/2026-summer
+      then swap @ec8ba53 for @campaign/2026-summer below.
+  [ ] Prices are not shown anywhere in this email. Decide whether that is
+      deliberate (drives clicks) or an omission (reduces qualified clicks).
+  [ ] Resolve the copy conflict noted below.
+
+  COPY CONFLICT — your decision
+  The agreed angle for this campaign is "Last Weeks of Summer" (closing
+  window before school starts, not discount-led). This draft still says
+  "Summer Special Offers" and "Beat the heat. Chase the summer." Two issues:
+    - It reads as a season opener, in mid-August, when summer is ending.
+    - "Beat the heat" is the single most-used phrase by every UAE attraction
+      competitor. It is invisible.
+  The hero copy is marked with <!== REVIEW ==> below. Leave it or replace it,
+  but decide before send.
+================================================================================
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <title>Ticket Magic — Summer Special Offers</title>
+  <!--[if mso]>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+<style type="text/css">
+  :root { color-scheme: light; supported-color-schemes: light; }
+  body,table,td,a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;}
+  table,td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
+  img{-ms-interpolation-mode:bicubic; border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+  body{margin:0 !important; padding:0 !important; width:100% !important;}
+  a{color:#0899A6;}
+
+  @media screen and (max-width:600px){
+    .container{width:100% !important;}
+    .stack{display:block !important; width:100% !important; max-width:100% !important;}
+    .hero-h1{font-size:32px !important; line-height:38px !important;}
+    .card-img img{width:100% !important; height:auto !important;}
+    .px{padding-left:18px !important; padding-right:18px !important;}
+    .foot-col{display:block !important; width:100% !important; text-align:center !important; padding:6px 0 !important;}
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; background-color:#EAE3D7;">
+
+  <div style="display:none; font-size:1px; color:#EAE3D7; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
+    Your summer boarding pass is here &mdash; skydive the Palm, sail the Poseidon, roam three museums. Offers end soon.
+    &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EAE3D7;">
+    <tr>
+      <td align="center" style="padding:28px 12px;">
+
+        <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#FBF7F0;">
+
+          <!-- HEADER -->
+          <tr>
+            <td class="px" style="background-color:#0B3D5C; padding:18px 26px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="left" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:23px; font-weight:bold; color:#FFFFFF; letter-spacing:0.3px;">
+                    Ticket<span style="color:#FFC24B;">Magic</span>
+                  </td>
+                  <td align="right" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:11px; font-weight:bold; color:#0B3D5C; letter-spacing:2px; text-transform:uppercase; background-color:#FFC24B; padding:5px 10px; border-radius:3px;">
+                    Summer &rsquo;26
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- HERO IMAGE -->
+          <tr>
+            <td style="padding:0; font-size:0; line-height:0;">
+              <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53/assets/summer_is_here_campaign/tandemskydive.jpg" width="600" alt="Tandem skydive over the Palm, Dubai" style="display:block; width:100%; max-width:600px; height:auto; border:0;">
+            </td>
+          </tr>
+
+          <!-- HERO COPY --><!-- REVIEW: conflicts with the agreed "Last Weeks of Summer" angle -->
+          <tr>
+            <td class="px" align="center" style="background-color:#0B3D5C; padding:34px 34px 14px 34px;">
+              <p style="margin:0 0 10px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#FFC24B;">
+                Summer Special Offers
+              </p>
+              <h1 class="hero-h1" style="margin:0 0 16px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:40px; line-height:46px; font-weight:bold; color:#FFFFFF;">
+                Beat the heat.<br>Chase the summer.
+              </h1>
+              <p style="margin:0 0 26px 0; font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:24px; color:#B9D2DE;">
+                Seven hand-picked experiences across the UAE at limited-time prices &mdash; from freefalling over the Palm to sailing your own yacht. Book now, go anytime before each offer ends.
+              </p>
+              <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{ALL_OFFERS_URL}}&utm_content=hero_cta" style="height:50px;v-text-anchor:middle;width:250px;" arcsize="8%" strokecolor="#FF7A45" fillcolor="#FF7A45">
+                <w:anchorlock/><center style="color:#FFFFFF;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;">Shop all summer offers</center>
+              </v:roundrect>
+              <![endif]-->
+              <!--[if !mso]><!-- -->
+              <a href="{{ALL_OFFERS_URL}}&utm_content=hero_cta" target="_blank" style="background-color:#FF7A45; border-radius:5px; color:#FFFFFF; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; line-height:50px; text-align:center; text-decoration:none; width:250px;">
+                Shop all summer offers
+              </a>
+              <!--<![endif]-->
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color:#0B3D5C; font-size:0; line-height:0; padding:0;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                <td style="height:20px; background-color:#0B3D5C; border-bottom:3px dotted #FBF7F0; font-size:0; line-height:0;">&nbsp;</td>
+              </tr></table>
+            </td>
+          </tr>
+
+          <!-- URGENCY STRIP -->
+          <tr>
+            <td align="center" style="background-color:#FFC24B; padding:11px 20px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:13px; font-weight:bold; color:#0B3D5C; letter-spacing:0.5px;">
+              &#9200;&nbsp; Offers running now &mdash; museum passes valid through 30 Sep 2026
+            </td>
+          </tr>
+
+          <!-- SECTION LABEL -->
+          <tr>
+            <td class="px" align="center" style="padding:34px 26px 4px 26px;">
+              <p style="margin:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#FF7A45;">
+                Seven ways to summer
+              </p>
+              <h2 style="margin:8px 0 0 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:27px; line-height:32px; font-weight:bold; color:#0B3D5C;">
+                Pick your adventure
+              </h2>
+            </td>
+          </tr>
+
+          <!-- ROW 1 -->
+          <tr>
+            <td class="px" style="padding:20px 26px 0 26px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E9DEC9; border-radius:6px;">
+                    <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
+                      <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53/assets/summer_is_here_campaign/Private%20Charter%20Posiedon.png" width="268" alt="Poseidon 118ft private charter yacht" style="display:block; width:100%; height:auto; border-radius:6px 6px 0 0; border:0;">
+                    </td></tr>
+                    <tr><td style="padding:15px 16px 17px 16px;">
+                      <p style="margin:0 0 9px 0;"><span style="background-color:#0899A6; color:#FFFFFF; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:10px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; padding:4px 9px; border-radius:3px;">Special</span></p>
+                      <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Private Charter &ndash; Poseidon</p>
+                      <p style="margin:0 0 13px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6b6b6b;">Your own 118ft yacht for 2 hours &mdash; up to 50 guests. Sunset sailings and celebrations at sea.</p>
+                      <a href="{{POSEIDON_URL}}&utm_content=card_poseidon" target="_blank" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:13px; font-weight:bold; color:#FF7A45; text-decoration:none;">Book the yacht &rarr;</a>
+                    </td></tr>
+                  </table>
+                </td>
+                <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E9DEC9; border-radius:6px;">
+                    <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
+                      <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53/assets/summer_is_here_campaign/Wikit.png" width="268" alt="Wikit batting cage" style="display:block; width:100%; height:auto; border-radius:6px 6px 0 0; border:0;">
+                    </td></tr>
+                    <tr><td style="padding:15px 16px 17px 16px;">
+                      <p style="margin:0 0 9px 0;"><span style="background-color:#FF7A45; color:#FFFFFF; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:10px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; padding:4px 9px; border-radius:3px;">1 Hour Free</span></p>
+                      <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Wikit Batting Cage</p>
+                      <p style="margin:0 0 13px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6b6b6b;">A free 1-hour game voucher, off-peak Monday to Thursday. Bring your crew and play.</p>
+                      <a href="{{WIKIT_URL}}&utm_content=card_wikit" target="_blank" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:13px; font-weight:bold; color:#FF7A45; text-decoration:none;">Claim free hour &rarr;</a>
+                    </td></tr>
+                  </table>
+                </td>
+              </tr></table>
+            </td>
+          </tr>
+
+          <!-- ROW 2 -->
+          <tr>
+            <td class="px" style="padding:0 26px 0 26px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E9DEC9; border-radius:6px;">
+                    <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
+                      <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53/assets/summer_is_here_campaign/National%20History%20Museum.jpg" width="268" alt="Natural History Museum Abu Dhabi" style="display:block; width:100%; height:auto; border-radius:6px 6px 0 0; border:0;">
+                    </td></tr>
+                    <tr><td style="padding:15px 16px 17px 16px;">
+                      <p style="margin:0 0 9px 0;"><span style="background-color:#0B3D5C; color:#FFFFFF; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:10px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; padding:4px 9px; border-radius:3px;">Until 30 Sep</span></p>
+                      <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Natural History Museum</p>
+                      <p style="margin:0 0 13px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6b6b6b;">General admission to Abu Dhabi&rsquo;s newest museum. Open-dated &mdash; visit any day before 30 Sep 2026.</p>
+                      <a href="{{NHM_URL}}&utm_content=card_natural_history_museum" target="_blank" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:13px; font-weight:bold; color:#FF7A45; text-decoration:none;">Get tickets &rarr;</a>
+                    </td></tr>
+                  </table>
+                </td>
+                <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E9DEC9; border-radius:6px;">
+                    <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
+                      <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53/assets/summer_is_here_campaign/Zayed%20National%20Museum.jpg" width="268" alt="Zayed National Museum" style="display:block; width:100%; height:auto; border-radius:6px 6px 0 0; border:0;">
+                    </td></tr>
+                    <tr><td style="padding:15px 16px 17px 16px;">
+                      <p style="margin:0 0 9px 0;"><span style="background-color:#0B3D5C; color:#FFFFFF; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:10px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; padding:4px 9px; border-radius:3px;">Until 30 Sep</span></p>
+                      <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Zayed National Museum</p>
+                      <p style="margin:0 0 13px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6b6b6b;">General admission to the UAE&rsquo;s landmark national museum. Open-dated &mdash; good through 30 Sep 2026.</p>
+                      <a href="{{ZAYED_URL}}&utm_content=card_zayed_national_museum" target="_blank" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:13px; font-weight:bold; color:#FF7A45; text-decoration:none;">Get tickets &rarr;</a>
+                    </td></tr>
+                  </table>
+                </td>
+              </tr></table>
+            </td>
+          </tr>
+
+          <!-- ROW 3 -->
+          <tr>
+            <td class="px" style="padding:0 26px 8px 26px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E9DEC9; border-radius:6px;">
+                    <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
+                      <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53/assets/summer_is_here_campaign/Louvre.jpg" width="268" alt="Louvre Abu Dhabi" style="display:block; width:100%; height:auto; border-radius:6px 6px 0 0; border:0;">
+                    </td></tr>
+                    <tr><td style="padding:15px 16px 17px 16px;">
+                      <p style="margin:0 0 9px 0;"><span style="background-color:#0B3D5C; color:#FFFFFF; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:10px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; padding:4px 9px; border-radius:3px;">Until 30 Sep</span></p>
+                      <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Louvre Abu Dhabi</p>
+                      <p style="margin:0 0 13px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6b6b6b;">General admission under the famous domed roof. Open-dated &mdash; visit any day before 30 Sep 2026.</p>
+                      <a href="{{LOUVRE_URL}}&utm_content=card_louvre" target="_blank" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:13px; font-weight:bold; color:#FF7A45; text-decoration:none;">Get tickets &rarr;</a>
+                    </td></tr>
+                  </table>
+                </td>
+                <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E9DEC9; border-radius:6px;">
+                    <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
+                      <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53/assets/summer_is_here_campaign/Desert.jpg" width="268" alt="Al Waha Camp desert safari" style="display:block; width:100%; height:auto; border-radius:6px 6px 0 0; border:0;">
+                    </td></tr>
+                    <tr><td style="padding:15px 16px 17px 16px;">
+                      <p style="margin:0 0 9px 0;"><span style="background-color:#0899A6; color:#FFFFFF; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:10px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; padding:4px 9px; border-radius:3px;">Promo</span></p>
+                      <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Premium Desert Safari</p>
+                      <p style="margin:0 0 13px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6b6b6b;">Al Waha Camp with camel ride &amp; sandboarding. Dunes, sunset, and dinner under the stars.</p>
+                      <a href="{{SAFARI_URL}}&utm_content=card_desert_safari" target="_blank" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:13px; font-weight:bold; color:#FF7A45; text-decoration:none;">Book the safari &rarr;</a>
+                    </td></tr>
+                  </table>
+                </td>
+              </tr></table>
+            </td>
+          </tr>
+
+          <!-- SECONDARY CTA -->
+          <tr>
+            <td align="center" style="padding:24px 26px 40px 26px;">
+              <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{ALL_OFFERS_URL}}&utm_content=footer_cta" style="height:48px;v-text-anchor:middle;width:260px;" arcsize="8%" strokecolor="#0B3D5C" fillcolor="#0B3D5C">
+                <w:anchorlock/><center style="color:#FFFFFF;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;">See all summer offers</center>
+              </v:roundrect>
+              <![endif]-->
+              <!--[if !mso]><!-- -->
+              <a href="{{ALL_OFFERS_URL}}&utm_content=footer_cta" target="_blank" style="background-color:#0B3D5C; border-radius:5px; color:#FFFFFF; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; line-height:48px; text-align:center; text-decoration:none; width:260px;">
+                See all summer offers
+              </a>
+              <!--<![endif]-->
+            </td>
+          </tr>
+
+          <!-- FOOTER perforation -->
+          <tr><td style="background-color:#FBF7F0; font-size:0; line-height:0; padding:0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+              <td style="height:16px; border-bottom:3px dotted #C9BCA3; font-size:0; line-height:0;">&nbsp;</td>
+            </tr></table>
+          </td></tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td class="px" style="background-color:#0B3D5C; padding:30px 26px 26px 26px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center" style="padding-bottom:16px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:20px; font-weight:bold; color:#FFFFFF;">
+                    Ticket<span style="color:#FFC24B;">Magic</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom:16px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                      <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#B9D2DE; padding-right:10px;">
+                        <span style="color:#FFC24B; font-weight:bold;">Head Office</span><br>
+                        Office 1506, Saheel Tower 02,<br>Al Nahda 01, Dubai
+                      </td>
+                      <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#B9D2DE;">
+                        <span style="color:#FFC24B; font-weight:bold;">Get in touch</span><br>
+                        Phone: <a href="tel:+971526612003" style="color:#B9D2DE; text-decoration:none;">+971 52 661 2003</a><br>
+                        WhatsApp: <a href="https://wa.me/971527064878" style="color:#B9D2DE; text-decoration:none;">+971 52 706 4878</a><br>
+                        <a href="mailto:support@ticketmagic.me" style="color:#B9D2DE; text-decoration:none;">support@ticketmagic.me</a>
+                      </td>
+                    </tr></table>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding:6px 0 16px 0; border-top:1px solid #17506E;">
+                    <div style="padding-top:14px;">
+                      <a href="https://www.facebook.com/ticketmagicdxb" style="color:#FFC24B; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Facebook</a>
+                      <a href="https://www.instagram.com/ticketmagicdxb/" style="color:#FFC24B; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Instagram</a>
+                      <a href="https://x.com/ticketmagicdxb" style="color:#FFC24B; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">X</a>
+                      <a href="https://www.linkedin.com/company/ticketmagic/" style="color:#FFC24B; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">LinkedIn</a>
+                      <a href="https://www.youtube.com/@ticketmagic6234" style="color:#FFC24B; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">YouTube</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="font-family:Arial,Helvetica,sans-serif; font-size:11px; line-height:17px; color:#7d97ab;">
+                    Offers valid for a limited time; individual end dates apply per experience.<br>
+                    You&rsquo;re receiving this because you signed up at ticketmagic.me.<br>
+                    *|LIST:ADDRESS|*<br>
+                    <a href="*|UNSUB|*" style="color:#9aabbd; text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
+                    <a href="*|UPDATE_PROFILE|*" style="color:#9aabbd; text-decoration:underline;">Update preferences</a><br><br>
+                    *|CURRENT_YEAR|* &copy; Ticket Magic. All rights reserved.<br>
+                    Developed by Pure Magic Information Technology Services.
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
