@@ -1,0 +1,420 @@
+<!--
+================================================================================
+  OUTREACH: Segment 1, Events Services / Entertainment
+  VERSION C, leads on REPORTING AND ANALYTICS
+
+  Built from   email/templates/email.html
+  Copy from    email/templates/TicketMagic_Organizer_Pitch_ABC_by_Segment.docx
+               Section 1, Version C
+  A/B/C focus  They run events for a living. Test whether coordination, vendor
+               control, or proof-of-results pulls hardest.
+
+  Versions A, B and C are structurally identical on purpose. Same blocks, same
+  order, same lengths. The only variable under test is the module each one leads
+  on, so a difference in reply rate is attributable to the copy and nothing else.
+  If you edit the layout of one, edit all three.
+================================================================================
+
+  SET IN MAILCHIMP (these are not in the HTML)
+    Subject     What did your last event actually tell you?
+    Preheader   Every event generates data. Most organizers never use it.   (57 chars)
+    Reply-To    the sender's own inbox. The copy asks for a reply; the orange
+                button is only a nudge, the Reply-To header is the real mechanism.
+
+  NO EM DASHES
+    House rule: this file contains none, in copy or in comments. The copy library
+    uses them heavily, so every affected sentence was recast (period, colon,
+    comma, or brackets) rather than having the character swapped for a hyphen.
+    If you edit this copy, keep to that.
+
+  PERSONALISATION: NONE, DELIBERATELY
+    The copy library's {First Name} / {Company} / {Job Title} / {City} tokens
+    are resolved into fixed wording. Every recipient gets byte-identical copy, so
+    there is no audience field to create, no default value to set, and no way for
+    a blank to appear mid-sentence. Mailchimp has no inline fallback syntax for
+    audience fields (there is no *|FNAME:there|*), so a token here would mean
+    setting a Default merge tag value per field in Audience settings and trusting
+    it. Resolutions made in this file:
+
+      Subject: "What did your last {City} event actually tell you?" -> "What did your last event actually tell you?"
+      Hi {First Name},                               -> Hi there,
+      As {Job Title} at {Company}, you&rsquo;d see   -> You&rsquo;d see
+
+    The four tags in the footer (*|UNSUB|*, *|UPDATE_PROFILE|*, *|LIST:ADDRESS|*,
+    *|CURRENT_YEAR|*) are Mailchimp SYSTEM tags, not personalisation. They are
+    legally required, they resolve automatically on send, and they will look
+    unresolved in preview. That is expected and is not a bug.
+
+  DEPARTURES FROM THE BASE TEMPLATE (all deliberate)
+    Header bar      Cream ground, not navy, with a 5px yellow rule capping the
+                    email so it still reads as a bar. The logo PNG is transparent
+                    with black linework and a gold frame; on navy the outline
+                    disappears. Badge is navy-on-cream for the same reason.
+    Header badge    Wrapped in its own nested table. background-color on an
+                    align="right" cell fills the entire cell, so the badge would
+                    otherwise stretch edge to edge. The base template has this
+                    latent bug; do not copy the badge markup back out of it.
+    Stacked cards   The mobile rule zeroes the 8px card gutter. Without it,
+                    alternate cards sit 8px right of the others once stacked.
+                    The base template has this latent bug too.
+    Block 3 hero    DELETED. No cleared B2B photography exists in the repo, and a
+                    stock crowd shot on a cold pitch reads as an ad rather than as
+                    a note from a person. The hero is type-led.
+    Block 5 urgency REPURPOSED. There is no deadline, so the yellow strip carries
+                    the payoff line instead of invented scarcity. That sentence
+                    appears ONCE, in the strip, and is not repeated in the body.
+    Block 7 cards   Module cards, not product cards: a 4px accent rule where the
+                    image was, no badge, no card link, no price. This email sells
+                    one platform, not four products. Teal rules are capabilities;
+                    the orange rule is the "and it is all one system" card.
+    Footer line     The template says "you signed up at ticketmagic.me". For cold
+                    B2B prospecting that is FALSE. Rewritten, plus an invitation
+                    to forward: "Not the right person? Reply and tell us who is."
+
+  IMAGES (five per email: the logo and four module icons)
+    Logo    Pinned to commit ec8ba53 (immutable), not @main and not
+            raw.githubusercontent. Verified live: HTTP 200, image/png, 17,064
+            bytes, byte-identical to the file on disk. 147x75 source shown at
+            120px, so it will look soft on a retina screen. A 2x export at the
+            same path fixes that without touching this file.
+    Icons   assets/icons/*.png, 88x88 exported and shown at 44px, so they are
+            already 2x. About 4 KB each, roughly 16 KB of icons per email.
+            White line glyph on a filled brand disc: teal for the three
+            capability cards, orange for the "one system" card that closes each
+            set. That disc replaced the 4px accent rule the cards used to carry,
+            because both together over-decorated the card.
+            alt="" is deliberate. The icons are decorative and every card reads
+            without them, so with images blocked you get a gap rather than a
+            stray word sitting next to the heading.
+
+    !! THE ICONS ARE NOT ON ORIGIN YET. They are pinned to the tag
+       campaign/2026-organizer-pitch, which does not exist until you run:
+         git add assets/icons
+         git commit -m "Add outreach module icons"
+         git tag campaign/2026-organizer-pitch
+         git push origin main campaign/2026-organizer-pitch
+       Until that tag is pushed, all four icons in this email 404. Confirm one
+       URL returns HTTP 200 before you send.
+
+  LINKS
+    Primary CTA     mailto:support@ticketmagic.me. The copy's ask is a reply, so
+                    the button matches it. No UTM: a mailto cannot carry one.
+    Secondary CTA   https://dubai.ticketmagic.me (verified live) carrying
+                    utm_campaign=organizer_pitch_2026 and
+                    utm_content=footer_cta_vc, which is what separates the three
+                    versions in analytics. NOTE: organizer_pitch_2026 is not yet
+                    in docs/campaign-register.csv. Register it before sending:
+                    one UTM campaign value is one campaign, forever.
+
+  SENDING FROM APOLLO INSTEAD? Nothing in the body needs converting, because there
+    is no personalisation to translate. Delete the four Mailchimp system tags in
+    the footer and put a real opt-out line and postal address in their place.
+    Apollo will not resolve them, and a dead unsubscribe link is a legal problem,
+    not a cosmetic one.
+
+  REVIEW BEFORE SEND
+    The library copy here says &quot;Reply and I&rsquo;ll show you&quot;
+    (first person singular) while the sign-off is &quot;The Ticket Magic
+    Team&quot;. Left verbatim from the docx. If you send this from a named
+    person, that is correct as written and you should change the sign-off to
+    their name. If it goes out as the team, change &quot;I&rsquo;ll&quot; to
+    &quot;we&rsquo;ll&quot;. Version A has no such clash; decide once and
+    apply it to both B and C.
+
+  SPELLING
+    American throughout ("organizers"), matching the copy library verbatim.
+================================================================================
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <title>Ticket Magic: What did your last event actually tell you?</title>
+  <!--[if mso]>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+<style type="text/css">
+  :root { color-scheme: light; supported-color-schemes: light; }
+  body,table,td,a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;}
+  table,td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
+  img{-ms-interpolation-mode:bicubic; border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+  body{margin:0 !important; padding:0 !important; width:100% !important;}
+  a{color:#0899A6;}
+
+  @media screen and (max-width:600px){
+    .container{width:100% !important;}
+    /* Zero the 8px card gutter when the cards stack, or alternate cards sit
+       8px right of the others. The base template has this latent bug too. */
+    .stack{display:block !important; width:100% !important; max-width:100% !important; padding-left:0 !important; padding-right:0 !important;}
+    .hero-h1{font-size:30px !important; line-height:36px !important;}
+    .px{padding-left:18px !important; padding-right:18px !important;}
+    .foot-col{display:block !important; width:100% !important; text-align:center !important; padding:6px 0 !important;}
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; background-color:#EAE3D7;">
+
+<!-- PREHEADER -->
+<div style="display:none; font-size:1px; color:#EAE3D7; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
+  Every event generates data. Most organizers never use it.
+  &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EAE3D7;">
+  <tr>
+    <td align="center" style="padding:28px 12px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#FBF7F0;">
+
+        <!-- HEADER: yellow cap rule + cream bar carrying the logo -->
+        <tr>
+          <td style="padding:0; font-size:0; line-height:0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+              <td height="5" style="height:5px; background-color:#FFC24B; font-size:0; line-height:0;">&nbsp;</td>
+            </tr></table>
+          </td>
+        </tr>
+        <tr>
+          <td class="px" style="background-color:#FBF7F0; padding:16px 26px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="left" valign="middle" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:18px; font-weight:bold; color:#0B3D5C;">
+                  <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53204c68457e9ff5c02539eb771d79d942d/assets/summer_is_here_campaign/ticketmagiclogo.png" width="120" height="61" alt="Ticket Magic" style="display:block; width:120px; height:61px; border:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:18px; font-weight:bold; color:#0B3D5C;">
+                </td>
+                <td align="right" valign="middle">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right"><tr>
+                    <td style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:11px; font-weight:bold; color:#FFC24B; letter-spacing:1.5px; text-transform:uppercase; background-color:#0B3D5C; padding:6px 11px; border-radius:3px; white-space:nowrap;">
+                      Reporting
+                    </td>
+                  </tr></table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- HERO COPY + PRIMARY CTA -->
+        <tr>
+          <td class="px" align="center" style="background-color:#0B3D5C; padding:34px 34px 14px 34px;">
+            <p style="margin:0 0 10px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#FFC24B;">
+              Event Management System
+            </p>
+            <h1 class="hero-h1" style="margin:0 0 16px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:38px; line-height:44px; font-weight:bold; color:#FFFFFF;">
+              What did your last event<br>actually tell you?
+            </h1>
+            <p style="margin:0 0 26px 0; font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:24px; color:#B9D2DE;">
+              Every event you run generates data: attendance, sales, who came back. Most tools sell the ticket and lose the rest.
+            </p>
+            <!--[if mso]>
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="mailto:support@ticketmagic.me?subject=Walkthrough%20request" style="height:50px;v-text-anchor:middle;width:270px;" arcsize="8%" strokecolor="#FF7A45" fillcolor="#FF7A45">
+              <w:anchorlock/><center style="color:#FFFFFF;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;">Reply for a 15-min walkthrough</center>
+            </v:roundrect>
+            <![endif]-->
+            <!--[if !mso]><!-- -->
+            <a href="mailto:support@ticketmagic.me?subject=Walkthrough%20request" target="_blank" style="background-color:#FF7A45; border-radius:5px; color:#FFFFFF; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; line-height:50px; text-align:center; text-decoration:none; width:270px;">
+              Reply for a 15-min walkthrough
+            </a>
+            <!--<![endif]-->
+          </td>
+        </tr>
+        <!-- Boarding-pass perforation, house motif, keep it -->
+        <tr>
+          <td style="background-color:#0B3D5C; font-size:0; line-height:0; padding:0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+              <td style="height:20px; background-color:#0B3D5C; border-bottom:3px dotted #FBF7F0; font-size:0; line-height:0;">&nbsp;</td>
+            </tr></table>
+          </td>
+        </tr>
+
+        <!-- PAYOFF STRIP, replaces the urgency strip. No deadline to invent. -->
+        <tr>
+          <td align="center" style="background-color:#FFC24B; padding:13px 24px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:14px; line-height:20px; font-weight:bold; color:#0B3D5C; letter-spacing:0.3px;">
+            It&rsquo;s the same platform that runs your event, so the reporting is built in, not bolted on.
+          </td>
+        </tr>
+
+        <!-- LETTER -->
+        <tr>
+          <td class="px" style="padding:32px 34px 4px 34px;">
+            <p style="margin:0 0 16px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:24px; color:#3d3d3d;">
+              Hi there,
+            </p>
+            <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:24px; color:#3d3d3d;">
+              Ticket Magic keeps it and turns it into answers. You&rsquo;d see attendance and sales performance, repeat-attendee tracking, and true event-over-event comparison. The numbers to plan the next one and show whoever&rsquo;s asking.
+            </p>
+          </td>
+        </tr>
+
+        <!-- SECTION LABEL -->
+        <tr>
+          <td class="px" align="center" style="padding:26px 26px 0 26px;">
+            <p style="margin:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#FF7A45;">
+              Inside the platform
+            </p>
+            <h2 style="margin:8px 0 0 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:27px; line-height:32px; font-weight:bold; color:#0B3D5C;">
+              Reporting &amp; Analytics
+            </h2>
+          </td>
+        </tr>
+
+        <!-- MODULE CARDS -->
+        <tr>
+          <td class="px" style="padding:20px 26px 0 26px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E9DEC9; border-radius:6px;">
+                  <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@campaign/2026-organizer-pitch/assets/icons/c1-attendance-sales.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                  </td></tr>
+                  <tr><td style="padding:12px 16px 17px 16px;">
+                    <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Attendance &amp; sales</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6b6b6b;">How the event actually performed, on the platform that sold the tickets and let people in.</p>
+                  </td></tr>
+                </table>
+              </td>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E9DEC9; border-radius:6px;">
+                  <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@campaign/2026-organizer-pitch/assets/icons/c2-repeat-attendees.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                  </td></tr>
+                  <tr><td style="padding:12px 16px 17px 16px;">
+                    <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Repeat attendees</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6b6b6b;">Which of your attendees came back, the figure a tool that stops at the sale never captures.</p>
+                  </td></tr>
+                </table>
+              </td>
+
+            </tr></table>
+          </td>
+        </tr>
+        <tr>
+          <td class="px" style="padding:0 26px 0 26px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E9DEC9; border-radius:6px;">
+                  <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@campaign/2026-organizer-pitch/assets/icons/c3-event-over-event.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                  </td></tr>
+                  <tr><td style="padding:12px 16px 17px 16px;">
+                    <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Event-over-event</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6b6b6b;">This event set against the last, on the same measures, without rebuilding a spreadsheet each time.</p>
+                  </td></tr>
+                </table>
+              </td>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E9DEC9; border-radius:6px;">
+                  <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@campaign/2026-organizer-pitch/assets/icons/c4-one-platform.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                  </td></tr>
+                  <tr><td style="padding:12px 16px 17px 16px;">
+                    <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">The same platform</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6b6b6b;">The reporting runs on the system that ran the event, so the numbers are there when it ends.</p>
+                  </td></tr>
+                </table>
+              </td>
+
+            </tr></table>
+          </td>
+        </tr>
+
+        <!-- CLOSE -->
+        <tr>
+          <td class="px" style="padding:10px 34px 0 34px;">
+            <p style="margin:0 0 14px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:24px; color:#3d3d3d;">
+              Reply and I&rsquo;ll show you the dashboard on a real event.
+            </p>
+            <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:24px; color:#3d3d3d;">
+              The Ticket Magic Team
+            </p>
+          </td>
+        </tr>
+
+        <!-- SECONDARY CTA -->
+        <tr>
+          <td align="center" style="padding:26px 26px 40px 26px;">
+            <!--[if mso]>
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://dubai.ticketmagic.me/?utm_source=mailchimp&amp;utm_medium=email&amp;utm_campaign=organizer_pitch_2026&amp;utm_content=footer_cta_vc" style="height:48px;v-text-anchor:middle;width:260px;" arcsize="8%" strokecolor="#0B3D5C" fillcolor="#0B3D5C">
+              <w:anchorlock/><center style="color:#FFFFFF;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;">See the platform</center>
+            </v:roundrect>
+            <![endif]-->
+            <!--[if !mso]><!-- -->
+            <a href="https://dubai.ticketmagic.me/?utm_source=mailchimp&amp;utm_medium=email&amp;utm_campaign=organizer_pitch_2026&amp;utm_content=footer_cta_vc" target="_blank" style="background-color:#0B3D5C; border-radius:5px; color:#FFFFFF; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; line-height:48px; text-align:center; text-decoration:none; width:260px;">
+              See the platform
+            </a>
+            <!--<![endif]-->
+          </td>
+        </tr>
+
+        <!-- FOOTER, legal. Never delete, never shrink. -->
+        <tr><td style="background-color:#FBF7F0; font-size:0; line-height:0; padding:0;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+            <td style="height:16px; border-bottom:3px dotted #C9BCA3; font-size:0; line-height:0;">&nbsp;</td>
+          </tr></table>
+        </td></tr>
+        <tr>
+          <td class="px" style="background-color:#0B3D5C; padding:30px 26px 26px 26px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="center" style="padding-bottom:16px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:20px; font-weight:bold; color:#FFFFFF;">
+                  Ticket<span style="color:#FFC24B;">Magic</span>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:16px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                    <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#B9D2DE; padding-right:10px;">
+                      <span style="color:#FFC24B; font-weight:bold;">Head Office</span><br>
+                      Office 1506, Saheel Tower 02,<br>Al Nahda 01, Dubai
+                    </td>
+                    <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#B9D2DE;">
+                      <span style="color:#FFC24B; font-weight:bold;">Get in touch</span><br>
+                      Phone: <a href="tel:+971526612003" style="color:#B9D2DE; text-decoration:none;">+971 52 661 2003</a><br>
+                      WhatsApp: <a href="https://wa.me/971527064878" style="color:#B9D2DE; text-decoration:none;">+971 52 706 4878</a><br>
+                      <a href="mailto:support@ticketmagic.me" style="color:#B9D2DE; text-decoration:none;">support@ticketmagic.me</a>
+                    </td>
+                  </tr></table>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="padding:6px 0 16px 0; border-top:1px solid #17506E;">
+                  <div style="padding-top:14px;">
+                    <a href="https://www.facebook.com/ticketmagicdxb" style="color:#FFC24B; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Facebook</a>
+                    <a href="https://www.instagram.com/ticketmagicdxb/" style="color:#FFC24B; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Instagram</a>
+                    <a href="https://x.com/ticketmagicdxb" style="color:#FFC24B; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">X</a>
+                    <a href="https://www.linkedin.com/company/ticketmagic/" style="color:#FFC24B; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">LinkedIn</a>
+                    <a href="https://www.youtube.com/@ticketmagic6234" style="color:#FFC24B; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">YouTube</a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="font-family:Arial,Helvetica,sans-serif; font-size:11px; line-height:17px; color:#7d97ab;">
+                  Ticket Magic is an event management and ticketing platform based in Dubai, UAE.<br>
+                  You&rsquo;re receiving this because we work with event organizers and entertainment companies across the UAE.<br>
+                  Not the right person? Reply and tell us who is.<br>
+                  *|LIST:ADDRESS|*<br>
+                  <a href="*|UNSUB|*" style="color:#9aabbd; text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
+                  <a href="*|UPDATE_PROFILE|*" style="color:#9aabbd; text-decoration:underline;">Update preferences</a><br><br>
+                  *|CURRENT_YEAR|* &copy; Ticket Magic. All rights reserved.<br>
+                  Developed by Pure Magic Information Technology Services.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
