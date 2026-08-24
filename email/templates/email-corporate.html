@@ -52,7 +52,8 @@
 
   PALETTE: THREE COLOURS, ONE JOB EACH
     Navy      #0B3D5C   structure: hero, footer, headings
-    Teal      #0899A6   quiet accent: rules, eyebrows, icon discs, body links
+    Teal      #0899A6   decorative accent only: cap rule, icon discs
+    Teal text #077C89   the same accent darkened for TEXT, see below
     Yellow    #FFC24B   ONE job: the primary CTA. Nowhere else, ever.
 
     Page      #EEF1F4   cool grey page ground
@@ -74,6 +75,74 @@
     Why the CTA is yellow and not teal: teal on navy was the weakest contrast
     in the email and the button read as part of the hero panel rather than as a
     control. Yellow on navy separates cleanly and clears WCAG AA with navy text.
+
+  GRADIENTS, AND WHAT OUTLOOK DOES WITH THEM
+    Every gradient is tonal: one hue family, light to dark, adding depth rather
+    than colour. A gradient that swings hue reads as a promotion, which is the
+    register this palette exists to avoid. If you add one, stay inside a family.
+
+    Where they are
+      Page ground   #F3F6F8 to #E2E9EF, so the white body reads as a card
+                    floating on a surface rather than as a panel butted onto it
+      Cap rule      #05707E to #18BAC8 across 5px
+      Hero          #14577F to #0B3D5C to #08324C, vertical
+      Payoff band   #FFFFFF to #EFF4F7
+      Cards         #FFFFFF to #F7FAFC, barely there on purpose
+      Primary CTA   #FFD470 to #FFC24B to #F2A62B, gold rather than flat yellow
+      Secondary CTA #155E88 to #0B3D5C to #072B42
+      Footer        #0E4767 to #061F2E, deepening toward the base
+
+    OUTLOOK DESKTOP IGNORES CSS GRADIENTS. The Word rendering engine behind
+    Outlook 2007 through 2021 does not support background-image at all, so it
+    drops every gradient above and paints the background-color instead. That is
+    why background-color is always written FIRST and is always a colour the
+    design works in on its own: Outlook gets the flat version, which is exactly
+    what this email looked like before the gradients were added. Never write a
+    gradient without a solid behind it, or Outlook renders transparent.
+
+    Two things carry the gradient into Outlook anyway, which is why it does not
+    look like a different email there:
+      Buttons     both roundrects carry <v:fill type="gradient"> inside their
+                  mso conditional. VML gradients ARE supported. angle="180" is
+                  top to bottom, color at the top and color2 at the bottom.
+      Icon discs  the gradient is baked into the PNG, so it renders everywhere.
+                  That is deliberate. A disc styled in CSS would be flat for a
+                  large share of a B2B audience.
+
+    The hero is left to degrade to flat navy rather than wrapped in a VML rect.
+    The bulletproof-background pattern needs a fixed pixel height and overflows
+    when copy runs long, and a hero that breaks in Outlook is a worse outcome
+    than a hero that is merely flat in Outlook.
+
+    SEAM WARNING. The hero gradient is vertical, not diagonal, because the
+    perforation row sits directly beneath it and a diagonal leaves a
+    non-uniform bottom edge to match against. The perforation carries
+    background-color #0B3D5C (matching Outlook's flat hero) and a flat
+    #08324C gradient (matching the gradient hero's bottom edge), so the join is
+    invisible in both. If you change the hero gradient, change that row too.
+
+    MEASURE CONTRAST AGAINST THE WORST END, NOT THE MIDPOINT. This is the trap
+    with gradients. A gradient gives text a RANGE of backgrounds, and the text
+    has to clear AA against the end that fights it hardest: the lightest end
+    under light text, the darkest end under dark text. Checking the average
+    passes something that fails across half the button.
+
+    Adding these gradients broke three colours that had been fine flat, because
+    lightening the top of the hero lightened the ground under light text:
+
+      Hero eyebrow   5.07 flat, 3.45 on the gradient. Now #A8CEE0, 4.66.
+      Hero body      7.26 flat, 4.94 on the gradient. Left alone, still passes.
+      Card copy      4.36 flat, 4.16 on the tinted card. Now #61707C, 4.87.
+
+    Three more were already below AA before any of this and were fixed at the
+    same time: the teal eyebrow and body links on white (3.43), and in the
+    template the white-on-teal product badge (3.43). Teal now splits in two.
+    #0899A6 is DECORATIVE ONLY, for the cap rule and the icon discs, where
+    contrast rules do not apply. Text uses #077C89, the same hue darkened to
+    4.94 on white. Do not use #0899A6 for text again.
+
+    All 18 text-on-background pairs currently clear 4.5, checked against the
+    worst end of every gradient. If you retune a gradient, recheck them.
 
   FIXED HERE, STILL BROKEN IN email.html
     Header badge   In email.html the badge is a bare td with align="right" and a
@@ -202,7 +271,7 @@
   table,td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
   img{-ms-interpolation-mode:bicubic; border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
   body{margin:0 !important; padding:0 !important; width:100% !important;}
-  a{color:#0899A6;}
+  a{color:#077C89;}
 
   @media screen and (max-width:600px){
     .container{width:100% !important;}
@@ -225,7 +294,7 @@
 </div>
 <!-- /BLOCK 1 -->
 
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EEF1F4;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EEF1F4; background-image:linear-gradient(180deg,#F3F6F8 0%,#E2E9EF 100%);">
   <tr>
     <td align="center" style="padding:28px 12px;">
       <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#FFFFFF;">
@@ -238,12 +307,12 @@
         <tr>
           <td style="padding:0; font-size:0; line-height:0;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-              <td height="5" style="height:5px; background-color:#0899A6; font-size:0; line-height:0;">&nbsp;</td>
+              <td height="5" style="height:5px; background-color:#0899A6; background-image:linear-gradient(90deg,#05707E 0%,#0899A6 45%,#18BAC8 100%); font-size:0; line-height:0;">&nbsp;</td>
             </tr></table>
           </td>
         </tr>
         <tr>
-          <td class="px" style="background-color:#FFFFFF; padding:16px 26px;">
+          <td class="px" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#FAFCFD 100%); padding:16px 26px;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td align="left" valign="middle" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:18px; font-weight:bold; color:#0B3D5C;">
@@ -271,8 +340,8 @@
              UTM below is appended with &. If the CTA is a WhatsApp link,
              delete the &utm_content: WhatsApp discards it. -->
         <tr>
-          <td class="px" align="center" style="background-color:#0B3D5C; padding:34px 34px 14px 34px;">
-            <p style="margin:0 0 10px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#7FB4CC;">
+          <td class="px" align="center" style="background-color:#0B3D5C; background-image:linear-gradient(180deg,#14577F 0%,#0B3D5C 55%,#08324C 100%); padding:38px 34px 16px 34px;">
+            <p style="margin:0 0 10px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#A8CEE0;">
               {{EYEBROW}}
             </p>
             <h1 class="hero-h1" style="margin:0 0 16px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:38px; line-height:44px; font-weight:bold; color:#FFFFFF;">
@@ -282,12 +351,13 @@
               {{HERO_BODY}}
             </p>
             <!--[if mso]>
-            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA_URL}}&amp;utm_content=hero_cta" style="height:50px;v-text-anchor:middle;width:270px;" arcsize="8%" strokecolor="#FFC24B" fillcolor="#FFC24B">
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA_URL}}&amp;utm_content=hero_cta" style="height:50px;v-text-anchor:middle;width:270px;" arcsize="8%" strokecolor="#F2A62B" fillcolor="#FFC24B">
+              <v:fill type="gradient" color="#FFD470" color2="#F2A62B" angle="180" />
               <w:anchorlock/><center style="color:#0B3D5C;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;">{{CTA_TEXT}}</center>
             </v:roundrect>
             <![endif]-->
             <!--[if !mso]><!-- -->
-            <a href="{{CTA_URL}}&amp;utm_content=hero_cta" target="_blank" style="background-color:#FFC24B; border-radius:5px; color:#0B3D5C; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; line-height:50px; text-align:center; text-decoration:none; width:270px;">
+            <a href="{{CTA_URL}}&amp;utm_content=hero_cta" target="_blank" style="background-color:#FFC24B; background-image:linear-gradient(180deg,#FFD470 0%,#FFC24B 52%,#F2A62B 100%); border-radius:5px; color:#0B3D5C; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; line-height:50px; text-align:center; text-decoration:none; width:270px;">
               {{CTA_TEXT}}
             </a>
             <!--<![endif]-->
@@ -297,7 +367,7 @@
         <tr>
           <td style="background-color:#0B3D5C; font-size:0; line-height:0; padding:0;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-              <td style="height:20px; background-color:#0B3D5C; border-bottom:3px dotted #4E7E9B; font-size:0; line-height:0;">&nbsp;</td>
+              <td style="height:20px; background-color:#0B3D5C; background-image:linear-gradient(180deg,#08324C 0%,#08324C 100%); border-bottom:3px dotted #4E7E9B; font-size:0; line-height:0;">&nbsp;</td>
             </tr></table>
           </td>
         </tr>
@@ -311,7 +381,7 @@
              one. Invented scarcity in a B2B letter reads as a mailshot and
              costs more credibility than it buys clicks. -->
         <tr>
-          <td align="center" style="background-color:#F4F7F9; border-top:1px solid #DDE3E9; border-bottom:1px solid #DDE3E9; padding:15px 24px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:14px; line-height:20px; font-weight:bold; color:#0B3D5C; letter-spacing:0.3px;">
+          <td align="center" style="background-color:#F4F7F9; background-image:linear-gradient(180deg,#FFFFFF 0%,#EFF4F7 100%); border-top:1px solid #DDE3E9; border-bottom:1px solid #DDE3E9; padding:15px 24px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:14px; line-height:20px; font-weight:bold; color:#0B3D5C; letter-spacing:0.3px;">
             {{PAYOFF_LINE}}
           </td>
         </tr>
@@ -336,7 +406,7 @@
         <!-- BLOCK 6: SECTION LABEL, OPTIONAL -->
         <tr>
           <td class="px" align="center" style="padding:26px 26px 0 26px;">
-            <p style="margin:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#0899A6;">
+            <p style="margin:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#077C89;">
               {{SECTION_EYEBROW}}
             </p>
             <h2 style="margin:8px 0 0 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:27px; line-height:32px; font-weight:bold; color:#0B3D5C;">
@@ -372,25 +442,25 @@
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
 
               <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #DDE3E9; border-radius:6px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#F7FAFC 100%); border:1px solid #DDE3E9; border-radius:6px;">
                   <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
                     <img src="{{M1_ICON}}" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
                   </td></tr>
                   <tr><td style="padding:12px 16px 17px 16px;">
                     <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">{{M1_NAME}}</p>
-                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6B7B88;">{{M1_DESC}}</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#61707C;">{{M1_DESC}}</p>
                   </td></tr>
                 </table>
               </td>
 
               <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #DDE3E9; border-radius:6px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#F7FAFC 100%); border:1px solid #DDE3E9; border-radius:6px;">
                   <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
                     <img src="{{M2_ICON}}" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
                   </td></tr>
                   <tr><td style="padding:12px 16px 17px 16px;">
                     <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">{{M2_NAME}}</p>
-                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6B7B88;">{{M2_DESC}}</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#61707C;">{{M2_DESC}}</p>
                   </td></tr>
                 </table>
               </td>
@@ -405,29 +475,29 @@
              with their own pages. Delete 7A if you use this, and delete this
              if you use 7A. Running both makes the email a catalogue.
              Card images: 536x360 exported, shown at 268 wide, max 80 KB each.
-             Badge ground: #0899A6 teal or #0B3D5C navy. Never yellow. -->
+             Badge ground: #077C89 teal or #0B3D5C navy. Never yellow. -->
         <tr>
           <td class="px" style="padding:20px 26px 0 26px;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
 
               <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #DDE3E9; border-radius:6px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#F7FAFC 100%); border:1px solid #DDE3E9; border-radius:6px;">
                   <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
                     <a href="{{P1_URL}}&amp;utm_content=card_{{P1_SLUG}}" target="_blank">
                       <img src="{{P1_IMG}}" width="268" alt="{{P1_ALT}}" style="display:block; width:100%; height:auto; border-radius:6px 6px 0 0; border:0;">
                     </a>
                   </td></tr>
                   <tr><td style="padding:15px 16px 17px 16px;">
-                    <p style="margin:0 0 9px 0;"><span style="background-color:#0899A6; color:#FFFFFF; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:10px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; padding:4px 9px; border-radius:3px;">{{P1_BADGE}}</span></p>
+                    <p style="margin:0 0 9px 0;"><span style="background-color:#077C89; color:#FFFFFF; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:10px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; padding:4px 9px; border-radius:3px;">{{P1_BADGE}}</span></p>
                     <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">{{P1_NAME}}</p>
-                    <p style="margin:0 0 13px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6B7B88;">{{P1_DESC}}</p>
-                    <a href="{{P1_URL}}&amp;utm_content=card_{{P1_SLUG}}" target="_blank" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:13px; font-weight:bold; color:#0899A6; text-decoration:none;">{{P1_CTA}} &rarr;</a>
+                    <p style="margin:0 0 13px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#61707C;">{{P1_DESC}}</p>
+                    <a href="{{P1_URL}}&amp;utm_content=card_{{P1_SLUG}}" target="_blank" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:13px; font-weight:bold; color:#077C89; text-decoration:none;">{{P1_CTA}} &rarr;</a>
                   </td></tr>
                 </table>
               </td>
 
               <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #DDE3E9; border-radius:6px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#F7FAFC 100%); border:1px solid #DDE3E9; border-radius:6px;">
                   <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
                     <a href="{{P2_URL}}&amp;utm_content=card_{{P2_SLUG}}" target="_blank">
                       <img src="{{P2_IMG}}" width="268" alt="{{P2_ALT}}" style="display:block; width:100%; height:auto; border-radius:6px 6px 0 0; border:0;">
@@ -436,8 +506,8 @@
                   <tr><td style="padding:15px 16px 17px 16px;">
                     <p style="margin:0 0 9px 0;"><span style="background-color:#0B3D5C; color:#FFFFFF; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:10px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; padding:4px 9px; border-radius:3px;">{{P2_BADGE}}</span></p>
                     <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">{{P2_NAME}}</p>
-                    <p style="margin:0 0 13px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6B7B88;">{{P2_DESC}}</p>
-                    <a href="{{P2_URL}}&amp;utm_content=card_{{P2_SLUG}}" target="_blank" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:13px; font-weight:bold; color:#0899A6; text-decoration:none;">{{P2_CTA}} &rarr;</a>
+                    <p style="margin:0 0 13px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#61707C;">{{P2_DESC}}</p>
+                    <a href="{{P2_URL}}&amp;utm_content=card_{{P2_SLUG}}" target="_blank" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:13px; font-weight:bold; color:#077C89; text-decoration:none;">{{P2_CTA}} &rarr;</a>
                   </td></tr>
                 </table>
               </td>
@@ -466,12 +536,13 @@
         <tr>
           <td align="center" style="padding:26px 26px 40px 26px;">
             <!--[if mso]>
-            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA2_URL}}&amp;utm_content=footer_cta" style="height:48px;v-text-anchor:middle;width:260px;" arcsize="8%" strokecolor="#0B3D5C" fillcolor="#0B3D5C">
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA2_URL}}&amp;utm_content=footer_cta" style="height:48px;v-text-anchor:middle;width:260px;" arcsize="8%" strokecolor="#072B42" fillcolor="#0B3D5C">
+              <v:fill type="gradient" color="#155E88" color2="#072B42" angle="180" />
               <w:anchorlock/><center style="color:#FFFFFF;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;">{{CTA2_TEXT}}</center>
             </v:roundrect>
             <![endif]-->
             <!--[if !mso]><!-- -->
-            <a href="{{CTA2_URL}}&amp;utm_content=footer_cta" target="_blank" style="background-color:#0B3D5C; border-radius:5px; color:#FFFFFF; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; line-height:48px; text-align:center; text-decoration:none; width:260px;">
+            <a href="{{CTA2_URL}}&amp;utm_content=footer_cta" target="_blank" style="background-color:#0B3D5C; background-image:linear-gradient(180deg,#155E88 0%,#0B3D5C 55%,#072B42 100%); border-radius:5px; color:#FFFFFF; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; line-height:48px; text-align:center; text-decoration:none; width:260px;">
               {{CTA2_TEXT}}
             </a>
             <!--<![endif]-->
@@ -492,7 +563,7 @@
           </tr></table>
         </td></tr>
         <tr>
-          <td class="px" style="background-color:#0B3D5C; padding:30px 26px 26px 26px;">
+          <td class="px" style="background-color:#0B3D5C; background-image:linear-gradient(180deg,#0E4767 0%,#0B3D5C 35%,#061F2E 100%); padding:30px 26px 26px 26px;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td align="center" style="padding-bottom:18px;">
@@ -503,11 +574,11 @@
                 <td style="padding-bottom:16px;">
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
                     <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#B9D2DE; padding-right:10px;">
-                      <span style="color:#7FB4CC; font-weight:bold;">Head Office</span><br>
+                      <span style="color:#A8CEE0; font-weight:bold;">Head Office</span><br>
                       Office 1506, Saheel Tower 02,<br>Al Nahda 01, Dubai
                     </td>
                     <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#B9D2DE;">
-                      <span style="color:#7FB4CC; font-weight:bold;">Get in touch</span><br>
+                      <span style="color:#A8CEE0; font-weight:bold;">Get in touch</span><br>
                       WhatsApp: <a href="https://api.whatsapp.com/send?phone=971527064878" style="color:#B9D2DE; text-decoration:none;">+971 52 706 4878</a><br>
                       <a href="mailto:support@ticketmagic.me" style="color:#B9D2DE; text-decoration:none;">support@ticketmagic.me</a>
                     </td>
@@ -530,8 +601,8 @@
                   {{FOOTER_TERMS}}<br>
                   {{PERMISSION_LINE}}<br>
                   Ticket Magic, Office 1506, Saheel Tower 02, Al Nahda 01, Dubai, United Arab Emirates<br>
-                  <a href="*|UNSUB|*" style="color:#9aabbd; text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
-                  <a href="*|UPDATE_PROFILE|*" style="color:#9aabbd; text-decoration:underline;">Update preferences</a><br><br>
+                  <a href="*|UNSUB|*" style="color:#A6B8C9; text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
+                  <a href="*|UPDATE_PROFILE|*" style="color:#A6B8C9; text-decoration:underline;">Update preferences</a><br><br>
                   {{YEAR}} &copy; Ticket Magic. All rights reserved.<br>
                   Developed by Pure Magic Information Technology Services.
                 </td>

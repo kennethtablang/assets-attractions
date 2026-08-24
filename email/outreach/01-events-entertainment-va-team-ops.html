@@ -77,7 +77,8 @@
     which is the wrong register for a note asking a director for 15 minutes.
 
     Kept          Navy   #0B3D5C   structure: hero, footer, headings
-                  Teal   #0899A6   quiet accent: rules, eyebrows, icon discs
+                  Teal   #0899A6   decorative only: cap rule, icon discs
+                  Teal   #077C89   the same accent darkened for TEXT
                   Yellow #FFC24B   ONE job: the primary CTA in the hero
     Replaced      Sand   #EAE3D7 -> #EEF1F4   cool grey page ground
                   Cream  #FBF7F0 -> #FFFFFF   plain white email body
@@ -94,6 +95,75 @@
     cleanly. The yellow promo strip stays a bordered institutional band, so the
     colour is not competing with itself. If you want the house palette back,
     this is the only section you need to reverse.
+
+  GRADIENTS, AND WHAT OUTLOOK DOES WITH THEM
+    Every gradient is tonal: one hue family, light to dark, adding depth rather
+    than colour. A gradient that swings hue reads as a promotion, which is the
+    register this palette exists to avoid. If you add one, stay inside a family.
+
+    Where they are
+      Page ground   #F3F6F8 to #E2E9EF, so the white body reads as a card
+                    floating on a surface rather than as a panel butted onto it
+      Cap rule      #05707E to #18BAC8 across 5px
+      Hero          #14577F to #0B3D5C to #08324C, vertical
+      Payoff band   #FFFFFF to #EFF4F7
+      Cards         #FFFFFF to #F7FAFC, barely there on purpose
+      Primary CTA   #FFD470 to #FFC24B to #F2A62B, gold rather than flat yellow
+      Secondary CTA #155E88 to #0B3D5C to #072B42
+      Footer        #0E4767 to #061F2E, deepening toward the base
+      Icon discs    #18BAC8 to #05707E, baked into the PNG
+
+    OUTLOOK DESKTOP IGNORES CSS GRADIENTS. The Word rendering engine behind
+    Outlook 2007 through 2021 does not support background-image at all, so it
+    drops every gradient above and paints the background-color instead. That is
+    why background-color is always written FIRST and is always a colour the
+    design works in on its own: Outlook gets the flat version, which is exactly
+    what this email looked like before the gradients were added. Never write a
+    gradient without a solid behind it, or Outlook renders transparent.
+
+    Two things carry the gradient into Outlook anyway, which is why it does not
+    look like a different email there:
+      Buttons     both roundrects carry <v:fill type="gradient"> inside their
+                  mso conditional. VML gradients ARE supported. angle="180" is
+                  top to bottom, color at the top and color2 at the bottom.
+      Icon discs  the gradient is baked into the PNG, so it renders everywhere.
+                  That is deliberate. A disc styled in CSS would be flat for a
+                  large share of a B2B audience.
+
+    The hero is left to degrade to flat navy rather than wrapped in a VML rect.
+    The bulletproof-background pattern needs a fixed pixel height and overflows
+    when copy runs long, and a hero that breaks in Outlook is a worse outcome
+    than a hero that is merely flat in Outlook.
+
+    SEAM WARNING. The hero gradient is vertical, not diagonal, because the
+    perforation row sits directly beneath it and a diagonal leaves a
+    non-uniform bottom edge to match against. The perforation carries
+    background-color #0B3D5C (matching Outlook's flat hero) and a flat
+    #08324C gradient (matching the gradient hero's bottom edge), so the join is
+    invisible in both. If you change the hero gradient, change that row too.
+
+    MEASURE CONTRAST AGAINST THE WORST END, NOT THE MIDPOINT. This is the trap
+    with gradients. A gradient gives text a RANGE of backgrounds, and the text
+    has to clear AA against the end that fights it hardest: the lightest end
+    under light text, the darkest end under dark text. Checking the average
+    passes something that fails across half the button.
+
+    Adding these gradients broke three colours that had been fine flat, because
+    lightening the top of the hero lightened the ground under light text:
+
+      Hero eyebrow   5.07 flat, 3.45 on the gradient. Now #A8CEE0, 4.66.
+      Hero body      7.26 flat, 4.94 on the gradient. Left alone, still passes.
+      Card copy      4.36 flat, 4.16 on the tinted card. Now #61707C, 4.87.
+
+    Three more were already below AA before any of this and were fixed at the
+    same time: the teal eyebrow and body links on white (3.43), and in the
+    template the white-on-teal product badge (3.43). Teal now splits in two.
+    #0899A6 is DECORATIVE ONLY, for the cap rule and the icon discs, where
+    contrast rules do not apply. Text uses #077C89, the same hue darkened to
+    4.94 on white. Do not use #0899A6 for text again.
+
+    All 18 text-on-background pairs currently clear 4.5, checked against the
+    worst end of every gradient. If you retune a gradient, recheck them.
 
   DEPARTURES FROM THE BASE TEMPLATE (all deliberate)
     Header bar      White ground, not navy, with a 5px teal rule capping the
@@ -153,10 +223,10 @@
     Both the logo and the icons are pinned to a COMMIT SHA, never @main.
     jsDelivr caches @main for up to 7 days, so a swapped file can show one
     version to one subscriber and another version to the next. A SHA cannot
-    move. Icons are pinned to c04989e, the commit that recoloured a4, b4 and c4
-    from orange to teal so all four discs in a set match. They were pinned to
-    5defe7e before that, the commit that first added them, and 5defe7e still
-    serves the ORANGE disc. That is the entire reason the pin moved.
+    move. Icons are pinned to dfdb8d5, the commit that gave the discs their
+    tonal gradient. Before that they were pinned to c04989e (flat teal, after
+    the orange fourth disc was folded in) and to 5defe7e before that, which
+    still serves the ORANGE disc. Each pin move is a deliberate step.
 
     If an icon is ever recoloured or recompressed again, two steps apply and the
     order matters: push the new bytes FIRST, then repoint every icon URL in all
@@ -242,7 +312,7 @@
   table,td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
   img{-ms-interpolation-mode:bicubic; border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
   body{margin:0 !important; padding:0 !important; width:100% !important;}
-  a{color:#0899A6;}
+  a{color:#077C89;}
 
   @media screen and (max-width:600px){
     .container{width:100% !important;}
@@ -263,7 +333,7 @@
   &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
 </div>
 
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EEF1F4;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EEF1F4; background-image:linear-gradient(180deg,#F3F6F8 0%,#E2E9EF 100%);">
   <tr>
     <td align="center" style="padding:28px 12px;">
       <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#FFFFFF;">
@@ -272,12 +342,12 @@
         <tr>
           <td style="padding:0; font-size:0; line-height:0;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-              <td height="5" style="height:5px; background-color:#0899A6; font-size:0; line-height:0;">&nbsp;</td>
+              <td height="5" style="height:5px; background-color:#0899A6; background-image:linear-gradient(90deg,#05707E 0%,#0899A6 45%,#18BAC8 100%); font-size:0; line-height:0;">&nbsp;</td>
             </tr></table>
           </td>
         </tr>
         <tr>
-          <td class="px" style="background-color:#FFFFFF; padding:16px 26px;">
+          <td class="px" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#FAFCFD 100%); padding:16px 26px;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td align="left" valign="middle" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:18px; font-weight:bold; color:#0B3D5C;">
@@ -297,8 +367,8 @@
 
         <!-- HERO COPY + PRIMARY CTA -->
         <tr>
-          <td class="px" align="center" style="background-color:#0B3D5C; padding:34px 34px 14px 34px;">
-            <p style="margin:0 0 10px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#7FB4CC;">
+          <td class="px" align="center" style="background-color:#0B3D5C; background-image:linear-gradient(180deg,#14577F 0%,#0B3D5C 55%,#08324C 100%); padding:38px 34px 16px 34px;">
+            <p style="margin:0 0 10px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#A8CEE0;">
               Event Management System
             </p>
             <h1 class="hero-h1" style="margin:0 0 16px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:38px; line-height:44px; font-weight:bold; color:#FFFFFF;">
@@ -308,12 +378,13 @@
               The hard part of an event isn&rsquo;t selling the ticket. It&rsquo;s the day itself: five WhatsApp threads and no one sure who&rsquo;s doing what.
             </p>
             <!--[if mso]>
-            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="mailto:support@ticketmagic.me?subject=Walkthrough%20request" style="height:50px;v-text-anchor:middle;width:270px;" arcsize="8%" strokecolor="#FFC24B" fillcolor="#FFC24B">
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="mailto:support@ticketmagic.me?subject=Walkthrough%20request" style="height:50px;v-text-anchor:middle;width:270px;" arcsize="8%" strokecolor="#F2A62B" fillcolor="#FFC24B">
+              <v:fill type="gradient" color="#FFD470" color2="#F2A62B" angle="180" />
               <w:anchorlock/><center style="color:#0B3D5C;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;">Reply for a 15-min walkthrough</center>
             </v:roundrect>
             <![endif]-->
             <!--[if !mso]><!-- -->
-            <a href="mailto:support@ticketmagic.me?subject=Walkthrough%20request" target="_blank" style="background-color:#FFC24B; border-radius:5px; color:#0B3D5C; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; line-height:50px; text-align:center; text-decoration:none; width:270px;">
+            <a href="mailto:support@ticketmagic.me?subject=Walkthrough%20request" target="_blank" style="background-color:#FFC24B; background-image:linear-gradient(180deg,#FFD470 0%,#FFC24B 52%,#F2A62B 100%); border-radius:5px; color:#0B3D5C; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; line-height:50px; text-align:center; text-decoration:none; width:270px;">
               Reply for a 15-min walkthrough
             </a>
             <!--<![endif]-->
@@ -323,14 +394,14 @@
         <tr>
           <td style="background-color:#0B3D5C; font-size:0; line-height:0; padding:0;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-              <td style="height:20px; background-color:#0B3D5C; border-bottom:3px dotted #4E7E9B; font-size:0; line-height:0;">&nbsp;</td>
+              <td style="height:20px; background-color:#0B3D5C; background-image:linear-gradient(180deg,#08324C 0%,#08324C 100%); border-bottom:3px dotted #4E7E9B; font-size:0; line-height:0;">&nbsp;</td>
             </tr></table>
           </td>
         </tr>
 
         <!-- PAYOFF STRIP, replaces the urgency strip. No deadline to invent. -->
         <tr>
-          <td align="center" style="background-color:#F4F7F9; border-top:1px solid #DDE3E9; border-bottom:1px solid #DDE3E9; padding:15px 24px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:14px; line-height:20px; font-weight:bold; color:#0B3D5C; letter-spacing:0.3px;">
+          <td align="center" style="background-color:#F4F7F9; background-image:linear-gradient(180deg,#FFFFFF 0%,#EFF4F7 100%); border-top:1px solid #DDE3E9; border-bottom:1px solid #DDE3E9; padding:15px 24px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:14px; line-height:20px; font-weight:bold; color:#0B3D5C; letter-spacing:0.3px;">
             Your team runs the event instead of chasing it.
           </td>
         </tr>
@@ -350,7 +421,7 @@
         <!-- SECTION LABEL -->
         <tr>
           <td class="px" align="center" style="padding:26px 26px 0 26px;">
-            <p style="margin:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#0899A6;">
+            <p style="margin:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#077C89;">
               Inside the platform
             </p>
             <h2 style="margin:8px 0 0 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:27px; line-height:32px; font-weight:bold; color:#0B3D5C;">
@@ -365,25 +436,25 @@
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
 
               <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #DDE3E9; border-radius:6px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#F7FAFC 100%); border:1px solid #DDE3E9; border-radius:6px;">
                   <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
-                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@c04989eacf99e3e8c0da8e45844c127d9dc4ced9/assets/icons/a1-schedules.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@dfdb8d5f731fa9cbcfbccd468052d380535128c5/assets/icons/a1-schedules.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
                   </td></tr>
                   <tr><td style="padding:12px 16px 17px 16px;">
                     <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Schedules</p>
-                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6B7B88;">The run of the day in one place, so the plan is something the team can look at rather than remember.</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#61707C;">The run of the day in one place, so the plan is something the team can look at rather than remember.</p>
                   </td></tr>
                 </table>
               </td>
 
               <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #DDE3E9; border-radius:6px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#F7FAFC 100%); border:1px solid #DDE3E9; border-radius:6px;">
                   <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
-                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@c04989eacf99e3e8c0da8e45844c127d9dc4ced9/assets/icons/a2-roles.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@dfdb8d5f731fa9cbcfbccd468052d380535128c5/assets/icons/a2-roles.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
                   </td></tr>
                   <tr><td style="padding:12px 16px 17px 16px;">
                     <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Role assignments</p>
-                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6B7B88;">Who is doing what, assigned before the doors open instead of settled in the moment.</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#61707C;">Who is doing what, assigned before the doors open instead of settled in the moment.</p>
                   </td></tr>
                 </table>
               </td>
@@ -396,25 +467,25 @@
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
 
               <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #DDE3E9; border-radius:6px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#F7FAFC 100%); border:1px solid #DDE3E9; border-radius:6px;">
                   <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
-                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@c04989eacf99e3e8c0da8e45844c127d9dc4ced9/assets/icons/a3-coordination.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@dfdb8d5f731fa9cbcfbccd468052d380535128c5/assets/icons/a3-coordination.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
                   </td></tr>
                   <tr><td style="padding:12px 16px 17px 16px;">
                     <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Real-time coordination</p>
-                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6B7B88;">Changes reach the floor as you make them, so everyone is working from the current plan.</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#61707C;">Changes reach the floor as you make them, so everyone is working from the current plan.</p>
                   </td></tr>
                 </table>
               </td>
 
               <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #DDE3E9; border-radius:6px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#F7FAFC 100%); border:1px solid #DDE3E9; border-radius:6px;">
                   <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
-                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@c04989eacf99e3e8c0da8e45844c127d9dc4ced9/assets/icons/a4-ticketing.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@dfdb8d5f731fa9cbcfbccd468052d380535128c5/assets/icons/a4-ticketing.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
                   </td></tr>
                   <tr><td style="padding:12px 16px 17px 16px;">
                     <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Alongside your ticketing</p>
-                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#6B7B88;">Team Ops sits in the same platform as your ticketing, all in one place. One system, not one more.</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#61707C;">Team Ops sits in the same platform as your ticketing, all in one place. One system, not one more.</p>
                   </td></tr>
                 </table>
               </td>
@@ -439,12 +510,13 @@
         <tr>
           <td align="center" style="padding:26px 26px 40px 26px;">
             <!--[if mso]>
-            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://api.whatsapp.com/send?phone=971529521204&amp;text=Hi%20Ticket%20Magic%2C%20I%27d%20like%20to%20book%20a%20call%20about%20Team%20Ops." style="height:48px;v-text-anchor:middle;width:260px;" arcsize="8%" strokecolor="#0B3D5C" fillcolor="#0B3D5C">
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://api.whatsapp.com/send?phone=971529521204&amp;text=Hi%20Ticket%20Magic%2C%20I%27d%20like%20to%20book%20a%20call%20about%20Team%20Ops." style="height:48px;v-text-anchor:middle;width:260px;" arcsize="8%" strokecolor="#072B42" fillcolor="#0B3D5C">
+              <v:fill type="gradient" color="#155E88" color2="#072B42" angle="180" />
               <w:anchorlock/><center style="color:#FFFFFF;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;">Book a call</center>
             </v:roundrect>
             <![endif]-->
             <!--[if !mso]><!-- -->
-            <a href="https://api.whatsapp.com/send?phone=971529521204&amp;text=Hi%20Ticket%20Magic%2C%20I%27d%20like%20to%20book%20a%20call%20about%20Team%20Ops." target="_blank" style="background-color:#0B3D5C; border-radius:5px; color:#FFFFFF; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; line-height:48px; text-align:center; text-decoration:none; width:260px;">
+            <a href="https://api.whatsapp.com/send?phone=971529521204&amp;text=Hi%20Ticket%20Magic%2C%20I%27d%20like%20to%20book%20a%20call%20about%20Team%20Ops." target="_blank" style="background-color:#0B3D5C; background-image:linear-gradient(180deg,#155E88 0%,#0B3D5C 55%,#072B42 100%); border-radius:5px; color:#FFFFFF; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; line-height:48px; text-align:center; text-decoration:none; width:260px;">
               Book a call
             </a>
             <!--<![endif]-->
@@ -458,7 +530,7 @@
           </tr></table>
         </td></tr>
         <tr>
-          <td class="px" style="background-color:#0B3D5C; padding:30px 26px 26px 26px;">
+          <td class="px" style="background-color:#0B3D5C; background-image:linear-gradient(180deg,#0E4767 0%,#0B3D5C 35%,#061F2E 100%); padding:30px 26px 26px 26px;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td align="center" style="padding-bottom:18px;">
@@ -469,11 +541,11 @@
                 <td style="padding-bottom:16px;">
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
                     <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#B9D2DE; padding-right:10px;">
-                      <span style="color:#7FB4CC; font-weight:bold;">Head Office</span><br>
+                      <span style="color:#A8CEE0; font-weight:bold;">Head Office</span><br>
                       Office 1506, Saheel Tower 02,<br>Al Nahda 01, Dubai
                     </td>
                     <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#B9D2DE;">
-                      <span style="color:#7FB4CC; font-weight:bold;">Get in touch</span><br>
+                      <span style="color:#A8CEE0; font-weight:bold;">Get in touch</span><br>
                       WhatsApp: <a href="https://api.whatsapp.com/send?phone=971527064878" style="color:#B9D2DE; text-decoration:none;">+971 52 706 4878</a><br>
                       <a href="mailto:support@ticketmagic.me" style="color:#B9D2DE; text-decoration:none;">support@ticketmagic.me</a>
                     </td>
@@ -497,8 +569,8 @@
                   You&rsquo;re receiving this because we work with event organizers and entertainment companies across the UAE.<br>
                   Not the right person? Reply and tell us who is.<br>
                   Ticket Magic, Office 1506, Saheel Tower 02, Al Nahda 01, Dubai, United Arab Emirates<br>
-                  <a href="*|UNSUB|*" style="color:#9aabbd; text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
-                  <a href="*|UPDATE_PROFILE|*" style="color:#9aabbd; text-decoration:underline;">Update preferences</a><br><br>
+                  <a href="*|UNSUB|*" style="color:#A6B8C9; text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
+                  <a href="*|UPDATE_PROFILE|*" style="color:#A6B8C9; text-decoration:underline;">Update preferences</a><br><br>
                   2026 &copy; Ticket Magic. All rights reserved.<br>
                   Developed by Pure Magic Information Technology Services.
                 </td>
