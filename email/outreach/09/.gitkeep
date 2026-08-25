@@ -1,0 +1,16 @@
+Segment 09: IT & Services / Technology
+
+A/B/C focus
+  Tech conferences and webinars. Lead on hybrid and virtual
+  capability, audience re-engagement, and cross-format reporting.
+
+Nothing built yet. Copy lives in
+email/templates/TicketMagic_Organizer_Pitch_ABC_by_Segment.docx, section 9.
+
+To build a letter here, clone an existing one from ../02, ../03 or ../04
+rather than starting from email/templates/email-corporate.html. The three
+versions of a segment must stay structurally identical, so the module each
+one leads on is the only variable under test.
+
+This file exists so git keeps the folder. Delete it once the folder holds
+a letter.
