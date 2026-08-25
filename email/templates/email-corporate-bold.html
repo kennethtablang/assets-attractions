@@ -1,0 +1,669 @@
+<!--
+================================================================================
+  CORPORATE BOLD EMAIL TEMPLATE, Ticket Magic
+  Paste into Mailchimp: Campaign > Design > Code your own > Paste in code
+================================================================================
+
+  WHICH TEMPLATE DO I USE?
+    email.html                the house consumer look. Sand and cream grounds,
+                              orange CTA, yellow accents. For offers going to
+                              ticket buyers: promotions, seasonal pushes,
+                              launches.
+    email-corporate.html      navy and white, teal accent, gradients throughout.
+                              The first B2B template. Still correct, still
+                              sendable, and still what the nine letters in
+                              email/outreach use.
+    email-corporate-bold.html THIS FILE. The same job as email-corporate.html,
+                              done louder: near-black ink, warm bone paper, one
+                              yellow block, oversized left-aligned type, no
+                              gradients and no rounded corners anywhere.
+
+    THE TWO CORPORATE TEMPLATES ARE ALTERNATIVES, NOT A REPLACEMENT. Nothing in
+    email/outreach is migrated to this one, and nothing has to be. Pick per
+    campaign, and if you A/B them, change ONE thing: send the same copy through
+    both and compare, rather than writing new copy for the new look.
+
+  WHAT IS ACTUALLY DIFFERENT, AND WHY
+    This is not a recolour. Four decisions separate it from email-corporate.html
+    and each one is doing work.
+
+    1. NO GRADIENTS. Not one, anywhere. email-corporate.html carries nine of
+       them and about forty lines of documentation explaining that Outlook drops
+       every one and paints the background-color instead, so the email is
+       quietly a different design for a large share of a B2B audience. Flat
+       colour is both the fresher look and the honest one: THIS TEMPLATE RENDERS
+       IDENTICALLY IN OUTLOOK AND EVERYWHERE ELSE. There is no degraded version
+       to reason about, no seam to match, and no contrast ramp to measure
+       against its worst end. If you add a gradient you give all of that back.
+
+    2. ONE LEFT AXIS. email-corporate.html centres the hero, the payoff, the
+       section heading and both buttons. Everything here is left aligned except
+       the footer. That is what lets the headline run big: centred type with
+       uneven line lengths reads as broken, the same type on a left axis reads
+       as designed. It is also the single cheapest thing that makes an email
+       look like it was set rather than assembled.
+
+    3. TYPE CARRIES THE VOLUME, NOT COLOUR. The brief was "bold", and the trap
+       with bold is reaching for more colour, which is exactly what makes a
+       cold B2B letter read as a mailshot. So the palette got SMALLER, not
+       bigger: eight colours where the old one has thirteen. The loudness is a
+       48px headline, an 8px ink cap rule, hairline ink rules and hard square
+       corners. Nothing shouts in hue.
+
+    4. NUMBERS INSTEAD OF ICONS (block 7A). The default module block is four
+       full-width numbered rows with no images in them at all. That is more
+       editorial, it stacks on mobile with no gutter to get wrong, and it means
+       the common case of this template has NO CDN dependency in the body:
+       nothing to pin to a SHA, nothing to break silently when an icon is
+       recompressed. Block 7B keeps the icon cards for when you want them.
+
+  HOW TO USE
+  1. Copy this file into your campaign folder. Never edit this original.
+  2. Delete any block marked OPTIONAL that this campaign does not need.
+     Blocks run from BLOCK n to /BLOCK n. Delete whole blocks only: a
+     half-deleted table breaks the layout in Outlook.
+  3. Replace every token. Tokens are written in double curly braces.
+  4. Search for the double curly brace before sending. Zero hits, or you ship a
+     placeholder. Nothing in these comments uses that character pair, precisely
+     so the search stays trustworthy. Keep it that way when you edit: describe a
+     token in prose rather than writing one out, or the check cries wolf and
+     people start ignoring it.
+
+  BLOCKS
+    1   PREHEADER          REQUIRED
+    2   HEADER BAR         REQUIRED
+    3   HERO + CTA         REQUIRED
+    4   PAYOFF BAND        optional
+    5   LETTER             optional, plain prose. Use it for cold outreach.
+    6   SECTION LABEL      optional
+    7A  NUMBERED MODULES   optional, no images. The default for this template.
+    7B  ICON CARDS         optional, image led. Delete 7A if you use this.
+    8   SECONDARY CTA      optional, keep for long emails
+    9   FOOTER             REQUIRED, legal. Never delete, never shrink.
+
+  PALETTE: NINE COLOURS, ONE JOB EACH
+    Ink       #0A1E2C   the dominant field: cap rule, hero, footer, headings,
+                        numerals, hairlines, the secondary button's border
+    Paper     #FFFFFF   the body
+    Bone      #F4F1EA   the page ground. WARM on purpose: a cold ink on a warm
+                        paper is the whole colour idea, and it is the one thing
+                        here inherited from the consumer template rather than
+                        the corporate one
+    Sand      #EAE3D4   the payoff band only. Bone one step down, so the band
+                        does not match the page ground. See block 4.
+    Signal    #FFC24B   ONE job: the primary CTA. Nowhere else, ever.
+    Teal text #077C89   links in body copy, and nothing else
+    Text      #2F3D48   body copy on paper
+    Muted     #5E6E7A   module copy, card copy, and the section eyebrow
+    On ink    #A9C0D0   hero body, hero eyebrow, footer body and social
+              #7E97A8   footer legal only
+              #3A5568   the perforation dots, decorative
+
+    EYEBROWS ARE THE MUTED TONE OF WHATEVER THEY SIT ON. #A9C0D0 in the hero,
+    #5E6E7A in the section label. That is the rule; it is not two arbitrary
+    greys. The section eyebrow was teal in the first draft, which quietly broke
+    the "teal is links only" line three paragraphs down, and made the eyebrow
+    louder than the heading under it.
+
+    THE YELLOW RULE SURVIVED THE REDESIGN, and it is worth restating because a
+    bold design is exactly where it gets broken. Yellow appears ONCE per email,
+    on the thing you want clicked, so the single warm element on a cold field is
+    the CTA. The moment yellow shows up in a second place, in an eyebrow or a
+    rule or a band, the CTA stops being the loudest thing and the whole design
+    goes back to looking like an offer. If you need to mark something else, use
+    ink: a solid ink slab is louder than yellow here anyway.
+
+    Teal is now ONLY a link colour. The old template used it for the cap rule
+    and the icon discs; the cap rule is ink now, and 7A has no discs. Do not
+    reintroduce #0899A6 as text under any circumstances, at 3.43 on white it has
+    never passed.
+
+  CONTRAST: MEASURED, FLAT, AND WITH ROOM TO SPARE
+    Because there are no gradients, every text colour sits on exactly ONE
+    background, so each of these is a flat pair rather than a range that has to
+    be checked against its worst end. Every pair measured:
+
+      hero headline    #FFFFFF on ink      17.00     body copy       11.16
+      hero eyebrow     #A9C0D0 on ink       9.02     module copy      5.27
+      hero body        #A9C0D0 on ink       9.02     section eyebrow  5.27
+      primary CTA      ink on #FFC24B      10.58     links            4.94
+      secondary CTA    ink on paper        17.00     payoff on sand  13.31
+      footer body      #A9C0D0 on ink       9.02     footer legal     5.57
+
+    The tightest non-decorative pair is the teal link at 4.94, inherited already
+    verified. Nothing else is within 15 percent of the 4.5 threshold, so ordinary
+    edits will not quietly break AA. Recheck only if you change a colour.
+
+  THE HERO HEADLINE: 48px, LEFT, AND IT WRAPS ON ITS OWN
+    48px bold on a 520px measure is about 20 characters a line. That is the
+    whole reason this template feels different, and it is also its one real
+    constraint, so it is worth knowing the numbers before you write copy.
+
+    DO NOT HAND-BREAK IT. email-corporate.html expects a line break tag in the
+    middle of the headline to balance two lines. Here the headline is left
+    aligned and simply wraps, which is why a ragged three-line block looks
+    intentional. Every headline in the existing library was measured through
+    this setting and lands on two or three lines with nothing to adjust:
+
+      Run your whole event from one screen                    2 lines
+      Coordinate your next partner event, live                2 lines
+      Host events at your venue without the chaos             3 lines
+      Run your next launch event already in control           3 lines
+      Run the event and the campaign from one platform        3 lines
+      Run your next trade event without the spreadsheets      3 lines
+      Every event is a lead list. Are you capturing it?       3 lines
+
+    FOUR LINES IS TOO MANY. If a headline runs to four, tighten the copy rather
+    than dropping the type size: at this size the headline is the design, and
+    shrinking it to fit a long sentence gives up the only thing this template
+    does that the other one does not. As a rule of thumb, four to eight words.
+
+    On mobile the headline drops to 34px and wraps further, which is expected
+    and fine. It is set in Trebuchet MS with Tahoma and Arial behind it, so on a
+    machine with none of those the wrap will differ. That is why nothing here
+    depends on a specific line count.
+
+  IMAGES: TWO, AND BOTH ARE THE LOGO
+    With block 7A the only images in the email are the header logo and the
+    footer logo, both pinned to commit ec8ba53. Block 7B adds four icons.
+
+    Use jsDelivr pinned to a TAG or COMMIT SHA. Never raw.githubusercontent
+    (not a CDN, rate limited, blocked by some corporate filters). Never @main
+    (jsDelivr caches it up to 7 days, so a swapped image can show one version to
+    one subscriber and a different version to the next).
+
+      https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@{SHA}/...
+
+    THE ORDER MATTERS AND THE FAILURE IS SILENT. To change an image: push the
+    new bytes FIRST, then repoint every URL at the new SHA. Editing the PNG on
+    disk on its own changes nothing a recipient sees, because these URLs address
+    a commit and not a working tree. Verify against the CDN, not against disk.
+
+    A squash merge breaks a pin the same way, by replaying the bytes under a new
+    commit and leaving the old SHA on no branch. Merge with a real merge commit.
+
+  THE CTA URL TOKEN CARRIES ITS OWN QUERY STRING
+    A DELIBERATE BREAK FROM email-corporate.html, which appends its own tracking
+    parameter to whatever you supply and therefore requires the token to already
+    contain a question mark. That is a footgun: it silently produces a malformed
+    link on a mailto, which is exactly what every letter in email/outreach uses,
+    and there is nothing in the markup to warn you.
+
+    Here the token is the WHOLE href and nothing is appended. If you want a UTM,
+    put it in the token. If the CTA is a mailto or a WhatsApp link, do not, and
+    nothing will try to for you.
+
+  WHATSAPP LINKS: api.whatsapp.com, NOT wa.me
+    wa.me is the obvious choice and it is the wrong one, so this is worth
+    writing down or someone will tidy it back.
+
+    On 2026-08-24 wa.me was found to be intercepted by a network content filter:
+    it resolved to 121.54.78.47, outside any Meta range, and served a forged
+    certificate for CN=wa.me issued by CN=blocking-page-authority. Because wa.me
+    is HSTS preloaded the browser offers no click-through, so the recipient gets
+    a full page security warning and stops. api.whatsapp.com carries the genuine
+    Meta certificate and was not on that blocklist.
+
+      https://api.whatsapp.com/send?phone=9715XXXXXXXX&amp;text=URL_ENCODED_MSG
+
+    Write the and-sign as an entity. It sits in an href, so a bare one is an
+    unescaped character. Both hostnames open the same chat.
+
+    WhatsApp cannot carry a UTM. It discards query params other than its own, so
+    put the campaign or variant name in the prefilled text instead: the inbound
+    message then says which email produced it. Name the SEGMENT, not the module.
+    Module names repeat across segments, and once two letters lead on the same
+    module the inbound message stops telling you which one produced it.
+
+    RESIDUAL RISK: that block was seen on one network, and messaging domains are
+    exactly what corporate filters target. The durable fix is a redirect on a
+    domain we control, which would also survive a number change and restore UTM
+    tracking. Not built yet.
+
+  MAILCHIMP MERGE TAGS
+    The two tags in the footer are per recipient URLs the platform generates.
+    They resolve on send and WILL look unresolved in preview. That is expected.
+    They sit inside href attributes, so if the platform does not resolve them
+    the footer still LOOKS right while the unsubscribe link is dead. That is a
+    legal problem, not a cosmetic one, so check a real seed send.
+
+    NOT SENDING FROM MAILCHIMP? They are Mailchimp syntax and nothing else
+    resolves them. Apollo, Brevo and HubSpot each use their own. Swap both.
+
+    The postal address and the year are written out rather than tagged. A sent
+    email is frozen the moment it lands, so a dynamic year keeps nothing current.
+
+  PERSONALISATION
+    Mailchimp has no inline fallback syntax for audience fields. There is no way
+    to write a first-name token with a default beside it. A token here means
+    setting a Default merge tag value per field in Audience settings and trusting
+    it, or shipping a blank mid sentence. For cold outreach, resolve tokens into
+    fixed wording instead: "Hi there," costs nothing and cannot break.
+
+  DO NOT REMOVE (looks like clutter, is not)
+    - The mso conditional blocks: buttons collapse to plain links in Outlook
+    - The invisible entities after the preheader: they stop Gmail pulling body
+      copy into the inbox snippet
+    - color-scheme meta tags: they stop Apple Mail and Outlook.com auto
+      inverting a palette that was chosen deliberately
+    - Inline styles: Gmail strips a style element in some contexts
+    - The nested table around the header badge. A background-color on an
+      align="right" cell fills the ENTIRE cell, so a bare badge stretches edge
+      to edge. email.html still has that bug; do not copy its markup here.
+
+  LIMITS
+    - Total HTML under 100 KB. Gmail clips above roughly 102 KB, which hides the
+      footer and breaks the unsubscribe link.
+    - Icons in 7B are 88x88 exported, shown at 44px, so they are already 2x.
+    - The logo is 147x75 shown at 120px, so it is slightly soft on a retina
+      screen. A 2x export at the same path fixes that without touching markup.
+
+  NO EM DASHES
+    House rule. This file contains none, in markup or in comments. Recast the
+    sentence with a period, colon, comma or brackets rather than swapping the
+    character for a hyphen. Keep to it when you edit.
+================================================================================
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <title>{{EMAIL_TITLE}}</title>
+  <!--[if mso]>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+<style type="text/css">
+  :root { color-scheme: light; supported-color-schemes: light; }
+  body,table,td,a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;}
+  table,td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
+  img{-ms-interpolation-mode:bicubic; border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+  body{margin:0 !important; padding:0 !important; width:100% !important;}
+  a{color:#077C89;}
+
+  @media screen and (max-width:600px){
+    .container{width:100% !important;}
+    /* Zero the card gutter when 7B stacks, or alternate cards sit 8px right of
+       the others. email.html and email-corporate.html both have this latent
+       bug. Block 7A does not need this rule at all: it never sits side by side,
+       which is one of the reasons it is the default. */
+    .stack{display:block !important; width:100% !important; max-width:100% !important; padding-left:0 !important; padding-right:0 !important;}
+    .hero-h1{font-size:34px !important; line-height:38px !important;}
+    .hero-px{padding-left:20px !important; padding-right:20px !important;}
+    .px{padding-left:20px !important; padding-right:20px !important;}
+    .num{font-size:30px !important; width:44px !important;}
+    .card-img img{width:100% !important; height:auto !important;}
+    .foot-col{display:block !important; width:100% !important; text-align:center !important; padding:6px 0 !important;}
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; background-color:#F4F1EA;">
+
+<!-- BLOCK 1: PREHEADER, REQUIRED. 40 to 90 chars, continues the subject line. -->
+<div style="display:none; font-size:1px; color:#F4F1EA; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
+  {{PREHEADER}}
+  &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+</div>
+<!-- /BLOCK 1 -->
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F4F1EA;">
+  <tr>
+    <td align="center" style="padding:32px 12px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#FFFFFF;">
+
+        <!-- BLOCK 2: HEADER BAR, REQUIRED.
+             An 8px solid ink cap over a thin white strip, with the ink hero
+             directly beneath it. The white strip reads as a slot cut between
+             two ink fields, which is the first thing that says this is not the
+             other template. The rule is ink and not yellow deliberately: the
+             hero button owns the only yellow in the email.
+             The badge is an ink OUTLINE rather than a solid, so it does not
+             compete with the cap rule and the hero. It sits in its own nested
+             table; see the DO NOT REMOVE note before you simplify that away. -->
+        <tr>
+          <td style="padding:0; font-size:0; line-height:0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+              <td height="8" style="height:8px; background-color:#0A1E2C; font-size:0; line-height:0;">&nbsp;</td>
+            </tr></table>
+          </td>
+        </tr>
+        <tr>
+          <td class="px" style="background-color:#FFFFFF; padding:18px 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="left" valign="middle" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:18px; font-weight:bold; color:#0A1E2C;">
+                  <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53204c68457e9ff5c02539eb771d79d942d/assets/summer_is_here_campaign/ticketmagiclogo.png" width="120" height="61" alt="Ticket Magic" style="display:block; width:120px; height:61px; border:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:18px; font-weight:bold; color:#0A1E2C;">
+                </td>
+                <td align="right" valign="middle">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right"><tr>
+                    <td style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:11px; font-weight:bold; color:#0A1E2C; letter-spacing:1.5px; text-transform:uppercase; background-color:#FFFFFF; border:2px solid #0A1E2C; padding:6px 11px; white-space:nowrap;">
+                      {{HEADER_BADGE}}
+                    </td>
+                  </tr></table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <!-- /BLOCK 2 -->
+
+        <!-- BLOCK 3: HERO + PRIMARY CTA, REQUIRED.
+             Left aligned, type led, no hero image. A stock crowd shot on a cold
+             pitch reads as an ad rather than as a note from a person.
+             DO NOT HAND-BREAK THE HEADLINE. It is set to wrap. See the hero
+             note at the top of this file for the measured line counts.
+             {{CTA_URL}} is the WHOLE href. Nothing is appended to it. -->
+        <tr>
+          <td class="hero-px" align="left" style="background-color:#0A1E2C; padding:52px 40px 44px 40px;">
+            <p style="margin:0 0 18px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:11px; letter-spacing:5px; text-transform:uppercase; color:#A9C0D0;">
+              {{EYEBROW}}
+            </p>
+            <h1 class="hero-h1" style="margin:0 0 20px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:48px; line-height:52px; font-weight:bold; color:#FFFFFF; letter-spacing:-0.5px;">
+              {{HEADLINE}}
+            </h1>
+            <p style="margin:0 0 32px 0; font-family:Arial,Helvetica,sans-serif; font-size:17px; line-height:27px; color:#A9C0D0;">
+              {{HERO_BODY}}
+            </p>
+            <!--[if mso]>
+            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA_URL}}" style="height:56px;v-text-anchor:middle;width:280px;" strokecolor="#FFC24B" fillcolor="#FFC24B">
+              <w:anchorlock/><center style="color:#0A1E2C;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;letter-spacing:0.5px;">{{CTA_TEXT}}</center>
+            </v:rect>
+            <![endif]-->
+            <!--[if !mso]><!-- -->
+            <a href="{{CTA_URL}}" target="_blank" style="background-color:#FFC24B; color:#0A1E2C; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; letter-spacing:0.5px; line-height:56px; text-align:center; text-decoration:none; width:280px;">
+              {{CTA_TEXT}}
+            </a>
+            <!--<![endif]-->
+          </td>
+        </tr>
+        <!-- Boarding pass perforation, house motif, kept from the other
+             templates so the brand still has one continuous idea. Ink on ink,
+             so it reads as a score line rather than as decoration. -->
+        <tr>
+          <td style="background-color:#0A1E2C; font-size:0; line-height:0; padding:0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+              <td style="height:18px; background-color:#0A1E2C; border-bottom:3px dotted #3A5568; font-size:0; line-height:0;">&nbsp;</td>
+            </tr></table>
+          </td>
+        </tr>
+        <!-- /BLOCK 3 -->
+
+        <!-- BLOCK 4: PAYOFF BAND, OPTIONAL.
+             A sand slab between two heavy ink rules. Left aligned like
+             everything else, so the axis holds all the way down the email.
+
+             ITS GROUND IS DEEPER THAN THE PAGE GROUND, AND HAS TO BE. Built
+             first at the page's own #F4F1EA, the band matched the ground
+             showing either side of the 600px card, so the white body appeared
+             to be cut clean in half and the email read as two stacked cards.
+             #EAE3D4 is the same hue a step down, which keeps the band clearly
+             inside the email. If you retune the page ground, move this with it
+             and keep the gap.
+             Carry the payoff line here and do NOT repeat that sentence in the
+             body. If there is no real deadline, do not invent one. Invented
+             scarcity in a B2B letter reads as a mailshot and costs more
+             credibility than it buys clicks. -->
+        <tr>
+          <td class="px" align="left" style="background-color:#EAE3D4; border-top:3px solid #0A1E2C; border-bottom:3px solid #0A1E2C; padding:20px 40px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:24px; font-weight:bold; color:#0A1E2C;">
+            {{PAYOFF_LINE}}
+          </td>
+        </tr>
+        <!-- /BLOCK 4 -->
+
+        <!-- BLOCK 5: LETTER, OPTIONAL.
+             Plain prose, no styling tricks. This is what makes a cold email
+             read as a note from a person rather than as a campaign. Keep it to
+             two short paragraphs. -->
+        <tr>
+          <td class="px" style="padding:38px 40px 6px 40px;">
+            <p style="margin:0 0 18px 0; font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:26px; color:#2F3D48;">
+              {{GREETING}}
+            </p>
+            <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:26px; color:#2F3D48;">
+              {{LETTER_BODY}}
+            </p>
+          </td>
+        </tr>
+        <!-- /BLOCK 5 -->
+
+        <!-- BLOCK 6: SECTION LABEL, OPTIONAL. Left, on the same axis. -->
+        <tr>
+          <td class="px" align="left" style="padding:34px 40px 0 40px;">
+            <p style="margin:0 0 10px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#5E6E7A;">
+              {{SECTION_EYEBROW}}
+            </p>
+            <h2 style="margin:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:34px; line-height:38px; font-weight:bold; color:#0A1E2C; letter-spacing:-0.3px;">
+              {{SECTION_TITLE}}
+            </h2>
+          </td>
+        </tr>
+        <!-- /BLOCK 6 -->
+
+        <!-- BLOCK 7A: NUMBERED MODULES, OPTIONAL. The default for this template.
+             Four full-width rows, each a big ink numeral against a hairline
+             rule. NO IMAGES AT ALL, which is the point: with this block the
+             only pictures in the email are the two logos, so there is no icon
+             to pin, no SHA to move and nothing that can break silently on the
+             CDN months after the send.
+
+             They are also immune to the stacked-card gutter bug, because they
+             never sit side by side. On a phone they are already the right
+             shape.
+
+             To use fewer than four, delete whole rows and renumber. To use
+             more, duplicate a row. The numerals are literal text, not tokens,
+             so renumbering is a manual edit and that is deliberate: a wrong
+             number is obvious, a wrong token is not. -->
+        <tr>
+          <td class="px" style="padding:26px 40px 0 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+
+              <tr>
+                <td colspan="2" style="border-top:1px solid #0A1E2C; font-size:0; line-height:0; height:1px;">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="num" width="56" valign="top" style="width:56px; padding:16px 0 20px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:38px; line-height:38px; font-weight:bold; color:#0A1E2C;">01</td>
+                <td valign="top" style="padding:16px 0 20px 0;">
+                  <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:19px; line-height:24px; font-weight:bold; color:#0A1E2C;">{{M1_NAME}}</p>
+                  <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:23px; color:#5E6E7A;">{{M1_DESC}}</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td colspan="2" style="border-top:1px solid #0A1E2C; font-size:0; line-height:0; height:1px;">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="num" width="56" valign="top" style="width:56px; padding:16px 0 20px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:38px; line-height:38px; font-weight:bold; color:#0A1E2C;">02</td>
+                <td valign="top" style="padding:16px 0 20px 0;">
+                  <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:19px; line-height:24px; font-weight:bold; color:#0A1E2C;">{{M2_NAME}}</p>
+                  <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:23px; color:#5E6E7A;">{{M2_DESC}}</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td colspan="2" style="border-top:1px solid #0A1E2C; font-size:0; line-height:0; height:1px;">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="num" width="56" valign="top" style="width:56px; padding:16px 0 20px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:38px; line-height:38px; font-weight:bold; color:#0A1E2C;">03</td>
+                <td valign="top" style="padding:16px 0 20px 0;">
+                  <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:19px; line-height:24px; font-weight:bold; color:#0A1E2C;">{{M3_NAME}}</p>
+                  <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:23px; color:#5E6E7A;">{{M3_DESC}}</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td colspan="2" style="border-top:1px solid #0A1E2C; font-size:0; line-height:0; height:1px;">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="num" width="56" valign="top" style="width:56px; padding:16px 0 20px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:38px; line-height:38px; font-weight:bold; color:#0A1E2C;">04</td>
+                <td valign="top" style="padding:16px 0 20px 0;">
+                  <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:19px; line-height:24px; font-weight:bold; color:#0A1E2C;">{{M4_NAME}}</p>
+                  <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:23px; color:#5E6E7A;">{{M4_DESC}}</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td colspan="2" style="border-top:1px solid #0A1E2C; font-size:0; line-height:0; height:1px;">&nbsp;</td>
+              </tr>
+
+            </table>
+          </td>
+        </tr>
+        <!-- /BLOCK 7A -->
+
+        <!-- BLOCK 7B: ICON CARDS, OPTIONAL. Use INSTEAD of 7A when you want the
+             teal discs. Delete 7A if you use this, and delete this if you use
+             7A. Running both makes the email a catalogue.
+
+             Square corners and a 1px ink border, so the cards match this
+             template rather than the old one. The discs stay teal because that
+             is what the PNGs are; that is the one place teal appears outside a
+             link, and it is why 7A is the default.
+
+             EVERY DISC IS THE SAME TEAL. The fourth card closes the set. It is
+             not a separate product and must not be coloured like one. That was
+             shipped wrong once, with one orange disc among three teal.
+
+             Icons: 88x88 exported, shown at 44px. alt="" is deliberate, the
+             icons are decorative and every card reads without them.
+             Pin to a SHA and NEVER @main:
+             https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@{SHA}/assets/icons/{name}.png -->
+        <tr>
+          <td class="px" style="padding:26px 40px 0 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #0A1E2C;">
+                  <tr><td style="padding:18px 18px 0 18px; font-size:0; line-height:0;">
+                    <img src="{{M1_ICON}}" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                  </td></tr>
+                  <tr><td style="padding:14px 18px 18px 18px;">
+                    <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:18px; font-weight:bold; color:#0A1E2C;">{{M1_NAME}}</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:21px; color:#5E6E7A;">{{M1_DESC}}</p>
+                  </td></tr>
+                </table>
+              </td>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #0A1E2C;">
+                  <tr><td style="padding:18px 18px 0 18px; font-size:0; line-height:0;">
+                    <img src="{{M2_ICON}}" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                  </td></tr>
+                  <tr><td style="padding:14px 18px 18px 18px;">
+                    <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:18px; font-weight:bold; color:#0A1E2C;">{{M2_NAME}}</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:21px; color:#5E6E7A;">{{M2_DESC}}</p>
+                  </td></tr>
+                </table>
+              </td>
+
+            </tr></table>
+          </td>
+        </tr>
+        <!-- /BLOCK 7B -->
+
+        <!-- CLOSE, part of BLOCK 5 in spirit. Delete with the letter if unused. -->
+        <tr>
+          <td class="px" style="padding:28px 40px 0 40px;">
+            <p style="margin:0 0 16px 0; font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:26px; color:#2F3D48;">
+              {{CLOSING_ASK}}
+            </p>
+            <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:26px; color:#2F3D48;">
+              {{SIGNOFF}}
+            </p>
+          </td>
+        </tr>
+
+        <!-- BLOCK 8: SECONDARY CTA, OPTIONAL. An ink OUTLINE button, not a
+             filled one. The filled treatment belongs to the yellow primary and
+             there is only one primary, so the second button is deliberately
+             quieter. Left aligned, on the axis.
+             If this points at WhatsApp, use api.whatsapp.com. See the note at
+             the top of this file. {{CTA2_URL}} is the whole href. -->
+        <tr>
+          <td class="px" align="left" style="padding:32px 40px 44px 40px;">
+            <!--[if mso]>
+            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA2_URL}}" style="height:52px;v-text-anchor:middle;width:260px;" strokecolor="#0A1E2C" fillcolor="#FFFFFF">
+              <w:anchorlock/><center style="color:#0A1E2C;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;letter-spacing:0.5px;">{{CTA2_TEXT}}</center>
+            </v:rect>
+            <![endif]-->
+            <!--[if !mso]><!-- -->
+            <a href="{{CTA2_URL}}" target="_blank" style="background-color:#FFFFFF; border:2px solid #0A1E2C; color:#0A1E2C; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; letter-spacing:0.5px; line-height:48px; text-align:center; text-decoration:none; width:256px;">
+              {{CTA2_TEXT}}
+            </a>
+            <!--<![endif]-->
+          </td>
+        </tr>
+        <!-- /BLOCK 8 -->
+
+        <!-- BLOCK 9: FOOTER, REQUIRED. Legal. Never delete, never shrink.
+             A solid ink slab, so the email opens and closes on the same field.
+             Contact details are constants: update here, not per campaign.
+             The logo sits straight on the ink with no white plate. The plaque
+             interior is opaque gold and only the rounded corners are
+             transparent, so the mark holds on a dark ground. The alt text
+             carries the wordmark styling, so with images blocked the footer
+             still opens on the name rather than on a gap.
+             This is the ONE block that is centred, because a legal block with
+             five short lines reads better centred than ragged left. -->
+        <tr>
+          <td class="px" style="background-color:#0A1E2C; padding:34px 40px 30px 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="center" style="padding-bottom:20px;">
+                  <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53204c68457e9ff5c02539eb771d79d942d/assets/summer_is_here_campaign/ticketmagiclogo.png" width="130" height="66" alt="Ticket Magic" style="display:block; margin:0 auto; width:130px; height:66px; border:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:20px; font-weight:bold; color:#FFFFFF;">
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:18px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                    <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#A9C0D0; padding-right:10px;">
+                      <span style="color:#FFFFFF; font-weight:bold;">Head Office</span><br>
+                      Office 1506, Saheel Tower 02,<br>Al Nahda 01, Dubai
+                    </td>
+                    <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#A9C0D0;">
+                      <span style="color:#FFFFFF; font-weight:bold;">Get in touch</span><br>
+                      WhatsApp: <a href="https://api.whatsapp.com/send?phone=971527064878" style="color:#A9C0D0; text-decoration:none;">+971 52 706 4878</a><br>
+                      <a href="mailto:support@ticketmagic.me" style="color:#A9C0D0; text-decoration:none;">support@ticketmagic.me</a>
+                    </td>
+                  </tr></table>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="padding:6px 0 16px 0; border-top:1px solid #3A5568;">
+                  <div style="padding-top:16px;">
+                    <a href="https://www.facebook.com/ticketmagicdxb" style="color:#A9C0D0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Facebook</a>
+                    <a href="https://www.instagram.com/ticketmagicdxb/" style="color:#A9C0D0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Instagram</a>
+                    <a href="https://x.com/ticketmagicdxb" style="color:#A9C0D0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">X</a>
+                    <a href="https://www.linkedin.com/company/ticketmagic/" style="color:#A9C0D0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">LinkedIn</a>
+                    <a href="https://www.youtube.com/@ticketmagic6234" style="color:#A9C0D0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">YouTube</a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="font-family:Arial,Helvetica,sans-serif; font-size:11px; line-height:17px; color:#7E97A8;">
+                  {{FOOTER_TERMS}}<br>
+                  {{PERMISSION_LINE}}<br>
+                  Ticket Magic, Office 1506, Saheel Tower 02, Al Nahda 01, Dubai, United Arab Emirates<br>
+                  <a href="*|UNSUB|*" style="color:#A9C0D0; text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
+                  <a href="*|UPDATE_PROFILE|*" style="color:#A9C0D0; text-decoration:underline;">Update preferences</a><br><br>
+                  {{YEAR}} &copy; Ticket Magic. All rights reserved.<br>
+                  Developed by Pure Magic Information Technology Services.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <!-- /BLOCK 9 -->
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
