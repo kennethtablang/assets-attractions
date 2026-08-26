@@ -28,9 +28,41 @@
       NO HERO PANEL. Colour comes from the rail, not from a dark band behind
       the headline, so the headline sits on paper and the page has one big
       shape instead of three stacked ones.
-      THE MODULE NUMBERS LIVE IN THE RAIL. That is the move the layout exists
-      for: the numerals are not decoration inside the content, they are the
-      rail's content.
+      THE RAIL CARRIES CONTENT, NOT DECORATION. The eyebrow sets in it beside
+      the hero and the module numbers sit in it below, so the rail is a spine
+      the reader can actually use.
+
+  THE RAIL HAS TO EARN ITS WIDTH
+    100px of saturated colour is a lot to spend, and the first version spent it
+    badly: only four of fifteen rail cells carried anything, so for the whole
+    top half of the email the rail was a stripe. It looked fine and it was
+    decoration, which contradicts the one idea the layout is built on.
+
+    The eyebrow now sets in the rail beside the hero, at 9px with 1.5px
+    tracking on a 15px line, wrapping to two or three lines. Measured against
+    the copy library, the longest word that has to fit is INTELLIGENCE at
+    77.5px, inside the 84px the rail leaves after padding. IF YOU WRITE AN
+    EYEBROW WITH A LONGER WORD THAN THAT, it will not fit and the rail label is
+    the thing that breaks, not the layout: check the word, do not widen the
+    rail.
+
+    ON A PHONE THE RAIL NARROWS TO 56px AND THE LABEL CANNOT FIT, so it hides
+    and the eyebrow reappears in the content column instead. That is why the
+    eyebrow token appears TWICE in this file. Fill both. There is no reflow in
+    email that will move a cell between columns for you, so two copies with one
+    hidden is the standard way, and it is the only place in any of these
+    templates where a token is duplicated.
+
+    HIDE THE SPAN, NEVER THE CELL. Putting display:none on the rail td would
+    collapse that row to a single column and the rail would grow a step in it.
+    The media query hides the span inside the cell and leaves the cell standing.
+
+    EVERYTHING IN THE RAIL SHARES ONE LEFT EDGE. The label and the numerals are
+    both left aligned against the same 8px padding, which is what makes the
+    rail read as a column with its own margin rather than as a stripe with
+    things floating in it. The numerals were centred in the first version and
+    the mismatch against the wrapped label was immediately visible. If you add
+    anything to the rail, align it left too.
 
     If you A/B this against another template, note that you are testing
     STRUCTURE and PALETTE together, because it has its own colours too. That
@@ -122,6 +154,28 @@
     The tightest pair is the footer legal at 4.77 and everything else clears 5.
     There is more headroom here than in any other template in the set, because
     an indigo this dark takes light text easily.
+
+  OUTLOOK INFLATES LINE HEIGHT, AND THIS LAYOUT IS THE ONE THAT SHOWS IT
+    The Word engine ignores a plain line-height and applies roughly 1.2 times
+    the font size instead. In a single column template that is a cosmetic
+    wobble. Here it is a visible break, because a 32px numeral in the rail and
+    a 17px title in the content column sit side by side and are supposed to
+    share a cap line. Inflate one and not the other and every module row goes
+    out of register in Outlook only.
+
+    So mso-line-height-rule:exactly is set on the numerals, the module titles,
+    the hero headline and the section heading: everything whose vertical
+    position has to agree with something in the other column. If you add a row
+    to block 7A or 7B, carry that declaration onto it too.
+
+    THE NUMERAL PADDING IS 25px AGAINST THE TITLE'S 24px, AND THAT 1px IS
+    DELIBERATE. A 32px numeral and a 17px title do not share a cap line at
+    equal padding, because each glyph sits centred in its own line box and the
+    boxes are different heights. Cap top is padding plus half the leading, so
+    at 24px each the numeral rides 0.9px high and at 26px it sits 1.1px low,
+    which is what the first version did and what showed as the numerals
+    hanging slightly below their titles. 25px lands within 0.1px. If you
+    change either font size or either line height, redo that sum.
 
   NO GRADIENTS, SO OUTLOOK GETS THE SAME EMAIL
     Deliberate, and the same reasoning as the bold template. Outlook 2007
@@ -264,6 +318,11 @@
     .rail{width:56px !important;}
     .railnum{font-size:24px !important;}
     .railpad{padding-left:6px !important; padding-right:6px !important;}
+    /* The rail label is hidden on a phone and the eyebrow reappears in the
+       content column instead. Hide the SPAN, never the cell: display:none on a
+       td collapses that row to one column and the rail grows a step in it. */
+    .raillabel{display:none !important;}
+    .only-mobile{display:block !important; max-height:none !important; overflow:visible !important;}
     .cpx{padding-left:20px !important; padding-right:20px !important;}
     .hero-h1{font-size:26px !important; line-height:32px !important;}
     .foot-col{display:block !important; width:100% !important; text-align:center !important; padding:7px 0 !important;}
@@ -321,12 +380,23 @@
              hand-break it.
              {{CTA_URL}} is the WHOLE href. Nothing is appended to it. -->
         <tr>
-          <td class="rail railpad" width="100" valign="top" style="width:100px; background-color:#2F2A63; font-size:0; line-height:0; padding:0;">&nbsp;</td>
-          <td class="cpx" align="left" style="background-color:#FFFFFF; padding:8px 36px 34px 36px;">
-            <p style="margin:0 0 14px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#5F6675;">
-              {{EYEBROW}}
-            </p>
-            <h1 class="hero-h1" style="margin:0 0 16px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:32px; line-height:39px; font-weight:bold; color:#2F2A63;">
+          <td class="rail railpad" width="100" valign="top" style="width:100px; background-color:#2F2A63; padding:18px 8px 0 8px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:9px; line-height:15px; mso-line-height-rule:exactly; letter-spacing:1.5px; text-transform:uppercase; font-weight:bold; color:#B9B3E0;">
+            <span class="raillabel">{{EYEBROW}}</span>
+          </td>
+          <td class="cpx" align="left" style="background-color:#FFFFFF; padding:14px 36px 34px 36px;">
+            <!-- The eyebrow lives in the RAIL on desktop and here on a phone.
+                 It is the same token twice, which is the standard email way of
+                 moving one piece of copy between columns, because there is no
+                 reflow to do it for you. Fill both or the phone version ships
+                 empty. If the style element is stripped (Gmail does that in
+                 some contexts) the media query never fires, so the rail label
+                 shows and this stays hidden: the safe failure. -->
+            <div class="only-mobile" style="display:none; max-height:0; overflow:hidden; mso-hide:all;">
+              <p style="margin:0 0 14px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#5F6675;">
+                {{EYEBROW}}
+              </p>
+            </div>
+            <h1 class="hero-h1" style="margin:0 0 16px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:32px; line-height:39px; mso-line-height-rule:exactly; font-weight:bold; color:#2F2A63;">
               {{HEADLINE}}
             </h1>
             <p style="margin:0 0 26px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:25px; color:#2E3340;">
@@ -386,7 +456,7 @@
             <p style="margin:0 0 8px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#5F6675;">
               {{SECTION_EYEBROW}}
             </p>
-            <h2 style="margin:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:24px; line-height:30px; font-weight:bold; color:#2F2A63;">
+            <h2 style="margin:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:24px; line-height:30px; mso-line-height-rule:exactly; font-weight:bold; color:#2F2A63;">
               {{SECTION_TITLE}}
             </h2>
           </td>
@@ -408,30 +478,30 @@
              token is not. To use fewer than four, delete whole rows and
              renumber. Each row is one table row including its rail cell. -->
         <tr>
-          <td class="rail railnum railpad" width="100" align="center" valign="top" style="width:100px; background-color:#2F2A63; padding:26px 8px 0 8px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:32px; line-height:32px; font-weight:bold; color:#FFFFFF;">01</td>
+          <td class="rail railnum railpad" width="100" align="left" valign="top" style="width:100px; background-color:#2F2A63; padding:25px 8px 0 8px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:32px; line-height:32px; mso-line-height-rule:exactly; font-weight:bold; color:#FFFFFF;">01</td>
           <td class="cpx" valign="top" style="background-color:#FFFFFF; padding:24px 36px 6px 36px;">
-            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; font-weight:bold; color:#2F2A63;">{{M1_NAME}}</p>
+            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; mso-line-height-rule:exactly; font-weight:bold; color:#2F2A63;">{{M1_NAME}}</p>
             <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#5F6675;">{{M1_DESC}}</p>
           </td>
         </tr>
         <tr>
-          <td class="rail railnum railpad" width="100" align="center" valign="top" style="width:100px; background-color:#2F2A63; padding:26px 8px 0 8px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:32px; line-height:32px; font-weight:bold; color:#FFFFFF;">02</td>
+          <td class="rail railnum railpad" width="100" align="left" valign="top" style="width:100px; background-color:#2F2A63; padding:25px 8px 0 8px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:32px; line-height:32px; mso-line-height-rule:exactly; font-weight:bold; color:#FFFFFF;">02</td>
           <td class="cpx" valign="top" style="background-color:#FFFFFF; padding:24px 36px 6px 36px;">
-            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; font-weight:bold; color:#2F2A63;">{{M2_NAME}}</p>
+            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; mso-line-height-rule:exactly; font-weight:bold; color:#2F2A63;">{{M2_NAME}}</p>
             <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#5F6675;">{{M2_DESC}}</p>
           </td>
         </tr>
         <tr>
-          <td class="rail railnum railpad" width="100" align="center" valign="top" style="width:100px; background-color:#2F2A63; padding:26px 8px 0 8px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:32px; line-height:32px; font-weight:bold; color:#FFFFFF;">03</td>
+          <td class="rail railnum railpad" width="100" align="left" valign="top" style="width:100px; background-color:#2F2A63; padding:25px 8px 0 8px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:32px; line-height:32px; mso-line-height-rule:exactly; font-weight:bold; color:#FFFFFF;">03</td>
           <td class="cpx" valign="top" style="background-color:#FFFFFF; padding:24px 36px 6px 36px;">
-            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; font-weight:bold; color:#2F2A63;">{{M3_NAME}}</p>
+            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; mso-line-height-rule:exactly; font-weight:bold; color:#2F2A63;">{{M3_NAME}}</p>
             <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#5F6675;">{{M3_DESC}}</p>
           </td>
         </tr>
         <tr>
-          <td class="rail railnum railpad" width="100" align="center" valign="top" style="width:100px; background-color:#2F2A63; padding:26px 8px 0 8px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:32px; line-height:32px; font-weight:bold; color:#FFFFFF;">04</td>
+          <td class="rail railnum railpad" width="100" align="left" valign="top" style="width:100px; background-color:#2F2A63; padding:25px 8px 0 8px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:32px; line-height:32px; mso-line-height-rule:exactly; font-weight:bold; color:#FFFFFF;">04</td>
           <td class="cpx" valign="top" style="background-color:#FFFFFF; padding:24px 36px 6px 36px;">
-            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; font-weight:bold; color:#2F2A63;">{{M4_NAME}}</p>
+            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; mso-line-height-rule:exactly; font-weight:bold; color:#2F2A63;">{{M4_NAME}}</p>
             <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#5F6675;">{{M4_DESC}}</p>
           </td>
         </tr>
@@ -462,47 +532,53 @@
              Pin to a SHA and NEVER @main:
              https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@{SHA}/assets/icons/{name}.png -->
         <tr>
-          <td class="rail railpad" width="100" align="center" valign="top" style="width:100px; background-color:#2F2A63; padding:24px 8px 0 8px; font-size:0; line-height:0;">
-            <img src="{{M1_ICON}}" width="40" height="40" alt="" style="display:block; margin:0 auto; width:40px; height:40px; border:0;">
+          <td class="rail railpad" width="100" align="left" valign="top" style="width:100px; background-color:#2F2A63; padding:24px 8px 0 8px; font-size:0; line-height:0;">
+            <img src="{{M1_ICON}}" width="40" height="40" alt="" style="display:block; width:40px; height:40px; border:0;">
           </td>
           <td class="cpx" valign="top" style="background-color:#FFFFFF; padding:24px 36px 6px 36px;">
-            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; font-weight:bold; color:#2F2A63;">{{M1_NAME}}</p>
+            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; mso-line-height-rule:exactly; font-weight:bold; color:#2F2A63;">{{M1_NAME}}</p>
             <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#5F6675;">{{M1_DESC}}</p>
           </td>
         </tr>
         <tr>
-          <td class="rail railpad" width="100" align="center" valign="top" style="width:100px; background-color:#2F2A63; padding:24px 8px 0 8px; font-size:0; line-height:0;">
-            <img src="{{M2_ICON}}" width="40" height="40" alt="" style="display:block; margin:0 auto; width:40px; height:40px; border:0;">
+          <td class="rail railpad" width="100" align="left" valign="top" style="width:100px; background-color:#2F2A63; padding:24px 8px 0 8px; font-size:0; line-height:0;">
+            <img src="{{M2_ICON}}" width="40" height="40" alt="" style="display:block; width:40px; height:40px; border:0;">
           </td>
           <td class="cpx" valign="top" style="background-color:#FFFFFF; padding:24px 36px 6px 36px;">
-            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; font-weight:bold; color:#2F2A63;">{{M2_NAME}}</p>
+            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; mso-line-height-rule:exactly; font-weight:bold; color:#2F2A63;">{{M2_NAME}}</p>
             <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#5F6675;">{{M2_DESC}}</p>
           </td>
         </tr>
         <tr>
-          <td class="rail railpad" width="100" align="center" valign="top" style="width:100px; background-color:#2F2A63; padding:24px 8px 0 8px; font-size:0; line-height:0;">
-            <img src="{{M3_ICON}}" width="40" height="40" alt="" style="display:block; margin:0 auto; width:40px; height:40px; border:0;">
+          <td class="rail railpad" width="100" align="left" valign="top" style="width:100px; background-color:#2F2A63; padding:24px 8px 0 8px; font-size:0; line-height:0;">
+            <img src="{{M3_ICON}}" width="40" height="40" alt="" style="display:block; width:40px; height:40px; border:0;">
           </td>
           <td class="cpx" valign="top" style="background-color:#FFFFFF; padding:24px 36px 6px 36px;">
-            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; font-weight:bold; color:#2F2A63;">{{M3_NAME}}</p>
+            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; mso-line-height-rule:exactly; font-weight:bold; color:#2F2A63;">{{M3_NAME}}</p>
             <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#5F6675;">{{M3_DESC}}</p>
           </td>
         </tr>
         <tr>
-          <td class="rail railpad" width="100" align="center" valign="top" style="width:100px; background-color:#2F2A63; padding:24px 8px 0 8px; font-size:0; line-height:0;">
-            <img src="{{M4_ICON}}" width="40" height="40" alt="" style="display:block; margin:0 auto; width:40px; height:40px; border:0;">
+          <td class="rail railpad" width="100" align="left" valign="top" style="width:100px; background-color:#2F2A63; padding:24px 8px 0 8px; font-size:0; line-height:0;">
+            <img src="{{M4_ICON}}" width="40" height="40" alt="" style="display:block; width:40px; height:40px; border:0;">
           </td>
           <td class="cpx" valign="top" style="background-color:#FFFFFF; padding:24px 36px 6px 36px;">
-            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; font-weight:bold; color:#2F2A63;">{{M4_NAME}}</p>
+            <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; mso-line-height-rule:exactly; font-weight:bold; color:#2F2A63;">{{M4_NAME}}</p>
             <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#5F6675;">{{M4_DESC}}</p>
           </td>
         </tr>
         <!-- /BLOCK 7B -->
 
-        <!-- CLOSE, part of BLOCK 5 in spirit. Delete with the letter if unused. -->
+        <!-- CLOSE, part of BLOCK 5 in spirit. Delete with the letter if unused.
+             IT CARRIES A HAIRLINE ABOVE IT, and that rule is doing real work.
+             Without it the close sits at the same left edge and roughly the
+             same size as a module description, with only white space between,
+             so it reads as a fifth unnumbered module rather than as the end of
+             the letter. The rule stops the list. It is in the content column
+             only: a full width rule would cut the rail and break the L. -->
         <tr>
           <td class="rail railpad" width="100" valign="top" style="width:100px; background-color:#2F2A63; font-size:0; line-height:0; padding:0;">&nbsp;</td>
-          <td class="cpx" style="background-color:#FFFFFF; padding:26px 36px 0 36px;">
+          <td class="cpx" style="background-color:#FFFFFF; border-top:1px solid #E7E4DB; padding:26px 36px 0 36px;">
             <p style="margin:0 0 14px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:25px; color:#2E3340;">
               {{CLOSING_ASK}}
             </p>
