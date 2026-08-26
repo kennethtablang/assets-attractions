@@ -162,11 +162,75 @@
     else clears 5. If you lighten the strip or the stock, re-measure that one
     first.
 
-  NO GRADIENTS, SO OUTLOOK GETS THE SAME EMAIL
-    Outlook 2007 through 2021 runs the Word engine and does not support CSS
-    background-image at all, so a gradient is simply absent there. Flat colour
-    means this template renders identically in Outlook and everywhere else,
-    apart from the notch and card corners, which square.
+  GRADIENTS: WHERE THEY ARE, AND WHICH ONES SURVIVE OUTLOOK
+    This template used to have none, and said so. It has them now, and the only
+    thing that matters is that OUTLOOK 2007 THROUGH 2021 RUNS THE WORD ENGINE,
+    WHICH DOES NOT SUPPORT CSS background-image AT ALL. A CSS gradient is simply
+    absent there. So the gradients here are in three tiers, deliberately:
+
+    TIER 1, BAKED, RENDERS EVERYWHERE. The gradient circles on the counterfoil
+    and the stub are an image, assets/email/ticket-blooms.jpg, pinned to commit
+    9376804. Outlook does honour the HTML background attribute on a td, so an
+    image is the only way a gradient circle reaches every client. It is also the
+    only way it stays a CIRCLE: the Word engine ignores border-radius too, so a
+    CSS orb would be both absent and square there.
+
+      Each panel carries three things, in this order, all load bearing:
+        bgcolor="#0F3B41"     images off, and Outlook's own fallback
+        background="URL"      Outlook and everyone else
+        style="background-color; background-image:url(); background-size:cover"
+
+    TIER 2, VML, RENDERS EVERYWHERE. Both gold buttons carry a v:fill of type
+    gradient inside their mso conditional. VML gradients ARE supported by the
+    Word engine, so the buttons keep their gradient in Outlook. angle="180" is
+    top to bottom, color at the top and color2 at the bottom.
+
+    TIER 3, CSS ONLY, ALLOWED TO GO FLAT. The terms strip. It is a tonal lift
+    inside one hue family, its background-color is written FIRST, and that solid
+    is a colour the design works in on its own. Outlook gets the flat version
+    and it looks deliberate rather than broken.
+
+    THE PAGE GROUND CANNOT HAVE ONE, AND THIS IS THE INTERESTING CONSTRAINT.
+    A gradient was put on it and taken straight back off. The notches in the
+    tear line are filled with the page ground colour, which is the whole reason
+    they read as bites cut out of the card rather than as two squares glued on.
+    A gradient ground changes value down the page, so a flat notch stops
+    matching it, and matching it properly would mean knowing the pixel height of
+    the email above the tear line, which varies with the copy. Worse, Outlook
+    would paint the flat fallback and the notches WOULD match there, so the bug
+    would appear only in good clients. The page ground stays flat.
+
+    NEVER WRITE A GRADIENT WITHOUT A SOLID BEHIND IT, or Outlook renders
+    transparent. Every gradient in this file has one.
+
+    EVERY GRADIENT IS TONAL, INSIDE ONE HUE FAMILY. A gradient that swings hue
+    reads as a promotion, which is the register a cold B2B letter exists to
+    avoid. The blooms are teal on teal, the buttons gold on gold, the grounds
+    cream on cream. If you add one, stay inside a family.
+
+    THE BLOOMS ARE TEAL AND NOT GOLD, and that is not an aesthetic preference.
+    Gold has exactly one job in this palette, the CTA. A gold bloom on the
+    counterfoil would put yellow somewhere else and the button would stop being
+    the only warm thing on the page.
+
+  MEASURE CONTRAST AGAINST THE WORST END, NOT THE MIDPOINT
+    This is the trap that comes with gradients, and it is why the blooms were
+    tuned rather than eyeballed. A gradient gives text a RANGE of backgrounds
+    and the text has to clear AA against the end that fights it hardest.
+
+    White text sits on the counterfoil and the stub, so EVERY PIXEL of
+    ticket-blooms.jpg has to clear 4.5 against white, not the average and not
+    the corners. The generator refuses to write an image that fails, and it
+    re-checks after JPEG compression because compression moves pixels. That
+    guard fired once during tuning at 4.45, the blooms were dialled back, and
+    the shipped image is 5.19 at its worst pixel.
+
+    The gold buttons are dark text on a gradient, so they are checked against
+    the DARKEST stop rather than the midpoint: #0F3B41 on #F0A62C is 5.92.
+
+    IF YOU RETUNE THE BLOOMS, RERUN THE GENERATOR. Do not edit the image by
+    hand: the per pixel check is the only thing standing between a nice looking
+    counterfoil and white text at 4.1 that nobody notices.
 
   TOKENS: 28, A STRICT SUBSET OF THE OTHER B2B TEMPLATES
     The bold, soft and rail templates share a 32 token set. This one uses 28 of
@@ -177,12 +241,16 @@
     other B2B templates. The four icon values simply go unused. Nothing needs
     rewriting to move a letter onto or off this design.
 
-    IT ALSO MEANS NO CDN DEPENDENCY IN THE BODY. The only images are the two
-    logos. The barcode is markup, not a picture. There is nothing to pin to a
-    SHA and nothing that can break silently on the CDN months after a send,
-    which is the most fragile part of the nine letters in email/outreach today.
+    THE BODY HAS ONE CDN DEPENDENCY, AND IT USED TO HAVE NONE. Adding the
+    gradient circles cost that: ticket-blooms.jpg is a real asset with a real
+    pin. The barcode is still markup rather than a picture, and there are still
+    no module icons, so this is three images against the nine outreach letters'
+    six, but it is no longer the zero it was. If the blooms ever stop being
+    worth a pinned asset, deleting the background attribute and the CSS
+    background-image from blocks 2 and 10 returns the template to flat petrol
+    and to no dependency, with nothing else to change.
 
-  IMAGES: TWO, AND BOTH ARE THE LOGO
+  IMAGES: THREE. THE LOGO TWICE, AND THE GRADIENT CIRCLES
     Use jsDelivr pinned to a TAG or COMMIT SHA. Never raw.githubusercontent
     (not a CDN, rate limited, blocked by some corporate filters). Never @main
     (jsDelivr caches it up to 7 days, so a swapped image can show one version to
@@ -321,7 +389,7 @@
              align="right" cell fills the entire cell, so a bare badge would
              stretch edge to edge. See the DO NOT REMOVE note. -->
         <tr>
-          <td class="px" style="background-color:#0F3B41; border-radius:8px 8px 0 0; padding:22px 30px;">
+          <td class="px" bgcolor="#0F3B41" background="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@93768044cfdbc6ac20060976564fa444a0a639a4/assets/email/ticket-blooms.jpg" style="background-color:#0F3B41; background-image:url('https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@93768044cfdbc6ac20060976564fa444a0a639a4/assets/email/ticket-blooms.jpg'); background-position:left top; background-repeat:no-repeat; background-size:cover; border-radius:8px 8px 0 0; padding:22px 30px;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td align="left" valign="middle" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#FFFFFF;">
@@ -358,11 +426,12 @@
             </p>
             <!--[if mso]>
             <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA_URL}}" style="height:52px;v-text-anchor:middle;width:268px;" strokecolor="#E0A536" fillcolor="#FFC24B">
+              <v:fill type="gradient" color="#FFD77A" color2="#F0A62C" angle="180" />
               <w:anchorlock/><center style="color:#0F3B41;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;">{{CTA_TEXT}}</center>
             </v:rect>
             <![endif]-->
             <!--[if !mso]><!-- -->
-            <a href="{{CTA_URL}}" target="_blank" style="background-color:#FFC24B; border:1px solid #E0A536; color:#0F3B41; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; line-height:50px; text-align:center; text-decoration:none; width:266px;">
+            <a href="{{CTA_URL}}" target="_blank" style="background-color:#FFC24B; background-image:linear-gradient(180deg,#FFD77A 0%,#FFC24B 52%,#F0A62C 100%); border:1px solid #E0A536; color:#0F3B41; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; line-height:50px; text-align:center; text-decoration:none; width:266px;">
               {{CTA_TEXT}}
             </a>
             <!--<![endif]-->
@@ -379,7 +448,7 @@
              deadline, do not invent one. Invented scarcity in a B2B letter
              reads as a mailshot and costs more credibility than it buys. -->
         <tr>
-          <td class="px" align="center" style="background-color:#EFE8D8; border-top:1px solid #CFC5AE; border-bottom:1px solid #CFC5AE; padding:16px 30px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; line-height:19px; font-weight:bold; letter-spacing:1.4px; text-transform:uppercase; color:#0F3B41;">
+          <td class="px" align="center" style="background-color:#EFE8D8; background-image:linear-gradient(180deg,#F4EEE1 0%,#EAE2CF 100%); border-top:1px solid #CFC5AE; border-bottom:1px solid #CFC5AE; padding:16px 30px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; line-height:19px; font-weight:bold; letter-spacing:1.4px; text-transform:uppercase; color:#0F3B41;">
             {{PAYOFF_LINE}}
           </td>
         </tr>
@@ -523,7 +592,7 @@
              want a different pattern.
              {{CTA2_URL}} is the whole href. Nothing is appended to it. -->
         <tr>
-          <td class="px" style="background-color:#0F3B41; padding:26px 30px 28px 30px;">
+          <td class="px" bgcolor="#0F3B41" background="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@93768044cfdbc6ac20060976564fa444a0a639a4/assets/email/ticket-blooms.jpg" style="background-color:#0F3B41; background-image:url('https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@93768044cfdbc6ac20060976564fa444a0a639a4/assets/email/ticket-blooms.jpg'); background-position:left top; background-repeat:no-repeat; background-size:cover; padding:26px 30px 28px 30px;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td align="left" valign="top" style="font-family:'Courier New',Courier,monospace; font-size:11px; line-height:18px; letter-spacing:1.5px; color:#A9C4C6; padding-bottom:16px;">
@@ -561,11 +630,12 @@
                 <td align="left" valign="top">
                   <!--[if mso]>
                   <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA2_URL}}" style="height:46px;v-text-anchor:middle;width:236px;" strokecolor="#E0A536" fillcolor="#FFC24B">
+                    <v:fill type="gradient" color="#FFD77A" color2="#F0A62C" angle="180" />
                     <w:anchorlock/><center style="color:#0F3B41;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;">{{CTA2_TEXT}}</center>
                   </v:rect>
                   <![endif]-->
                   <!--[if !mso]><!-- -->
-                  <a href="{{CTA2_URL}}" target="_blank" style="background-color:#FFC24B; border:1px solid #E0A536; color:#0F3B41; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; line-height:44px; text-align:center; text-decoration:none; width:234px;">
+                  <a href="{{CTA2_URL}}" target="_blank" style="background-color:#FFC24B; background-image:linear-gradient(180deg,#FFD77A 0%,#FFC24B 52%,#F0A62C 100%); border:1px solid #E0A536; color:#0F3B41; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; line-height:44px; text-align:center; text-decoration:none; width:234px;">
                     {{CTA2_TEXT}}
                   </a>
                   <!--<![endif]-->
