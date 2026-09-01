@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photomagic — Capture the Best Moments of Your Life</title>
+
+<style type="text/css">
+		*{
+			box-sizing:border-box;
+		}
+		body{
+			margin:0;
+			padding:0;
+			background:#1a1330;
+			font-family:'Trebuchet MS', 'Segoe UI', Helvetica, Arial, sans-serif;
+			color:#2b2140;
+		}
+		.wrapper{
+			max-width:640px;
+			margin:0 auto;
+			background:linear-gradient(180deg, #2a1e52 0%, #1a1330 100%);
+			padding-bottom:4px;
+		}
+		.hero{
+			position:relative;
+			padding:40px 32px 44px 32px;
+			text-align:center;
+			background:radial-gradient(circle at 30% 20%, #6a4bd6 0%, #3c2b7a 45%, #1a1330 100%);
+			overflow:hidden;
+		}
+		.hero::before{
+			content:"";
+			position:absolute;
+			top:-60px;
+			right:-60px;
+			width:180px;
+			height:180px;
+			border-radius:50%;
+			background:rgba(255,158,68,0.25);
+		}
+		.hero .brand{
+			display:inline-block;
+			color:#ffffff;
+			background:rgba(255,255,255,0.12);
+			border:1px solid rgba(255,255,255,0.3);
+			border-radius:20px;
+			padding:5px 16px;
+			font-size:12px;
+			letter-spacing:1.5px;
+			text-transform:uppercase;
+			font-weight:bold;
+			margin:0 0 18px 0;
+			position:relative;
+			z-index:1;
+		}
+		.hero h1{
+			color:#ffffff;
+			font-size:30px;
+			line-height:1.3;
+			margin:0 0 14px 0;
+			position:relative;
+			z-index:1;
+		}
+		.hero h1 span{
+			color:#ff9e44;
+		}
+		.hero p{
+			color:#d9d0f5;
+			font-size:15px;
+			line-height:1.6;
+			max-width:440px;
+			margin:0 auto;
+			position:relative;
+			z-index:1;
+		}
+		.card{
+			background:#ffffff;
+			margin:-24px 20px 0 20px;
+			border-radius:20px;
+			padding:32px 28px 8px 28px;
+			position:relative;
+			z-index:2;
+			box-shadow:0 12px 30px rgba(0,0,0,0.35);
+		}
+		.card h2{
+			color:#3c2b7a;
+			font-size:19px;
+			margin:0 0 10px 0;
+		}
+		.card>p.intro{
+			color:#6b6480;
+			font-size:14.5px;
+			line-height:1.65;
+			margin:0 0 26px 0;
+		}
+		.benefits{
+			display:flex;
+			gap:14px;
+			margin-bottom:26px;
+			flex-wrap:wrap;
+		}
+		.benefit-col{
+			flex:1 1 220px;
+			background:#f6f3ff;
+			border-radius:14px;
+			padding:18px 18px 16px 18px;
+		}
+		.benefit-col .tag{
+			display:inline-block;
+			background:#ff9e44;
+			color:#ffffff;
+			font-size:11px;
+			font-weight:bold;
+			letter-spacing:0.5px;
+			text-transform:uppercase;
+			border-radius:12px;
+			padding:3px 10px;
+			margin-bottom:10px;
+		}
+		.benefit-col ul{
+			margin:0;
+			padding:0;
+			list-style:none;
+			font-size:13.5px;
+			color:#3c2b7a;
+			line-height:1.9;
+		}
+		.benefit-col li::before{
+			content:"✦ ";
+			color:#ff9e44;
+			font-weight:bold;
+		}
+		.how{
+			margin-bottom:28px;
+		}
+		.step-row{
+			display:flex;
+			align-items:flex-start;
+			gap:14px;
+			margin-bottom:16px;
+		}
+		.step-num{
+			flex:0 0 32px;
+			height:32px;
+			width:32px;
+			border-radius:50%;
+			background:#3c2b7a;
+			color:#ffffff;
+			font-size:14px;
+			font-weight:bold;
+			display:flex;
+			align-items:center;
+			justify-content:center;
+		}
+		.step-text h4{
+			margin:0 0 3px 0;
+			color:#3c2b7a;
+			font-size:14.5px;
+		}
+		.step-text p{
+			margin:0;
+			color:#6b6480;
+			font-size:13px;
+			line-height:1.5;
+		}
+		.testimonial{
+			background:#fff4e8;
+			border-left:4px solid #ff9e44;
+			border-radius:10px;
+			padding:18px 20px;
+			margin-bottom:28px;
+		}
+		.testimonial p.quote{
+			font-style:italic;
+			color:#4a3d29;
+			font-size:14.5px;
+			line-height:1.55;
+			margin:0 0 8px 0;
+		}
+		.testimonial p.author{
+			color:#c5711a;
+			font-weight:bold;
+			font-size:13px;
+			margin:0;
+		}
+		.cta{
+			text-align:center;
+			padding:4px 0 30px 0;
+		}
+		.cta p.lead{
+			color:#3c2b7a;
+			font-size:16px;
+			font-weight:bold;
+			margin:0 0 16px 0;
+		}
+		.cta a.btn{
+			display:inline-block;
+			background:linear-gradient(90deg, #ff9e44, #ff7a3d);
+			color:#ffffff;
+			font-weight:bold;
+			font-size:15px;
+			text-decoration:none;
+			padding:14px 34px;
+			border-radius:30px;
+			box-shadow:0 8px 18px rgba(255,122,61,0.4);
+		}
+		.footer{
+			text-align:center;
+			padding:22px 32px 32px 32px;
+			color:#a79bd1;
+			font-size:12px;
+		}
+		.footer a{
+			color:#ff9e44;
+			text-decoration:none;
+		}
+	@media (max-width: 480px){
+		.benefits{
+			flex-direction:column;
+		}
+
+}	@media (max-width: 480px){
+		.hero h1{
+			font-size:24px;
+		}
+
+}	@media (max-width: 480px){
+		.card{
+			margin:-20px 12px 0 12px;
+			padding:26px 20px 6px 20px;
+		}
+
+}</style></head>
+<body>
+  <div class="wrapper">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="brand">Photomagic</div>
+      <h1>Capture the Best <span>Moments</span> of Your Life!</h1>
+      <p>A modern, AI-powered way for event coordinators and photographers to share, select, and deliver photos — instantly.</p>
+    </div>
+
+    <!-- Card body -->
+    <div class="card">
+      <h2>Give your guests the freedom to relive every moment</h2>
+      <p class="intro">Photomagic lets clients view and select their event photos anywhere, anytime, from any device — while distant friends and family help choose favorites with just one click. No more chasing down USB drives or waiting weeks for a gallery link.</p>
+
+      <div class="benefits">
+        <div class="benefit-col">
+          <span class="tag">For Events</span>
+          <ul>
+            <li>Effortless photo sharing</li>
+            <li>Swift event creation</li>
+            <li>Sponsorship &amp; collaboration</li>
+            <li>Bulk sharing</li>
+          </ul>
+        </div>
+        <div class="benefit-col">
+          <span class="tag">For Photographers</span>
+          <ul>
+            <li>Connect with clients on our community page</li>
+            <li>A modern way to deliver your work</li>
+            <li>Best-in-class photo selection tool</li>
+            <li>Searchable via selfie</li>
+            <li>High-quality lead generation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="how">
+        <h2>How It Works</h2>
+        <div class="step-row">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <h4>Create your event</h4>
+            <p>Add your event date, title, and a short welcome message, then generate a QR code.</p>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <h4>Display your QR code</h4>
+            <p>Post it at the event, or copy and send the URL directly to guests.</p>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <h4>Enjoy the memories</h4>
+            <p>Guests see the best moments roll into the digital gallery in real time.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <p class="quote">"Photomagic saved me hours of work, and my guests loved seeing their photos instantly!"</p>
+        <p class="author">— Joyline, Event Coordinator</p>
+      </div>
+
+      <div class="cta">
+        <p class="lead">Try Photomagic free for 7 days — no credit card required</p>
+        <a class="btn" href="https://www.photomagic.io" target="_blank" rel="noopener">Start Your Free Trial →</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <a href="https://www.photomagic.io">www.photomagic.io</a> &nbsp;|&nbsp; inquiry@photomagic.io &nbsp;|&nbsp; +971 58 259 1702
+    </div>
+
+  </div>
+</body>
+</html>

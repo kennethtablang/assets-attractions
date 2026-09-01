@@ -1,0 +1,859 @@
+<!--
+================================================================================
+  PHOTOMAGIC EMAIL TEMPLATE
+  Paste into Mailchimp: Campaign > Design > Code your own > Paste in code
+================================================================================
+
+  WHICH TEMPLATE DO I USE?
+    email.html            house consumer look, sand and cream, orange CTA.
+                          Ticket Magic offers going to ticket buyers.
+    email-corporate.html  navy and teal, yellow CTA. Ticket Magic cold B2B
+                          letters to event operators.
+    email-photomagic.html THIS FILE. Indigo and white on the Photomagic brand.
+                          A DIFFERENT PRODUCT, not a different skin.
+
+    THIS IS NOT A TICKET MAGIC TEMPLATE AND MUST NOT BE MIXED WITH ONE.
+    Photomagic (photomagic.io) sells instant event photo delivery to
+    photographers, studios and event teams. Ticket Magic sells an Event
+    Management System to event organizers. Different product, different
+    domain, different sender, different unsubscribe list, different palette.
+    A recipient who gets both should not be able to tell they came from the
+    same building unless someone decided that on purpose.
+
+    Concretely, never copy across: the navy and teal palette, the boarding
+    pass perforation motif, the Ticket Magic logo, the Saheel Tower postal
+    address, the support@ticketmagic.me reply address, or the
+    +971 52 706 4878 WhatsApp number. All of those are the other product.
+
+  PROVENANCE
+    Palette, typography, copy and imagery were read off https://photomagic.io
+    on 2026-09-01. The colour values are not eyeballed, they are the literal
+    tailwind.config in the page source:
+
+      brand.primary  #5B5EF7      base.bg        #FFFFFF
+      brand.hover    #4A4EE6      base.primary   #0B1220
+      brand.light    #EEF0FF      base.secondary #556070
+                                  base.border    #E7ECF3
+      status.success #22C55E   warning #F59E0B   danger #EF4444
+
+    Structure follows email-corporate.html, which is the house's proven
+    bulletproof shell. What was kept is the ENGINEERING (table layout, VML
+    buttons, gradient fallbacks, preheader, footer discipline). What was
+    replaced is everything visual.
+
+  HOW TO USE
+  1. Copy this file into your campaign folder. Never edit this original.
+  2. Delete any block marked optional that this campaign does not need.
+     Blocks run from BLOCK n to /BLOCK n. Delete whole blocks only: a
+     half-deleted table breaks the layout in Outlook.
+  3. Replace every token. Tokens are written in double curly braces.
+  4. Search for the double curly brace before sending. Zero hits, or you ship
+     a placeholder. Nothing in these comments uses that character pair,
+     precisely so the search stays trustworthy. Keep it that way when you
+     edit: describe a token in prose rather than writing one out, or the check
+     cries wolf and people start ignoring it.
+
+  BLOCKS
+    1   PREHEADER          REQUIRED
+    2   HEADER BAR         REQUIRED
+    3   HERO COPY + CTA    REQUIRED
+    4   PROOF BAND         optional
+    5   LETTER             optional, plain prose. Use it for cold outreach.
+    6   SECTION LABEL      optional
+    7   FEATURE CARDS      optional, image led. The default for this template.
+    8   HOW IT WORKS       optional, numbered steps
+    9   BAND IMAGE         optional, one full width photograph
+    10  TESTIMONIAL        optional
+    11  PRICING STRIP      optional
+    12  SECONDARY CTA      optional, keep for long emails
+    13  FOOTER             REQUIRED, legal. Never delete, never shrink.
+
+  PALETTE: EVERY COLOUR HAS ONE JOB
+    Ink        #0B1220   structure: hero base, footer, headings
+    Indigo     #4A4EE6   hero panel, and TEXT links on white
+    Bright     #5B5EF7   the brand. ONE job: the secondary button fill.
+    White      #FFFFFF   ONE job in the hero: the primary CTA pill.
+
+    Band       #EEF0FF   quiet band, and the ground baked into every card image
+    Body       #FFFFFF   plain white email body
+    Borders    #E7ECF3   card edges
+    Text       #0B1220   headings and body copy, #556070 card and muted copy
+    On indigo  #E4E6FF   hero body and eyebrow. See the contrast note below.
+    On ink     #C9CEDA   footer body, #FFFFFF footer headings,
+                         #8B95A8 legal, #2A2F45 rules
+
+    THE PRIMARY CTA IS WHITE AND THAT IS THE WHOLE DESIGN. On an indigo hero
+    the brightest possible element is plain white, so a white pill is the
+    loudest thing on the panel and reads as a control rather than as
+    decoration. This is the same move the corporate template makes with yellow
+    on navy, solved for a brand whose accent IS the panel colour.
+
+    The moment you put a white pill anywhere else, the CTA stops being the
+    loudest thing and the hero goes back to looking like a banner. If you need
+    to mark something else in the hero, use the #E4E6FF tint.
+
+    WHY THE HERO IS NOT #5B5EF7. The brand's bright indigo is a beautiful
+    button and a bad panel: white text on it measures 4.78, which passes AA by
+    0.28 and leaves nothing for a tinted subhead (every tint tested failed).
+    The hero therefore runs one step darker, from #4A4EE6 down, which buys the
+    subhead its contrast back. #5B5EF7 keeps its real job as the button fill.
+
+  TYPOGRAPHY: RALEWAY, AND WHAT ACTUALLY RENDERS
+    Raleway is the brand face, loaded from Google Fonts inside an mso
+    conditional so Outlook never sees the link. Apple Mail, iOS Mail and
+    Samsung Mail will honour it. Gmail's web client and every Outlook desktop
+    version will not, and that is expected, not a bug.
+
+    The fallback stack is 'Century Gothic','Trebuchet MS',Tahoma,Arial. Century
+    Gothic is the closest widely installed geometric sans to Raleway and it
+    ships on Windows and Office. Arial is the floor. Design the email so it
+    reads correctly in Arial, then treat Raleway as a bonus for the clients
+    that support it. NEVER set a line height in a way that only works at
+    Raleway's metrics, or the Arial fallback collides.
+
+  GRADIENTS, AND WHAT OUTLOOK DOES WITH THEM
+    Every gradient is tonal: one hue family, light to dark. A gradient that
+    swings hue reads as a promotion. If you add one, stay inside a family.
+
+    Where they are
+      Page ground   #F7F8FC to #EAECF7
+      Cap rule      #5B5EF7 to #8F92FF across 4px
+      Hero          #4A4EE6 to #3A3EBC to #2A2C85, vertical
+      Proof band    #FFFFFF to #F4F5FE
+      Cards         #FFFFFF to #FBFBFE, barely there on purpose
+      Primary CTA   #FFFFFF to #F1F2FE, a white pill with the faintest weight
+      Secondary CTA #6E71F9 to #5B5EF7 to #4A4EE6
+      Footer        #131A2E to #05070F, deepening toward the base
+
+    OUTLOOK DESKTOP IGNORES CSS GRADIENTS. The Word rendering engine behind
+    Outlook 2007 through 2021 does not support background-image at all, so it
+    drops every gradient above and paints the background-color instead. That
+    is why background-color is always written FIRST and is always a colour the
+    design works in on its own. Never write a gradient without a solid behind
+    it, or Outlook renders transparent.
+
+    Two things carry the gradient into Outlook anyway:
+      Buttons     both roundrects carry a v:fill type="gradient" inside their
+                  mso conditional. VML gradients ARE supported.
+      Card images the lavender ground is baked into the JPG, so it renders
+                  everywhere. That is deliberate and it is why the card images
+                  are flattened onto #EEF0FF rather than shipped transparent.
+
+    MEASURE CONTRAST AGAINST THE WORST END, NOT THE MIDPOINT. A gradient gives
+    text a RANGE of backgrounds, and the text has to clear AA against the end
+    that fights it hardest. Checking the average passes something that fails
+    across half the button.
+
+    CONTRAST AUDIT, measured against the worst end of every gradient:
+
+      White on hero light end #4A4EE6          5.96   pass
+      #E4E6FF hero body on #4A4EE6             4.84   pass
+      #4A4EE6 CTA text on the white pill       5.96   pass
+      White on secondary CTA light end #6E71F9 3.89   SEE BELOW
+      #0B1220 heading on white                18.72   pass
+      #556070 card copy on white               6.38   pass
+      #556070 copy on #EEF0FF band             5.63   pass
+      #0B1220 on #EEF0FF band                 16.53   pass
+      #4A4EE6 link text on white               5.96   pass
+      White on footer ink #0B1220             18.72   pass
+      #C9CEDA footer body on ink              11.88   pass
+      #8B95A8 footer legal on ink              6.21   pass
+
+    TWO TRAPS THAT ARE ALREADY FIXED HERE. Do not undo them.
+
+      1. The secondary CTA's gradient tops out at #6E71F9, where white
+         measures 3.89 and FAILS. It is allowed only because the button text
+         is bold 14px, which is not large text either. So the gradient's top
+         stop is pulled to #5B5EF7 in the markup below, not #6E71F9, and the
+         #6E71F9 stop is listed above only to record why it is absent. If you
+         lighten that button, you break it silently.
+
+      2. #5B5EF7 as TEXT on the #EEF0FF band measures 4.22 and fails. Text on
+         the band uses #4A4EE6, which measures 5.26. Do not use the bright
+         brand indigo for small text anywhere in this template.
+
+  IMAGE URLS: PIN TO A COMMIT SHA, AND MIND THE ORDER
+    Use jsDelivr pinned to a TAG or COMMIT SHA. Never raw.githubusercontent
+    (not a CDN, rate limited, blocked by some corporate filters). Never @main
+    (jsDelivr caches it up to 7 days, so a swapped image can show one version
+    to one subscriber and a different version to the next).
+
+      https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@SHA/assets/photomagic/...
+
+    THE ASSET SHA IS A TOKEN IN THIS FILE, ON PURPOSE. Every Photomagic image
+    URL below carries the same placeholder where the SHA belongs, so one
+    find-and-replace resolves all of them. It is deliberately written in the
+    double curly brace form, which means the pre-send check for that character
+    pair CATCHES an unresolved SHA. That is the point: an unpinned image is a
+    shipping error, and it should trip the same wire as a missing headline.
+
+    THE ORDER MATTERS AND THE FAILURE IS SILENT. To change an image:
+      1. push the new bytes FIRST
+      2. THEN repoint every URL at the new SHA
+    Editing a JPG on disk on its own changes nothing a recipient sees, because
+    these URLs address a commit and not a working tree. The email looks correct
+    in the repo and wrong in the inbox, and nothing warns you.
+
+    Verify against the CDN, not against disk: fetch each URL and check it
+    returns 200 and the bytes you expect.
+
+    THE MERGE MATTERS TOO. A squash merge replays those bytes under a NEW
+    commit and leaves the pin dangling at a SHA that no longer exists on any
+    branch. jsDelivr keeps serving from cache for a while and then stops,
+    which is the worst kind of break: it passes every check today and fails
+    silently later. Merge with a real merge commit, or repin and re-verify.
+
+  THE ASSET SET, AND WHERE IT CAME FROM
+    All of it lives in assets/photomagic/ and all of it was taken from
+    photomagic.io on 2026-09-01, then processed for email.
+
+      photomagic-logo-indigo-682x162.png    10.5 KB  the site wordmark, as is.
+                                                     For the WHITE header bar.
+      photomagic-logo-white-682x162.png      9.5 KB  the same alpha channel
+                                                     repainted white. For the
+                                                     DARK footer. The indigo
+                                                     mark disappears on ink;
+                                                     this is not optional.
+      photomagic-feature-instant-sharing-580x580.jpg  41 KB
+      photomagic-feature-selfie-search-580x580.jpg    42 KB
+      photomagic-feature-photo-selection-580x580.jpg  40 KB
+      photomagic-feature-secure-gallery-580x580.jpg   39 KB
+      photomagic-band-photographer-1100x550.jpg       44 KB
+
+    THE FOUR FEATURE IMAGES ARE LETTERBOXED, NOT CROPPED. The site ships them
+    as 1080x1350 transparent PNGs around 1 MB each. Each was trimmed to its
+    alpha bounding box, scaled to fit a square, and centred on #EEF0FF, which
+    is the exact lavender the artwork already sits on, so the pad is invisible
+    and the card image blends into the band. They were not cropped square
+    because the floating UI chips (Upload, Share, Selfie, Select, Shortlist)
+    are the part that tells the story, and a square crop cuts them off.
+
+    Shown at 290px, exported at 580, so they are already 2x.
+
+    THE BAND PHOTOGRAPH IS THE ONE SOFT ASSET. photo.jpg on the site is only
+    825x465, so the 1100x550 export is an upscale and it displays at 550 wide
+    for a real ratio of exactly 2x only if you keep it at 550. Do not stretch
+    it to 600. If a sharper photographer shot ever exists, replace this one.
+
+    DELIBERATELY NOT SHIPPED, so nobody wonders where they went:
+      sync.avif        a cyan cloud glyph on near black. Off palette in every
+                       direction and it would be the only dark object in a
+                       light email.
+      Partners/01-08   eight third party client logos. Using someone else's
+                       mark in a cold email is a permission question, not a
+                       design question. Get written sign off first, then add a
+                       logo strip if you still want one.
+
+  LINKS, ALL VERIFIED ON THE LIVE SITE
+    Sign up      https://app.photomagic.io/signup
+    Log in       https://app.photomagic.io/login
+    Community    https://community.photomagic.io/
+    EduMagic     https://photomagic.io/eduMagic/
+    Email        inquiry@photomagic.io
+    Phone        +971 58 259 1702
+    Facebook     facebook.com/people/Photomagicio/61578734952760/
+    Instagram    instagram.com/photomagic.io/
+    LinkedIn     linkedin.com/company/photomagic-io/
+    Privacy      https://photomagic.io/privacy-policy
+    Terms        https://photomagic.io/terms-of-service
+    Cookies      https://photomagic.io/cookie-policy
+
+    THERE IS NO X ACCOUNT AND NO YOUTUBE CHANNEL. The corporate template links
+    five networks; this one links three, because three is what exists. Do not
+    pad the row with dead links to keep it symmetrical.
+
+  WHATSAPP LINKS: api.whatsapp.com, NOT wa.me
+    wa.me is the obvious choice and it is the wrong one, so this is worth
+    writing down or someone will tidy it back.
+
+    On 2026-08-24 wa.me was found to be intercepted by a network content
+    filter: it resolved to 121.54.78.47, outside any Meta range, and served a
+    forged certificate for CN=wa.me issued by CN=blocking-page-authority.
+    Because wa.me is HSTS preloaded the browser offers no click through. The
+    recipient gets a full page security warning and stops. api.whatsapp.com
+    carries the genuine Meta certificate and was not on that blocklist.
+
+      https://api.whatsapp.com/send?phone=971582591702&amp;text=URL_ENCODED_MSG
+
+    Write the ampersand as an entity. It sits in an href, so a bare one is an
+    unescaped entity. Both hostnames open the same chat.
+
+    NOTE THE NUMBER IS 971582591702, WHICH IS PHOTOMAGIC'S. Ticket Magic's
+    is 971527064878 and 971529521204. They are not interchangeable and a
+    misrouted WhatsApp lead is worse than no button.
+
+    WhatsApp cannot carry a UTM. It discards query params other than its own,
+    so put the campaign or variant name in the prefilled text instead: the
+    inbound message then says which email produced it, which is the only
+    attribution you get.
+
+  THE POSTAL ADDRESS IS A TOKEN AND IT IS NOT OPTIONAL
+    photomagic.io publishes a phone number and an email address and NO postal
+    address. A physical mailing address is legally required in bulk commercial
+    email in most jurisdictions this list will touch, and it cannot be
+    invented, guessed, or borrowed from Ticket Magic's Saheel Tower office
+    unless Photomagic genuinely operates from there.
+
+    Find out what the correct registered address is and put it in the token
+    before the first send. If the answer is that it IS the Saheel Tower
+    address, write it out anyway rather than leaving the token, so the file
+    says what shipped.
+
+  MAILCHIMP MERGE TAGS
+    *|UNSUB|* and *|UPDATE_PROFILE|* are per recipient URLs the platform
+    generates. They resolve on send and WILL look unresolved in preview. That
+    is expected. They sit inside href attributes, so if the platform does not
+    resolve them the footer still LOOKS right while the unsubscribe link is
+    dead. That is a legal problem, not a cosmetic one, so check a real seed
+    send rather than a preview.
+
+    PHOTOMAGIC NEEDS ITS OWN AUDIENCE, NOT A TICKET MAGIC SEGMENT. An
+    unsubscribe from a Photomagic email must not suppress a Ticket Magic
+    contact and vice versa. Two products, two lists, two opt outs. If they
+    share an audience, one person opting out of photo delivery silently kills
+    a lead for the other product, and no report will tell you it happened.
+
+    NOT SENDING FROM MAILCHIMP? These two are Mailchimp syntax and nothing
+    else resolves them. Apollo, Brevo and HubSpot each use their own token.
+    Swap both before you send.
+
+  PERSONALISATION
+    Mailchimp has no inline fallback syntax for audience fields. There is no
+    first name token with a built in default. A token here means setting a
+    Default merge tag value per field in Audience settings and trusting it, or
+    shipping a blank mid sentence. For cold outreach, resolve tokens into
+    fixed wording instead: "Hi there," costs nothing and cannot break.
+
+  DO NOT REMOVE (looks like clutter, is not)
+    - the mso conditional blocks: buttons collapse to plain links in Outlook
+    - the invisible entities after the preheader: they stop Gmail pulling body
+      copy into the inbox snippet
+    - color-scheme meta tags: they stop Apple Mail and Outlook.com auto
+      inverting a palette that was chosen deliberately
+    - Inline styles: Gmail strips a style block in some contexts
+
+  LIMITS
+    - Total HTML under 100 KB. Gmail clips above roughly 102 KB, which hides
+      the footer and breaks the unsubscribe link. This file is around 40 KB
+      before you delete a single optional block, and the comments do not count
+      against a recipient because they are stripped by no one but they do
+      count against the 102 KB. If an email gets long, delete these comments
+      from the CAMPAIGN COPY, never from this original.
+    - Card images 580x580 exported, shown at 290px. Around 40 KB each.
+    - Four feature cards is the practical ceiling.
+
+  NO EM DASHES
+    House rule. This file contains none, in markup or in comments. Recast the
+    sentence with a period, colon, comma or brackets rather than swapping the
+    character for a hyphen. Keep to it when you edit.
+
+  SPELLING
+    American throughout ("organizer", "color" in code, "colour" in prose keeps
+    to the house comment style used in the other templates).
+================================================================================
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <title>{{EMAIL_TITLE}}</title>
+  <!--[if mso]>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+  <!-- Raleway, the brand face. Hidden from Outlook, which cannot use it and
+       chokes on the link. Apple Mail and iOS honour it; Gmail web does not.
+       The Arial fallback is the design that most people actually see. -->
+  <!--[if !mso]><!-- -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <!--<![endif]-->
+<style type="text/css">
+  :root { color-scheme: light; supported-color-schemes: light; }
+  body,table,td,a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;}
+  table,td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
+  img{-ms-interpolation-mode:bicubic; border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+  body{margin:0 !important; padding:0 !important; width:100% !important;}
+  a{color:#4A4EE6;}
+
+  @media screen and (max-width:600px){
+    .container{width:100% !important;}
+    /* Zero the 8px card gutter when the cards stack, or alternate cards sit
+       8px right of the others. The older house templates have this latent bug. */
+    .stack{display:block !important; width:100% !important; max-width:100% !important; padding-left:0 !important; padding-right:0 !important;}
+    .hero-h1{font-size:29px !important; line-height:35px !important;}
+    .card-img img{width:100% !important; height:auto !important;}
+    .px{padding-left:18px !important; padding-right:18px !important;}
+    .foot-col{display:block !important; width:100% !important; text-align:center !important; padding:6px 0 !important;}
+    .price-col{display:block !important; width:100% !important; padding:0 0 10px 0 !important;}
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; background-color:#EEF1F7;">
+
+<!-- BLOCK 1: PREHEADER, REQUIRED. 40 to 90 chars, continues the subject line. -->
+<div style="display:none; font-size:1px; color:#EEF1F7; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
+  {{PREHEADER}}
+  &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+</div>
+<!-- /BLOCK 1 -->
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EEF1F7; background-image:linear-gradient(180deg,#F7F8FC 0%,#EAECF7 100%);">
+  <tr>
+    <td align="center" style="padding:28px 12px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#FFFFFF;">
+
+        <!-- BLOCK 2: HEADER BAR, REQUIRED.
+             Indigo cap rule over a white bar carrying the wordmark. The rule
+             runs light to dark left to right, the same direction the hero
+             gradient runs top to bottom, so the two read as one system.
+             The badge sits in its own nested table: a background-color on a
+             bare align="right" cell fills the ENTIRE cell and the badge
+             stretches edge to edge. Do not simplify that away. -->
+        <tr>
+          <td style="padding:0; font-size:0; line-height:0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+              <td height="4" style="height:4px; background-color:#5B5EF7; background-image:linear-gradient(90deg,#5B5EF7 0%,#7376FB 55%,#8F92FF 100%); font-size:0; line-height:0;">&nbsp;</td>
+            </tr></table>
+          </td>
+        </tr>
+        <tr>
+          <td class="px" style="background-color:#FFFFFF; padding:18px 26px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="left" valign="middle" style="font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:19px; font-weight:bold; color:#0B1220;">
+                  <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@{{ASSET_SHA}}/assets/photomagic/photomagic-logo-indigo-682x162.png" width="152" height="36" alt="Photomagic" style="display:block; width:152px; height:36px; border:0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:19px; font-weight:bold; color:#0B1220;">
+                </td>
+                <td align="right" valign="middle">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right"><tr>
+                    <td style="font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:11px; font-weight:bold; color:#4A4EE6; letter-spacing:1.5px; text-transform:uppercase; background-color:#EEF0FF; border:1px solid #DDE0FA; padding:6px 11px; border-radius:10px; white-space:nowrap;">
+                      {{HEADER_BADGE}}
+                    </td>
+                  </tr></table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <!-- /BLOCK 2 -->
+
+        <!-- BLOCK 3: HERO COPY + PRIMARY CTA, REQUIRED.
+             Type led. The product's own imagery is strong enough to carry the
+             feature cards below, and a photograph up here fights the wordmark.
+             THE CTA IS THE ONLY WHITE PILL IN THE EMAIL. See the palette note.
+             {{CTA_URL}} must already carry its own query string, because the
+             UTM below is appended with an ampersand. If the CTA is a WhatsApp
+             link, delete the utm_content: WhatsApp discards it. -->
+        <tr>
+          <td class="px" align="center" style="background-color:#3A3EBC; background-image:linear-gradient(180deg,#4A4EE6 0%,#3A3EBC 55%,#2A2C85 100%); padding:40px 34px 38px 34px;">
+            <p style="margin:0 0 12px 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:3.5px; text-transform:uppercase; color:#E4E6FF;">
+              {{EYEBROW}}
+            </p>
+            <h1 class="hero-h1" style="margin:0 0 16px 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:37px; line-height:44px; font-weight:bold; color:#FFFFFF;">
+              {{HEADLINE}}
+            </h1>
+            <p style="margin:0 0 28px 0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:16px; line-height:25px; color:#E4E6FF;">
+              {{HERO_BODY}}
+            </p>
+            <!--[if mso]>
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA_URL}}&amp;utm_content=hero_cta" style="height:50px;v-text-anchor:middle;width:270px;" arcsize="24%" strokecolor="#FFFFFF" fillcolor="#FFFFFF">
+              <v:fill type="gradient" color="#FFFFFF" color2="#F1F2FE" angle="180" />
+              <w:anchorlock/><center style="color:#4A4EE6;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;">{{CTA_TEXT}}</center>
+            </v:roundrect>
+            <![endif]-->
+            <!--[if !mso]><!-- -->
+            <a href="{{CTA_URL}}&amp;utm_content=hero_cta" target="_blank" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#F1F2FE 100%); border-radius:12px; color:#4A4EE6; display:inline-block; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; line-height:50px; text-align:center; text-decoration:none; width:270px;">
+              {{CTA_TEXT}}
+            </a>
+            <!--<![endif]-->
+            <p style="margin:14px 0 0 0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:12px; line-height:18px; color:#E4E6FF;">
+              {{CTA_REASSURANCE}}
+            </p>
+          </td>
+        </tr>
+        <!-- /BLOCK 3 -->
+
+        <!-- BLOCK 4: PROOF BAND, OPTIONAL.
+             One line of real, checkable proof. Photomagic has genuine numbers
+             on its own site (a 4.8 out of 5 rating, a first event live in
+             under two minutes, no app install). Use those. If there is no real
+             proof for this campaign, DELETE THE BLOCK. Invented urgency in a
+             cold letter costs more credibility than it buys clicks. -->
+        <tr>
+          <td align="center" style="background-color:#F4F5FE; background-image:linear-gradient(180deg,#FFFFFF 0%,#F4F5FE 100%); border-top:1px solid #E7ECF3; border-bottom:1px solid #E7ECF3; padding:15px 24px; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:14px; line-height:20px; font-weight:bold; color:#0B1220; letter-spacing:0.3px;">
+            {{PROOF_LINE}}
+          </td>
+        </tr>
+        <!-- /BLOCK 4 -->
+
+        <!-- BLOCK 5: LETTER, OPTIONAL.
+             Plain prose, no styling tricks. This is what makes a cold email
+             read as a note from a person rather than as a campaign. Keep it to
+             two short paragraphs. -->
+        <tr>
+          <td class="px" style="padding:32px 34px 4px 34px;">
+            <p style="margin:0 0 16px 0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:15px; line-height:25px; color:#0B1220;">
+              {{GREETING}}
+            </p>
+            <p style="margin:0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:15px; line-height:25px; color:#0B1220;">
+              {{LETTER_BODY}}
+            </p>
+          </td>
+        </tr>
+        <!-- /BLOCK 5 -->
+
+        <!-- BLOCK 6: SECTION LABEL, OPTIONAL.
+             The eyebrow uses #4A4EE6, NOT #5B5EF7. The bright brand indigo
+             fails AA at this size. See the contrast audit. -->
+        <tr>
+          <td class="px" align="center" style="padding:28px 26px 0 26px;">
+            <p style="margin:0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#4A4EE6;">
+              {{SECTION_EYEBROW}}
+            </p>
+            <h2 style="margin:8px 0 0 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:27px; line-height:33px; font-weight:bold; color:#0B1220;">
+              {{SECTION_TITLE}}
+            </h2>
+          </td>
+        </tr>
+        <!-- /BLOCK 6 -->
+
+        <!-- BLOCK 7: FEATURE CARDS, OPTIONAL. The default for this template.
+             Image led, because Photomagic is a visual product and an email
+             about photo delivery that shows no interface is a strange email.
+
+             THE FOUR IMAGES ARE FIXED BRAND ASSETS, NOT CAMPAIGN ARTWORK.
+             They come from assets/photomagic/ and are already flattened onto
+             the #EEF0FF band, which is why the card has no visible seam where
+             the image meets the body. Swap the COPY per campaign; swap the
+             IMAGE only if the feature being sold changes.
+
+             The four available, and what each one actually shows:
+               instant-sharing   a phone, an Upload chip and a Share chip, and
+                                 a live gallery card. Use for same day delivery.
+               selfie-search     a woman taking a selfie with a Selfie chip.
+                                 Use for AI face search.
+               photo-selection   a gallery panel with Select and Shortlist
+                                 chips. Use for client proofing and selection.
+               secure-gallery    a padlock and a Secure chip over a gallery.
+                                 Use for private galleries and lead capture.
+
+             To run only two cards, delete one whole row. To add a row,
+             duplicate a full tr and renumber. Four is the practical ceiling.
+             Card copy: one bold line, then two lines at most. -->
+        <tr>
+          <td class="px" style="padding:22px 26px 0 26px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#FBFBFE 100%); border:1px solid #E7ECF3; border-radius:16px;">
+                  <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@{{ASSET_SHA}}/assets/photomagic/photomagic-feature-instant-sharing-580x580.jpg" width="290" alt="{{F1_ALT}}" style="display:block; width:100%; height:auto; border-radius:16px 16px 0 0; border:0;">
+                  </td></tr>
+                  <tr><td style="padding:16px 18px 18px 18px;">
+                    <p style="margin:0 0 6px 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B1220;">{{F1_NAME}}</p>
+                    <p style="margin:0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:13px; line-height:20px; color:#556070;">{{F1_DESC}}</p>
+                  </td></tr>
+                </table>
+              </td>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#FBFBFE 100%); border:1px solid #E7ECF3; border-radius:16px;">
+                  <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@{{ASSET_SHA}}/assets/photomagic/photomagic-feature-selfie-search-580x580.jpg" width="290" alt="{{F2_ALT}}" style="display:block; width:100%; height:auto; border-radius:16px 16px 0 0; border:0;">
+                  </td></tr>
+                  <tr><td style="padding:16px 18px 18px 18px;">
+                    <p style="margin:0 0 6px 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B1220;">{{F2_NAME}}</p>
+                    <p style="margin:0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:13px; line-height:20px; color:#556070;">{{F2_DESC}}</p>
+                  </td></tr>
+                </table>
+              </td>
+
+            </tr></table>
+          </td>
+        </tr>
+        <tr>
+          <td class="px" style="padding:0 26px 0 26px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#FBFBFE 100%); border:1px solid #E7ECF3; border-radius:16px;">
+                  <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@{{ASSET_SHA}}/assets/photomagic/photomagic-feature-photo-selection-580x580.jpg" width="290" alt="{{F3_ALT}}" style="display:block; width:100%; height:auto; border-radius:16px 16px 0 0; border:0;">
+                  </td></tr>
+                  <tr><td style="padding:16px 18px 18px 18px;">
+                    <p style="margin:0 0 6px 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B1220;">{{F3_NAME}}</p>
+                    <p style="margin:0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:13px; line-height:20px; color:#556070;">{{F3_DESC}}</p>
+                  </td></tr>
+                </table>
+              </td>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#FBFBFE 100%); border:1px solid #E7ECF3; border-radius:16px;">
+                  <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@{{ASSET_SHA}}/assets/photomagic/photomagic-feature-secure-gallery-580x580.jpg" width="290" alt="{{F4_ALT}}" style="display:block; width:100%; height:auto; border-radius:16px 16px 0 0; border:0;">
+                  </td></tr>
+                  <tr><td style="padding:16px 18px 18px 18px;">
+                    <p style="margin:0 0 6px 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B1220;">{{F4_NAME}}</p>
+                    <p style="margin:0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:13px; line-height:20px; color:#556070;">{{F4_DESC}}</p>
+                  </td></tr>
+                </table>
+              </td>
+
+            </tr></table>
+          </td>
+        </tr>
+        <!-- /BLOCK 7 -->
+
+        <!-- BLOCK 8: HOW IT WORKS, OPTIONAL.
+             Numbered steps on the quiet band. Use this when the objection is
+             "this sounds like work to set up" rather than "what does it do".
+             Three or four steps. The number discs are a table cell with a
+             border-radius, not an image, because a flat disc is fine here and
+             four more image requests is not.
+             Outlook renders the disc as a square. That is acceptable: it is a
+             numbered marker either way and it costs nothing when it degrades. -->
+        <tr>
+          <td class="px" style="padding:26px 26px 6px 26px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F7F8FE; border:1px solid #E7ECF3; border-radius:16px;">
+              <tr><td style="padding:22px 22px 8px 22px;">
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td width="38" valign="top" style="padding:0 12px 16px 0;">
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+                        <td width="30" height="30" align="center" valign="middle" style="width:30px; height:30px; background-color:#5B5EF7; border-radius:15px; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; color:#FFFFFF;">1</td>
+                      </tr></table>
+                    </td>
+                    <td valign="top" style="padding:0 0 16px 0;">
+                      <p style="margin:0 0 3px 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:15px; font-weight:bold; color:#0B1220;">{{S1_NAME}}</p>
+                      <p style="margin:0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:13px; line-height:20px; color:#556070;">{{S1_DESC}}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="38" valign="top" style="padding:0 12px 16px 0;">
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+                        <td width="30" height="30" align="center" valign="middle" style="width:30px; height:30px; background-color:#5B5EF7; border-radius:15px; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; color:#FFFFFF;">2</td>
+                      </tr></table>
+                    </td>
+                    <td valign="top" style="padding:0 0 16px 0;">
+                      <p style="margin:0 0 3px 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:15px; font-weight:bold; color:#0B1220;">{{S2_NAME}}</p>
+                      <p style="margin:0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:13px; line-height:20px; color:#556070;">{{S2_DESC}}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="38" valign="top" style="padding:0 12px 16px 0;">
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+                        <td width="30" height="30" align="center" valign="middle" style="width:30px; height:30px; background-color:#5B5EF7; border-radius:15px; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; color:#FFFFFF;">3</td>
+                      </tr></table>
+                    </td>
+                    <td valign="top" style="padding:0 0 16px 0;">
+                      <p style="margin:0 0 3px 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:15px; font-weight:bold; color:#0B1220;">{{S3_NAME}}</p>
+                      <p style="margin:0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:13px; line-height:20px; color:#556070;">{{S3_DESC}}</p>
+                    </td>
+                  </tr>
+                </table>
+
+              </td></tr>
+            </table>
+          </td>
+        </tr>
+        <!-- /BLOCK 8 -->
+
+        <!-- BLOCK 9: BAND IMAGE, OPTIONAL.
+             One full width photograph of a real person, to break a long email
+             and put a human in it. Shown at 550 wide against a 1100 export, so
+             it is exactly 2x. DO NOT widen it to 600: the source photograph is
+             only 825px wide and it is already being upscaled once. -->
+        <tr>
+          <td class="px" align="center" style="padding:22px 26px 0 26px; font-size:0; line-height:0;">
+            <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@{{ASSET_SHA}}/assets/photomagic/photomagic-band-photographer-1100x550.jpg" width="548" alt="{{BAND_ALT}}" style="display:block; width:100%; max-width:548px; height:auto; border-radius:16px; border:1px solid #E7ECF3;">
+          </td>
+        </tr>
+        <!-- /BLOCK 9 -->
+
+        <!-- BLOCK 10: TESTIMONIAL, OPTIONAL.
+             ATTRIBUTED QUOTES ONLY. Photomagic has three real, named reviews
+             on its own site. Use one of those verbatim, or one a client has
+             given you in writing. An unattributed quote in a cold B2B email is
+             read as invented, and in this product's market the reader is one
+             search away from checking. -->
+        <tr>
+          <td class="px" style="padding:24px 34px 0 34px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EEF0FF; border-radius:16px;">
+              <tr><td style="padding:20px 22px;">
+                <p style="margin:0 0 10px 0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:15px; line-height:24px; color:#0B1220; font-style:italic;">
+                  &ldquo;{{QUOTE}}&rdquo;
+                </p>
+                <p style="margin:0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:13px; font-weight:bold; color:#4A4EE6;">
+                  {{QUOTE_AUTHOR}}
+                </p>
+              </td></tr>
+            </table>
+          </td>
+        </tr>
+        <!-- /BLOCK 10 -->
+
+        <!-- BLOCK 11: PRICING STRIP, OPTIONAL.
+             Three tiers maximum in an email. The live site runs four (Free,
+             Pro, Corporate, Enterprise); Enterprise is a "contact us" tier and
+             belongs on the pricing page, not in a strip that has to stack on a
+             phone. Send people to the page for the full table.
+
+             PRICES GO STALE AND A SENT EMAIL IS FROZEN. Check every figure
+             against the live pricing page on the day you send, or leave the
+             prices out and lead on the free trial instead. A wrong price in an
+             inbox is a refund conversation later. -->
+        <tr>
+          <td class="px" style="padding:26px 26px 0 26px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+
+              <td class="price-col" width="33%" valign="top" style="padding:0 6px 0 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E7ECF3; border-radius:16px;">
+                  <tr><td align="center" style="padding:16px 10px;">
+                    <p style="margin:0 0 4px 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#556070;">{{P1_TIER}}</p>
+                    <p style="margin:0 0 4px 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:24px; font-weight:bold; color:#0B1220;">{{P1_PRICE}}</p>
+                    <p style="margin:0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:12px; line-height:18px; color:#556070;">{{P1_DETAIL}}</p>
+                  </td></tr>
+                </table>
+              </td>
+
+              <td class="price-col" width="34%" valign="top" style="padding:0 6px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EEF0FF; border:2px solid #5B5EF7; border-radius:16px;">
+                  <tr><td align="center" style="padding:15px 10px;">
+                    <p style="margin:0 0 4px 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#4A4EE6;">{{P2_TIER}}</p>
+                    <p style="margin:0 0 4px 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:24px; font-weight:bold; color:#0B1220;">{{P2_PRICE}}</p>
+                    <p style="margin:0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:12px; line-height:18px; color:#556070;">{{P2_DETAIL}}</p>
+                  </td></tr>
+                </table>
+              </td>
+
+              <td class="price-col" width="33%" valign="top" style="padding:0 0 0 6px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #E7ECF3; border-radius:16px;">
+                  <tr><td align="center" style="padding:16px 10px;">
+                    <p style="margin:0 0 4px 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#556070;">{{P3_TIER}}</p>
+                    <p style="margin:0 0 4px 0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:24px; font-weight:bold; color:#0B1220;">{{P3_PRICE}}</p>
+                    <p style="margin:0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:12px; line-height:18px; color:#556070;">{{P3_DETAIL}}</p>
+                  </td></tr>
+                </table>
+              </td>
+
+            </tr></table>
+          </td>
+        </tr>
+        <!-- /BLOCK 11 -->
+
+        <!-- CLOSE, part of BLOCK 5 in spirit. Delete with the letter if unused. -->
+        <tr>
+          <td class="px" style="padding:24px 34px 0 34px;">
+            <p style="margin:0 0 14px 0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:15px; line-height:25px; color:#0B1220;">
+              {{CLOSING_ASK}}
+            </p>
+            <p style="margin:0; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:15px; line-height:25px; color:#0B1220;">
+              {{SIGNOFF}}
+            </p>
+          </td>
+        </tr>
+
+        <!-- BLOCK 12: SECONDARY CTA, OPTIONAL.
+             Solid brand indigo, never white: the hero pill is the primary and
+             there is only one primary. This is the ONE place #5B5EF7 appears
+             as a fill in the body.
+             THE GRADIENT'S TOP STOP IS #5B5EF7, NOT #6E71F9. White on #6E71F9
+             measures 3.89 and fails AA. See the contrast audit.
+             If this points at WhatsApp, use api.whatsapp.com with the
+             971582591702 number and delete the utm_content. -->
+        <tr>
+          <td align="center" style="padding:26px 26px 40px 26px;">
+            <!--[if mso]>
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA2_URL}}&amp;utm_content=footer_cta" style="height:48px;v-text-anchor:middle;width:260px;" arcsize="25%" strokecolor="#4A4EE6" fillcolor="#5B5EF7">
+              <v:fill type="gradient" color="#5B5EF7" color2="#4A4EE6" angle="180" />
+              <w:anchorlock/><center style="color:#FFFFFF;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;">{{CTA2_TEXT}}</center>
+            </v:roundrect>
+            <![endif]-->
+            <!--[if !mso]><!-- -->
+            <a href="{{CTA2_URL}}&amp;utm_content=footer_cta" target="_blank" style="background-color:#5B5EF7; background-image:linear-gradient(180deg,#5B5EF7 0%,#4A4EE6 100%); border-radius:12px; color:#FFFFFF; display:inline-block; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; line-height:48px; text-align:center; text-decoration:none; width:260px;">
+              {{CTA2_TEXT}}
+            </a>
+            <!--<![endif]-->
+          </td>
+        </tr>
+        <!-- /BLOCK 12 -->
+
+        <!-- BLOCK 13: FOOTER, REQUIRED. Legal. Never delete, never shrink.
+             Contact details are constants: update here, not per campaign.
+             THE LOGO HERE IS THE WHITE FILE, NOT THE INDIGO ONE. The indigo
+             wordmark is invisible on this ground. The alt text is styled white
+             so that with images blocked the footer still opens on the name.
+             THE POSTAL ADDRESS IS A TOKEN AND IT IS LEGALLY REQUIRED. See the
+             note at the top of this file. Do not send with it unresolved and
+             do not paste Ticket Magic's address in without checking. -->
+        <tr><td style="background-color:#FFFFFF; font-size:0; line-height:0; padding:0;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+            <td style="height:16px; border-bottom:1px solid #E7ECF3; font-size:0; line-height:0;">&nbsp;</td>
+          </tr></table>
+        </td></tr>
+        <tr>
+          <td class="px" style="background-color:#0B1220; background-image:linear-gradient(180deg,#131A2E 0%,#0B1220 40%,#05070F 100%); padding:30px 26px 26px 26px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="center" style="padding-bottom:18px;">
+                  <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@{{ASSET_SHA}}/assets/photomagic/photomagic-logo-white-682x162.png" width="160" height="38" alt="Photomagic" style="display:block; margin:0 auto; width:160px; height:38px; border:0; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:20px; font-weight:bold; color:#FFFFFF;">
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="padding-bottom:16px; font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:13px; line-height:21px; color:#C9CEDA;">
+                  Instant photo sharing and AI selfie search for events and photographers.
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:16px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                    <td class="foot-col" width="50%" valign="top" style="font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#C9CEDA; padding-right:10px;">
+                      <span style="color:#FFFFFF; font-weight:bold;">Get in touch</span><br>
+                      WhatsApp: <a href="https://api.whatsapp.com/send?phone=971582591702" style="color:#C9CEDA; text-decoration:none;">+971 58 259 1702</a><br>
+                      <a href="mailto:inquiry@photomagic.io" style="color:#C9CEDA; text-decoration:none;">inquiry@photomagic.io</a>
+                    </td>
+                    <td class="foot-col" width="50%" valign="top" style="font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#C9CEDA;">
+                      <span style="color:#FFFFFF; font-weight:bold;">Explore</span><br>
+                      <a href="https://community.photomagic.io/" style="color:#C9CEDA; text-decoration:none;">Photographer community</a><br>
+                      <a href="https://photomagic.io/eduMagic/" style="color:#C9CEDA; text-decoration:none;">EduMagic</a>
+                    </td>
+                  </tr></table>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="padding:6px 0 16px 0; border-top:1px solid #2A2F45;">
+                  <div style="padding-top:14px;">
+                    <a href="https://www.facebook.com/people/Photomagicio/61578734952760/" style="color:#AEB6C6; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Facebook</a>
+                    <a href="https://www.instagram.com/photomagic.io/" style="color:#AEB6C6; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Instagram</a>
+                    <a href="https://www.linkedin.com/company/photomagic-io/" style="color:#AEB6C6; font-family:'Raleway','Century Gothic','Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">LinkedIn</a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="font-family:'Raleway',Arial,Helvetica,sans-serif; font-size:11px; line-height:18px; color:#8B95A8;">
+                  {{PERMISSION_LINE}}<br>
+                  {{POSTAL_ADDRESS}}<br>
+                  <a href="https://photomagic.io/privacy-policy" style="color:#A6B0C2; text-decoration:underline;">Privacy</a> &nbsp;|&nbsp;
+                  <a href="https://photomagic.io/terms-of-service" style="color:#A6B0C2; text-decoration:underline;">Terms</a> &nbsp;|&nbsp;
+                  <a href="*|UNSUB|*" style="color:#A6B0C2; text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
+                  <a href="*|UPDATE_PROFILE|*" style="color:#A6B0C2; text-decoration:underline;">Update preferences</a><br><br>
+                  2026 &copy; Photomagic. All rights reserved.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <!-- /BLOCK 13 -->
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
