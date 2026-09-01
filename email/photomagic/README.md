@@ -37,6 +37,17 @@ Within a segment, versions A, B and C are structurally identical and differ only
 in the feature they lead on, so a difference in reply rate is attributable to the
 copy and nothing else. If you edit the layout of one, edit all of them.
 
+## Who to send it to
+
+[`apollo-audience-targeting.md`](apollo-audience-targeting.md) holds the Apollo
+filter recipe for all five segments: industries, keyword blocks, job titles,
+NAICS and SIC codes, technology filters, geography rings and the exclusion list.
+It is a recipe, not a verified list. Nothing in it has been run in Apollo yet,
+and section 10 says what to check before it drives a send.
+
+**Apollo contacts never go into Mailchimp.** Cold third-party contacts in an
+opt-in audience is an account-termination risk, not a style preference.
+
 ## Before sending
 
 Run the five checks in section 4, step 7 of the workflow doc. The two that catch

@@ -1,0 +1,541 @@
+<!--
+  SUBJECT A  🚚 Everyone knows the plan
+  SUBJECT B  📋 The plan, not the group chat
+  PREVIEW    Schedules and roles, shared across the whole team.
+================================================================================
+  OUTREACH: Segment 6, Logistics / Distribution / Trading
+  VERSION B, leads on TEAM OPS
+
+  Built from   email/templates/email-corporate.html, laid out to match
+               email/outreach/06/06-logistics-va-vendor-management.html
+               block for block
+  Copy from    email/templates/TicketMagic_Organizer_Pitch_ABC_by_Segment.docx
+               Section 6, Version B
+  A/B/C focus  Supplier summits and partner days. Lead on coordination, the
+               discipline these operations already respect.
+
+  THIS IS THE SIBLING OF VERSION A, NOT A NEW LETTER. Same blocks, same order,
+  same lengths, same padding. The only variable is the module each one leads on,
+  so a difference in reply rate is attributable to the copy and nothing else.
+
+  IF YOU EDIT THE LAYOUT OF ONE, EDIT BOTH. A padding change in one file and not
+  the other turns a copy test into a copy-and-layout test, and neither number
+  then means what the report says it means. Version C is not built yet; when it
+  is, clone whichever of these two is most current and check all three again.
+
+  SPLIT THE SEGMENT EVENLY AND AT RANDOM. Version A and Version B go to halves
+  of the same list, at the same time of day. Sending B a week later to whoever
+  did not open A is a follow-up, not a test.
+
+  THE TWO VERSIONS ARE CLOSER HERE THAN IN ANY OTHER SEGMENT. READ THIS.
+    Version A leads on Vendor Management and Version B on Team Ops, and for a
+    partner summit those are neighbouring ideas: one tracks the people arriving
+    to deliver the day, the other tracks your own people running it. The copy
+    library made that choice deliberately, because the whole segment is being
+    pitched on coordination.
+
+    That makes this the hardest module test in the library to read. Two letters
+    that both say "coordination" can split the replies evenly and tell you
+    nothing except that the segment likes coordination, which the A/B/C focus
+    line already assumed. Judge it on WHICH READER REPLIES, not just how many:
+    Version A pulls the person who owns the supplier relationship, Version B the
+    person who owns the roster. If the replies come from the same job title on
+    both sides, the test did not separate anything and Version C, which leads on
+    Registration, is the one that will actually move the number.
+
+  WHERE THE SHARED NOTES LIVE
+    The palette, the gradient rules and what Outlook does with them, the
+    contrast audit, the jsDelivr pinning rule, the api.whatsapp.com decision
+    and the Mailchimp merge tag notes are documented once, at the top of
+    email/templates/email-corporate.html. They are NOT repeated here.
+
+    What follows is only what is specific to THIS letter.
+
+  SET IN MAILCHIMP (these are not in the HTML)
+    Subject     the two SUBJECT lines at the top of this file. They are the
+                A/B test WITHIN Version B.
+    Preheader   the PREVIEW line at the top of this file. 49 chars. It does
+                NOT vary between the two variants.
+    Reply-To    the sender's own inbox. The copy asks for a reply. The yellow
+                button is only a nudge; the Reply-To header is the real
+                mechanism.
+
+  TWO TESTS ARE RUNNING AT ONCE. The module test (Version A against Version B)
+    and the subject test (A against B inside this file) are different questions
+    on different axes, and running both divides this half of the segment into
+    two subject cells, so each cell is a QUARTER of the list. The long version
+    of that argument, including when to drop the subject test entirely, is
+    written out once in ../05/05-manufacturing-vb-vendor-management.html and is
+    not repeated here. It applies verbatim.
+
+    For this segment the module test is already the hard one to read, per the
+    note above. Spending list on a second axis at the same time is how you end
+    up unable to call either. Default to ONE subject here and keep the other for
+    Version C.
+
+  THE SUBJECT LINE A/B TEST
+      A  Everyone knows the plan        25 chars with the emoji, the outcome
+      B  The plan, not the group chat   30 chars with the emoji, the replacement
+
+    THE AXIS UNDER TEST is the result against the thing it replaces. A states
+    what the day looks like when it works and is aimed at whoever is accountable
+    for it. B names what stops happening, which is the group chat every one of
+    these operations is currently running its events on, and is aimed at whoever
+    is tired of scrolling it. Same company, different irritation.
+
+    B DELIBERATELY ECHOES THE PAYOFF STRIP. The strip reads "No group-chat
+    archaeology on the morning of." The subject sets that promise up and the
+    strip lands it a screen later, which is why the repetition is wanted here.
+    That is the only place in this file where a line is allowed to appear twice,
+    and it is not in the body. If you rewrite the payoff, rewrite subject B.
+
+    Both sit at or under 30 characters. A phone inbox shows roughly 35 before it
+    truncates, so these land whole.
+
+    EMOJI. One per subject, at the front, where it survives truncation. Both are
+    single code point emoji (U+1F69A and U+1F4CB) with no variation selector, so
+    no client is left choosing between a text glyph and a colour glyph. Avoid
+    the ones that need a trailing U+FE0F to render in colour, and never use two:
+    a second emoji in a B2B subject reads as a mailshot, which is the register
+    this whole template exists to avoid.
+
+    THE TRUCK IS NOT DECORATION, IT IS A CATEGORY MARK. It says the letter is
+    about their business before a word is read, which is the job.
+
+    Judge this test by REPLY RATE, not open rate, once the sample allows. Opens
+    are what the subject buys. Replies are what the letter is for, and Apple
+    Mail Privacy Protection inflates opens enough that a subject can win the
+    open and lose the send.
+
+    THIS FILE IS UTF-8, NOT ASCII, because of those two emoji. Version A is
+    still plain ASCII, which is fine: nothing in either file depends on the
+    other's encoding. The charset meta is already utf-8, but do not let an
+    editor talk you into saving this as Latin-1, and copy the subjects out of
+    here rather than retyping them.
+
+  HEADER BADGE
+    "Team Ops", the module's name at 8 characters, comfortably inside the
+    ceiling the 17 character Version A badge already tested next to the 120px
+    logo at 375px wide.
+
+    THE BADGE IS THE ONE PLACE THE TWO VERSIONS ARE MEANT TO DIFFER VISIBLY. It
+    names the module under test, so a reply that quotes the badge tells you
+    which version produced it even when nothing else does.
+
+  FOURTH TEAM OPS LETTER IN THE LIBRARY
+    The others are ../01/01-events-entertainment-va-team-ops.html,
+    ../03/03-real-estate-va-team-ops.html and
+    ../08/08-attractions-leisure-vb-team-ops.html. All four lead on the same
+    module and carry the same four card titles and the same four icons, because
+    it is the same capability. What differs is whose day is being run: an event
+    crew, a launch team of agents, a partner summit here, and a recurring show's
+    gate staff. The hero, the payoff, the letter and every card description are
+    rewritten around that.
+
+    THE FOUR ARE NOT INTERCHANGEABLE and must not be merged into one send. They
+    go to different segments and the reply rates are not comparable. If you edit
+    the Team Ops story itself, decide deliberately whether the edit belongs in
+    all four files or only in one.
+
+    SEGMENT 8 VERSION B IS THE CLOSEST OF THE FOUR to this one, because both were
+    written in the same sitting. Check them side by side before shipping either:
+    a sentence that drifted from one into the other reads as a mailshot to
+    anybody who happens to receive both, and some UAE operators sit on both
+    lists.
+
+  ICONS: ALL FOUR REUSED, NOTHING NEW, NOTHING TO PUSH
+    a1-schedules.png, a2-roles.png, a3-coordination.png and a4-ticketing.png,
+    all pinned to dfdb8d5, the commit that gave the discs their tonal gradient.
+    They are the four every Team Ops letter uses. Drawing a second set for the
+    same capabilities would put two marks in the library for one idea.
+
+    THIS VERSION CLOSES ON THE SAME ICON AS VERSION A. Both end on a4-ticketing,
+    the "one system" card, because both stories end in the same place. Segments
+    1 and 5 make the opposite trade for their own reasons; this one did not have
+    to.
+
+    Every URL here is pinned to a pushed and verified commit, so this file was
+    complete the moment it was written. Nothing has to go up ahead of it.
+    Searching it for the double curly brace returns zero hits, which is the
+    pre-send check the template asks for.
+
+    ALL FOUR DISCS ARE THE SAME TEAL. The fourth card closes the set. It is not
+    a separate product and must not be coloured like one. That was shipped wrong
+    once, with one orange disc among three teal.
+
+    alt="" is deliberate. The icons are decorative and every card reads without
+    them, so with images blocked you get a gap rather than a stray word sitting
+    next to the heading.
+
+  PERSONALISATION: NONE, DELIBERATELY
+    The copy library's tokens are resolved into fixed wording, so every
+    recipient gets byte-identical copy. There is no audience field to create, no
+    default value to set, and no way for a blank to appear mid sentence.
+    Mailchimp has no inline fallback syntax for audience fields. Resolutions
+    made in this file:
+
+      As {Job Title} at {Company}, everyone   -> Everyone
+      for your next event in {City}           -> for your next summit
+
+  COPY DEPARTURES FROM THE LIBRARY
+    Em dashes    The library uses them heavily. House rule says none, so every
+                 affected sentence is recast with a colon or a comma rather than
+                 having the character swapped for a hyphen. Keep to that.
+    Headline     "Everyone knows the plan before your event starts" is the
+                 library subject line, carried into the hero whole and broken
+                 after "plan" so the first line sits close to the width Version
+                 A's does.
+    Card copy    The four module cards are NOT in the library. They unpack the
+                 one sentence it gives to Team Ops ("schedules, roles, and
+                 real-time coordination in one place") into three capabilities
+                 plus a fourth card that closes the set. Nothing here claims a
+                 capability the library does not. In particular nothing promises
+                 shift swapping, timesheets, payroll export or a driver app,
+                 because the library promises none of those and a logistics
+                 operator will ask about all four on the call. Anything that
+                 tracks the PARTNERS rather than your own team belongs to Vendor
+                 Management, which is Version A's story, not this one's.
+
+  LINKS
+    Primary CTA     mailto:support@ticketmagic.me. The copy's ask is a reply, so
+                    the button matches it. No UTM: a mailto cannot carry one.
+                    Identical to Version A on purpose.
+    Secondary CTA   https://api.whatsapp.com/send?phone=971529521204
+                    NOT wa.me. See email-corporate.html for why, including the
+                    forged certificate observed on 2026-08-24, and for the
+                    residual risk that some corporate filters block
+                    api.whatsapp.com as well.
+
+                    Version attribution rides in the prefilled text, which names
+                    the module and is therefore the ONE link difference between
+                    A and B. NOTE that three other letters name the same module,
+                    so an inbound message identifies the module but NOT which of
+                    the four Team Ops letters produced it. If you need to tell
+                    them apart, give each its own sending number or its own
+                    wording in the text param before you send them at once.
+                    WhatsApp discards query params other than its own, so a UTM
+                    cannot do that job.
+
+    No UTM survives anywhere in this email, so there is nothing to register in
+    docs/campaign-register.csv. Neither the version nor the subject variant is
+    visible in link data: read them off the Mailchimp report and off the
+    prefilled WhatsApp text, not off the clicks.
+
+  FOOTER
+    Permission line identical to Version A: logistics, distribution and trading
+    companies running supplier summits and partner days. Same segment, same
+    claim. The template's "you signed up at ticketmagic.me" is FALSE for cold
+    B2B prospecting and is replaced, plus an invitation to forward.
+
+    *|UNSUB|* and *|UPDATE_PROFILE|* are per recipient URLs the platform
+    generates and CANNOT be hardcoded. They resolve on send and will look
+    unresolved in preview. They sit inside href attributes, so an unresolved tag
+    leaves the footer looking correct while the unsubscribe link is dead. That
+    is a legal problem, not a cosmetic one, so check a real seed send.
+
+  SENDING FROM APOLLO INSTEAD? Nothing in the body needs converting, because
+    there is no personalisation to translate. Swap the two Mailchimp tags in the
+    footer for Apollo's own opt-out tokens. Apollo will not resolve them, and
+    Apollo has no native subject split: divide the list yourself and send twice.
+
+  NO EM DASHES
+    House rule. This file contains none, in copy or in comments.
+
+  SPELLING
+    American throughout ("organizer"), matching the copy library verbatim.
+================================================================================
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <title>Ticket Magic: Everyone knows the plan before your event starts</title>
+  <!--[if mso]>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+<style type="text/css">
+  :root { color-scheme: light; supported-color-schemes: light; }
+  body,table,td,a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;}
+  table,td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
+  img{-ms-interpolation-mode:bicubic; border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+  body{margin:0 !important; padding:0 !important; width:100% !important;}
+  a{color:#077C89;}
+
+  @media screen and (max-width:600px){
+    .container{width:100% !important;}
+    /* Zero the 8px card gutter when the cards stack, or alternate cards sit
+       8px right of the others. The base template has this latent bug too. */
+    .stack{display:block !important; width:100% !important; max-width:100% !important; padding-left:0 !important; padding-right:0 !important;}
+    .hero-h1{font-size:30px !important; line-height:36px !important;}
+    .px{padding-left:18px !important; padding-right:18px !important;}
+    .foot-col{display:block !important; width:100% !important; text-align:center !important; padding:6px 0 !important;}
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; background-color:#EEF1F4;">
+
+<!-- PREHEADER -->
+<div style="display:none; font-size:1px; color:#EEF1F4; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
+  Schedules and roles, shared across the whole team.
+  &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EEF1F4; background-image:linear-gradient(180deg,#F3F6F8 0%,#E2E9EF 100%);">
+  <tr>
+    <td align="center" style="padding:28px 12px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#FFFFFF;">
+
+        <!-- HEADER: teal cap rule + white bar carrying the logo -->
+        <tr>
+          <td style="padding:0; font-size:0; line-height:0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+              <td height="5" style="height:5px; background-color:#0899A6; background-image:linear-gradient(90deg,#05707E 0%,#0899A6 45%,#18BAC8 100%); font-size:0; line-height:0;">&nbsp;</td>
+            </tr></table>
+          </td>
+        </tr>
+        <tr>
+          <td class="px" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#FAFCFD 100%); padding:16px 26px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="left" valign="middle" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:18px; font-weight:bold; color:#0B3D5C;">
+                  <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53204c68457e9ff5c02539eb771d79d942d/assets/summer_is_here_campaign/ticketmagiclogo.png" width="120" height="61" alt="Ticket Magic" style="display:block; width:120px; height:61px; border:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:18px; font-weight:bold; color:#0B3D5C;">
+                </td>
+                <td align="right" valign="middle">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right"><tr>
+                    <td style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:11px; font-weight:bold; color:#0B3D5C; letter-spacing:1.5px; text-transform:uppercase; background-color:#EAF0F4; border:1px solid #D6E0E8; padding:6px 11px; border-radius:3px; white-space:nowrap;">
+                      Team Ops
+                    </td>
+                  </tr></table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- HERO COPY + PRIMARY CTA -->
+        <tr>
+          <td class="px" align="center" style="background-color:#0B3D5C; background-image:linear-gradient(180deg,#14577F 0%,#0B3D5C 55%,#08324C 100%); padding:38px 34px 16px 34px;">
+            <p style="margin:0 0 10px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#A8CEE0;">
+              Event Management System
+            </p>
+            <h1 class="hero-h1" style="margin:0 0 16px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:38px; line-height:44px; font-weight:bold; color:#FFFFFF;">
+              Everyone knows the plan<br>before your event starts
+            </h1>
+            <p style="margin:0 0 26px 0; font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:24px; color:#B9D2DE;">
+              The difference between a smooth event and a scramble is whether the team knew the plan before it started.
+            </p>
+            <!--[if mso]>
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="mailto:support@ticketmagic.me?subject=Walkthrough%20request" style="height:50px;v-text-anchor:middle;width:270px;" arcsize="8%" strokecolor="#F2A62B" fillcolor="#FFC24B">
+              <v:fill type="gradient" color="#FFD470" color2="#F2A62B" angle="180" />
+              <w:anchorlock/><center style="color:#0B3D5C;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;">Reply for a 15-min walkthrough</center>
+            </v:roundrect>
+            <![endif]-->
+            <!--[if !mso]><!-- -->
+            <a href="mailto:support@ticketmagic.me?subject=Walkthrough%20request" target="_blank" style="background-color:#FFC24B; background-image:linear-gradient(180deg,#FFD470 0%,#FFC24B 52%,#F2A62B 100%); border-radius:5px; color:#0B3D5C; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; line-height:50px; text-align:center; text-decoration:none; width:270px;">
+              Reply for a 15-min walkthrough
+            </a>
+            <!--<![endif]-->
+          </td>
+        </tr>
+        <!-- Boarding-pass perforation, house motif, keep it -->
+        <tr>
+          <td style="background-color:#0B3D5C; font-size:0; line-height:0; padding:0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+              <td style="height:20px; background-color:#0B3D5C; background-image:linear-gradient(180deg,#08324C 0%,#08324C 100%); border-bottom:3px dotted #4E7E9B; font-size:0; line-height:0;">&nbsp;</td>
+            </tr></table>
+          </td>
+        </tr>
+
+        <!-- PAYOFF STRIP, replaces the urgency strip. No deadline to invent. -->
+        <tr>
+          <td align="center" style="background-color:#F4F7F9; background-image:linear-gradient(180deg,#FFFFFF 0%,#EFF4F7 100%); border-top:1px solid #DDE3E9; border-bottom:1px solid #DDE3E9; padding:15px 24px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:14px; line-height:20px; font-weight:bold; color:#0B3D5C; letter-spacing:0.3px;">
+            No group-chat archaeology on the morning of.
+          </td>
+        </tr>
+
+        <!-- LETTER -->
+        <tr>
+          <td class="px" style="padding:32px 34px 4px 34px;">
+            <p style="margin:0 0 16px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:24px; color:#3C4A55;">
+              Hi there,
+            </p>
+            <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:24px; color:#3C4A55;">
+              Ticket Magic&rsquo;s Event Management System runs Team Ops: schedules, roles, and real-time coordination in one place. Everyone walks in knowing their part.
+            </p>
+          </td>
+        </tr>
+
+        <!-- SECTION LABEL -->
+        <tr>
+          <td class="px" align="center" style="padding:26px 26px 0 26px;">
+            <p style="margin:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#077C89;">
+              Inside the platform
+            </p>
+            <h2 style="margin:8px 0 0 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:27px; line-height:32px; font-weight:bold; color:#0B3D5C;">
+              Team Ops
+            </h2>
+          </td>
+        </tr>
+
+        <!-- MODULE CARDS -->
+        <tr>
+          <td class="px" style="padding:20px 26px 0 26px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#F7FAFC 100%); border:1px solid #DDE3E9; border-radius:6px;">
+                  <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@dfdb8d5f731fa9cbcfbccd468052d380535128c5/assets/icons/a1-schedules.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                  </td></tr>
+                  <tr><td style="padding:12px 16px 17px 16px;">
+                    <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Schedules</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#61707C;">The run of the summit in one place, so the plan is something the team can look at rather than remember.</p>
+                  </td></tr>
+                </table>
+              </td>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#F7FAFC 100%); border:1px solid #DDE3E9; border-radius:6px;">
+                  <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@dfdb8d5f731fa9cbcfbccd468052d380535128c5/assets/icons/a2-roles.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                  </td></tr>
+                  <tr><td style="padding:12px 16px 17px 16px;">
+                    <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Role assignments</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#61707C;">Who is on the doors, who is on the floor, and who is looking after each partner, settled before the day starts rather than during it.</p>
+                  </td></tr>
+                </table>
+              </td>
+
+            </tr></table>
+          </td>
+        </tr>
+        <tr>
+          <td class="px" style="padding:0 26px 0 26px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 8px 16px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#F7FAFC 100%); border:1px solid #DDE3E9; border-radius:6px;">
+                  <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@dfdb8d5f731fa9cbcfbccd468052d380535128c5/assets/icons/a3-coordination.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                  </td></tr>
+                  <tr><td style="padding:12px 16px 17px 16px;">
+                    <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">Real-time coordination</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#61707C;">Changes reach the team as you make them, so everyone is working from the current plan rather than the one they were briefed on.</p>
+                  </td></tr>
+                </table>
+              </td>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 0 16px 8px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; background-image:linear-gradient(180deg,#FFFFFF 0%,#F7FAFC 100%); border:1px solid #DDE3E9; border-radius:6px;">
+                  <tr><td style="padding:16px 16px 0 16px; font-size:0; line-height:0;">
+                    <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@dfdb8d5f731fa9cbcfbccd468052d380535128c5/assets/icons/a4-ticketing.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;">
+                  </td></tr>
+                  <tr><td style="padding:12px 16px 17px 16px;">
+                    <p style="margin:0 0 6px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#0B3D5C;">One system, not one more</p>
+                    <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#61707C;">Team Ops sits in the same platform as your registrations and ticketing, all in one place rather than beside it.</p>
+                  </td></tr>
+                </table>
+              </td>
+
+            </tr></table>
+          </td>
+        </tr>
+
+        <!-- CLOSE -->
+        <tr>
+          <td class="px" style="padding:10px 34px 0 34px;">
+            <p style="margin:0 0 14px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:24px; color:#3C4A55;">
+              Want to see how it works for your next summit? Just reply.
+            </p>
+            <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:24px; color:#3C4A55;">
+              The Ticket Magic Team
+            </p>
+          </td>
+        </tr>
+
+        <!-- SECONDARY CTA -->
+        <tr>
+          <td align="center" style="padding:26px 26px 40px 26px;">
+            <!--[if mso]>
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://api.whatsapp.com/send?phone=971529521204&amp;text=Hi%20Ticket%20Magic%2C%20I%27d%20like%20to%20book%20a%20call%20about%20Team%20Ops." style="height:48px;v-text-anchor:middle;width:260px;" arcsize="8%" strokecolor="#072B42" fillcolor="#0B3D5C">
+              <v:fill type="gradient" color="#155E88" color2="#072B42" angle="180" />
+              <w:anchorlock/><center style="color:#FFFFFF;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;">Book a call</center>
+            </v:roundrect>
+            <![endif]-->
+            <!--[if !mso]><!-- -->
+            <a href="https://api.whatsapp.com/send?phone=971529521204&amp;text=Hi%20Ticket%20Magic%2C%20I%27d%20like%20to%20book%20a%20call%20about%20Team%20Ops." target="_blank" style="background-color:#0B3D5C; background-image:linear-gradient(180deg,#155E88 0%,#0B3D5C 55%,#072B42 100%); border-radius:5px; color:#FFFFFF; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; line-height:48px; text-align:center; text-decoration:none; width:260px;">
+              Book a call
+            </a>
+            <!--<![endif]-->
+          </td>
+        </tr>
+
+        <!-- FOOTER, legal. Never delete, never shrink. -->
+        <tr><td style="background-color:#FFFFFF; font-size:0; line-height:0; padding:0;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+            <td style="height:16px; border-bottom:3px dotted #DDE3E9; font-size:0; line-height:0;">&nbsp;</td>
+          </tr></table>
+        </td></tr>
+        <tr>
+          <td class="px" style="background-color:#0B3D5C; background-image:linear-gradient(180deg,#0E4767 0%,#0B3D5C 35%,#061F2E 100%); padding:30px 26px 26px 26px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="center" style="padding-bottom:18px;">
+                  <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53204c68457e9ff5c02539eb771d79d942d/assets/summer_is_here_campaign/ticketmagiclogo.png" width="130" height="66" alt="Ticket Magic" style="display:block; margin:0 auto; width:130px; height:66px; border:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:20px; font-weight:bold; color:#FFFFFF;">
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:16px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                    <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#B9D2DE; padding-right:10px;">
+                      <span style="color:#A8CEE0; font-weight:bold;">Head Office</span><br>
+                      Office 1506, Saheel Tower 02,<br>Al Nahda 01, Dubai
+                    </td>
+                    <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#B9D2DE;">
+                      <span style="color:#A8CEE0; font-weight:bold;">Get in touch</span><br>
+                      WhatsApp: <a href="https://api.whatsapp.com/send?phone=971527064878" style="color:#B9D2DE; text-decoration:none;">+971 52 706 4878</a><br>
+                      <a href="mailto:support@ticketmagic.me" style="color:#B9D2DE; text-decoration:none;">support@ticketmagic.me</a>
+                    </td>
+                  </tr></table>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="padding:6px 0 16px 0; border-top:1px solid #1B5477;">
+                  <div style="padding-top:14px;">
+                    <a href="https://www.facebook.com/ticketmagicdxb" style="color:#A8C6D6; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Facebook</a>
+                    <a href="https://www.instagram.com/ticketmagicdxb/" style="color:#A8C6D6; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Instagram</a>
+                    <a href="https://x.com/ticketmagicdxb" style="color:#A8C6D6; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">X</a>
+                    <a href="https://www.linkedin.com/company/ticketmagic/" style="color:#A8C6D6; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">LinkedIn</a>
+                    <a href="https://www.youtube.com/@ticketmagic6234" style="color:#A8C6D6; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">YouTube</a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="font-family:Arial,Helvetica,sans-serif; font-size:11px; line-height:17px; color:#8AA3B5;">
+                  Ticket Magic is an event management and ticketing platform based in Dubai, UAE.<br>
+                  You&rsquo;re receiving this because we work with logistics, distribution and trading companies running supplier summits and partner days across the UAE.<br>
+                  Not the right person? Reply and tell us who is.<br>
+                  Ticket Magic, Office 1506, Saheel Tower 02, Al Nahda 01, Dubai, United Arab Emirates<br>
+                  <a href="*|UNSUB|*" style="color:#A6B8C9; text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
+                  <a href="*|UPDATE_PROFILE|*" style="color:#A6B8C9; text-decoration:underline;">Update preferences</a><br><br>
+                  2026 &copy; Ticket Magic. All rights reserved.<br>
+                  Developed by Pure Magic Information Technology Services.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
