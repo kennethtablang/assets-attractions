@@ -1,0 +1,641 @@
+<!--
+================================================================================
+  CORPORATE BANDS EMAIL TEMPLATE, Ticket Magic
+  Paste into Mailchimp: Campaign > Design > Code your own > Paste in code
+================================================================================
+
+  WHICH TEMPLATE DO I USE?
+    email-consumer.html          offers to ticket buyers. Photo hero, product
+                                 grid with prices. Supersedes email.html.
+    email.html                   the old consumer template. Three known
+                                 defects. Do not start anything new on it.
+    email-corporate.html         B2B. Navy and white, teal, CSS gradients.
+    email-corporate-bold.html    B2B. Ink on bone, 48px left type, no gradients.
+    email-corporate-soft.html    B2B. Pale blue, baked gradient hero, pills.
+    email-corporate-rail.html    B2B. Two column indigo rail.
+    email-corporate-ticket.html  B2B. Built as an actual ticket, stub and all.
+    email-corporate-bands.html   THIS FILE. B2B. No card and no hero panel: the
+                                 email is a stack of full width bands, pine and
+                                 stone and paper, one idea per band.
+
+    Pick by WHO IS READING and by the register you want, not by what is newest.
+    Six B2B templates are alternatives, not versions. Nothing is migrated to
+    this one and nothing has to be.
+
+  WHAT IS ACTUALLY DIFFERENT, AND WHY
+    This is not a recolour of the others. Two structural decisions separate it,
+    and everything else follows from them.
+
+    1. THERE IS NO CARD. Every other template in this folder, the rail included,
+       is a 600px block of paper floating on a tinted page, with a visible edge
+       down both sides. This one has no edge: each band is a full width table
+       carrying its own background, and only the CONTENT inside is held to
+       600px. On a wide monitor the bands run the entire width of the window.
+       That is the look, not a bug to constrain.
+
+    2. THERE IS NO HERO PANEL. The other templates open with a dark slab behind
+       the headline. Here the headline sits on paper, and the one dark field in
+       the whole email is the ASK band, which holds the payoff line and the
+       button together. Colour marks the ask rather than the greeting, so the
+       darkest thing on the page is the thing you want clicked.
+
+    The result reads as a sequence of sections rather than as a page with a
+    header. A reader scrolling on a phone crosses a tint change at every new
+    idea, which is a stronger structural signal than a rule or a gap.
+
+  THE BAND RHYTHM, AND THE ONE RULE THAT KEEPS IT
+    Bands alternate paper, stone, paper, stone down the page. Pine interrupts
+    twice: once for the ask, once for the footer.
+
+      1   MASTHEAD        stone
+      2   HERO            paper
+      3   ASK             pine
+      4   LETTER          paper
+      5   SECTION LABEL   stone
+      6   MODULE 01       paper
+      7   MODULE 02       stone
+      8   MODULE 03       paper
+      9   MODULE 04       stone
+      10  CLOSE           paper
+      11  FOOTER          pine
+
+    IF YOU DELETE A BAND, RE-ALTERNATE EVERY BAND BELOW IT. This is the one
+    fragility the design has and it is worth stating plainly, because the
+    failure is quiet: delete the letter and bands 3 and 5 both end up next to
+    paper on one side and stone on the other, then two paper bands meet
+    somewhere below and merge into one tall field with no visible join. The
+    email still renders. It just stops being a stack of sections, which is the
+    only idea this template has.
+
+    So: after deleting anything, read the background colours top to bottom and
+    make sure paper and stone still take turns. Two adjacent bands must never
+    carry the same colour. Deleting a PAIR of bands preserves the rhythm
+    automatically, which is the easy way to stay out of trouble.
+
+  FULL BLEED, AND THE BUG IT DELIBERATELY REUSES
+    A background colour on a cell carrying align="center" fills the ENTIRE
+    cell, not just the content sitting in it. In email.html that behaviour is a
+    defect: it makes the header badge stretch edge to edge instead of hugging
+    its text, and email-corporate.html documents the nested table that fixes it.
+
+    Here that exact behaviour is the mechanism. Each band is a full width table
+    whose single cell carries the colour and centres a 600px table inside
+    itself. The colour spreads to the window edge precisely because the cell
+    fills, and the content stays at 600px because the nested table is fixed.
+    The bug and the feature are the same line of CSS pointed at different jobs.
+
+    THE BADGE STILL NEEDS ITS NESTED TABLE. Band 1 has both cases in it at
+    once: the band cell is meant to fill, and the badge cell inside it is not.
+    Do not simplify the badge markup away.
+
+  EVERY BAND CARRIES bgcolor AS AN ATTRIBUTE AND AS CSS
+    Both, on purpose, and they must stay in agreement. Some Outlook builds and
+    a few older webmail clients drop an inline background-color on a table but
+    honour the bgcolor attribute, and a band that loses its colour does not
+    degrade gracefully here: it merges into its neighbour and the section
+    structure disappears. Belt and braces costs nine extra attributes.
+
+    If you retint a band, change BOTH. A mismatch shows in one client and not
+    the others, which is the hardest kind of bug to be told about.
+
+  NO GRADIENTS, ANYWHERE
+    Same decision as email-corporate-bold.html and for the same reason, so read
+    that file if you want the full argument. In short: Outlook 2007 through
+    2021 runs the Word engine, which does not support background-image at all,
+    so every CSS gradient is dropped and the background-color is painted
+    instead. A gradient-led email is quietly a flat email for a large share of
+    a B2B audience.
+
+    It matters more here than it does there. Bands ARE the design, so a band
+    that renders as one colour in Outlook and as a ramp everywhere else would
+    change the rhythm of the page rather than just its finish. Flat colour
+    means THIS TEMPLATE RENDERS IDENTICALLY IN OUTLOOK AND EVERYWHERE ELSE.
+    There is no degraded version to reason about and no seam to match.
+
+  PALETTE: FOUR COLOURS, ONE JOB EACH
+    Pine      #16352C   the ask band and the footer. The only dark field.
+    Stone     #ECEFE8   the tinted band
+    Paper     #FBFAF6   the untinted band
+    Gold      #FFC24B   ONE job: the primary CTA. Nowhere else, ever.
+
+    Ink       #1B2A24   headings, badge text
+    Body      #44534B   letter and hero copy
+    Muted     #5F6C64   module copy and the hero eyebrow
+    Green     #1F6B54   links and the section eyebrow
+    Number    #3A6D5A   the module numerals
+    Line      #D9DED0   the badge border and the footer rule
+    Badge     #E3E8DC   the masthead badge ground
+
+    On pine   #FFFFFF   headings, #C3D3CA body, #9CC8B4 eyebrow and footer
+                        headings, #B9C9C0 footer links, #93A69C legal,
+                        #2E4E43 the footer rule
+
+    GREEN IS NEW TO THE HOUSE AND GOLD IS NOT. None of the other seven
+    templates use a green family, which is most of why this one looks unlike
+    them at a glance. The CTA stays the house gold on purpose: which colour
+    means "click this" is a brand decision across the whole system, not a
+    per-template one, and gold on pine is a classic pairing that also happens
+    to match the logo plaque. Freshness comes from the structure and the
+    ground, not from moving the one colour everybody has learned.
+
+    THE GOLD RULE IS THE WHOLE DESIGN, exactly as in email-corporate.html.
+    Gold appears once, on the thing you want clicked. The moment it shows up
+    in a second place the CTA stops being the loudest thing on the page. If
+    you need to mark something else, use green.
+
+  CONTRAST: MEASURE AGAINST THE DARKER BAND, NOT THE LIGHTER ONE
+    This is the trap specific to an alternating layout, and it caught one
+    colour while this file was being built.
+
+    Module copy sits on paper in bands 6 and 8 and on stone in bands 7 and 9.
+    It therefore has TWO grounds, and it has to clear AA against the one that
+    fights it hardest, which is stone. At #67746C it measured 4.69 on paper and
+    4.21 on stone: a pass on half the modules and a fail on the other half,
+    from a single colour that looks fine in a screenshot of either. It is now
+    #5F6C64, which is 5.27 on paper and 4.74 on stone.
+
+    All 22 text on background pairs currently clear 4.5, each checked against
+    the darker of the grounds it actually appears on. Lowest is 4.74. If you
+    retint a band, recheck every colour that sits on it AND on its neighbour.
+
+  DISPLAY BANDS CENTRE, READING BANDS LEFT
+    Not a mixed axis by accident. The masthead, hero, ask and section label are
+    display: short, centred, meant to be taken in at a glance while scrolling.
+    The letter, the modules and the close are reading: left aligned, ragged
+    right, meant to be read a line at a time. Centring a paragraph of prose
+    makes it slower to read, and left aligning a two word section label makes
+    it look like an orphan.
+
+    Keep the rule if you add a band. Ask which of the two jobs it is doing.
+
+  THE PRIMARY CTA IS A BAR, NOT A BUTTON
+    It spans the full content width inside the ask band rather than sitting at
+    260 or 270px like the other templates. That is deliberate: in a design made
+    of bands, the button reads as a small band of its own, and a narrow pill
+    floating in a pine field would look like it had been imported from a
+    different email.
+
+    Both buttons use v:rect rather than v:roundrect in their Outlook
+    conditionals. Square corners need no arcsize, and v:rect says what it is.
+
+  NO ICONS. THE NUMBER IS THE MARK.
+    There is no icon token in this file, the same choice email-corporate-ticket
+    .html makes. The module bands carry a tracked mono numeral instead, and it
+    does the job the teal disc does elsewhere: it marks where a module starts
+    and tells you how many there are.
+
+    That means the icon set in assets/icons has no slot here, and a campaign
+    that has to show those discs should use one of the other five B2B
+    templates rather than being bolted into this one. Every other token name is
+    identical across all of them, so the same copy drops into any template
+    without being rewritten. Only the icons differ.
+
+  THE BODY BACKGROUND IS PINE, MATCHING THE FOOTER
+    So that on a tall window the colour below the last band continues the
+    footer instead of showing a stripe of some other colour under it. The
+    hidden preheader text is pine on pine for the same reason.
+
+    If you ever change the footer colour, change the body background and the
+    preheader colour with it. All three are the same value and they are the
+    same decision written three times.
+
+  HOW TO USE
+  1. Copy this file into your campaign folder. Never edit this original.
+  2. Delete any band marked optional that this campaign does not need, then
+     re-alternate the tints below it. Bands run from BAND n to /BAND n. Delete
+     whole bands only: a half deleted table breaks the layout in Outlook.
+  3. Replace every token. Tokens are written in double curly braces.
+  4. Search for the double curly brace before sending. Zero hits, or you ship a
+     placeholder. Nothing in these comments uses that character pair, precisely
+     so the search stays trustworthy. Keep it that way when you edit: describe a
+     token in prose rather than writing one out, or the check cries wolf and
+     people start ignoring it.
+
+  BANDS
+    1   MASTHEAD        REQUIRED
+    2   HERO            REQUIRED
+    3   ASK             REQUIRED, the payoff line and the primary CTA together
+    4   LETTER          optional, plain prose. Use it for cold outreach.
+    5   SECTION LABEL   optional
+    6   MODULE 01       optional
+    7   MODULE 02       optional
+    8   MODULE 03       optional
+    9   MODULE 04       optional
+    10  CLOSE           optional, the sign off and the secondary CTA
+    11  FOOTER          REQUIRED, legal. Never delete, never shrink.
+
+  MOBILE
+    Bands stay full bleed at every width, which needs no rule: they are already
+    100%. The only mobile work is shrinking the side padding and the headline,
+    and letting the 600px inner tables go fluid.
+
+    THE MODULE ROWS DO NOT STACK, and that is intentional. The numeral cell is
+    54px, which still leaves a readable measure at 320px, and stacking it would
+    put a lone "01" on a line of its own above the name it belongs to.
+
+  SHARED RULES LIVE IN email-corporate.html
+    These apply here unchanged and are documented once, in full, at the top of
+    that file rather than restated in six templates that would drift apart:
+
+      Image URLs      pin jsDelivr to a commit SHA. Never raw.githubusercontent,
+                      never @main. Push the bytes FIRST, then repoint the URLs,
+                      then verify against the CDN. The failure is silent.
+      WhatsApp        use api.whatsapp.com, not wa.me, and write the ampersand
+                      as an entity. WhatsApp discards a UTM, so put the campaign
+                      name in the prefilled text instead.
+      Merge tags      the unsubscribe and preferences tags are per recipient
+                      URLs the platform generates. They resolve on send and look
+                      unresolved in preview. Check a real seed send, because an
+                      unresolved tag leaves the footer looking correct while the
+                      unsubscribe link is dead, which is a legal problem.
+      Not Mailchimp?  those two tags are Mailchimp syntax. Apollo, Brevo and
+                      HubSpot each use their own. Swap both before you send.
+      Personalisation there is no inline fallback syntax for audience fields.
+                      For cold outreach, resolve tokens into fixed wording.
+
+  DO NOT REMOVE (looks like clutter, is not)
+    - the mso conditional blocks: buttons collapse to plain links in Outlook
+    - the invisible entities after the preheader: they stop Gmail pulling body
+      copy into the inbox snippet
+    - the color-scheme meta tags: they stop Apple Mail and Outlook.com auto
+      inverting a palette that was chosen deliberately
+    - inline styles: Gmail strips the style element in some contexts
+    - the bgcolor attributes: see the note above
+
+  NO EM DASHES
+    House rule. This file contains none, in markup or in comments. Recast the
+    sentence with a period, colon, comma or brackets rather than swapping the
+    character for a hyphen. Keep to it when you edit.
+
+  LIMITS
+    - Total HTML under 100 KB. Gmail clips above roughly 102 KB, which hides the
+      footer and breaks the unsubscribe link.
+    - The logo is 147x75 shown at 120px, so it is slightly soft on a retina
+      screen. A 2x export at the same path fixes that without touching markup.
+================================================================================
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <title>{{EMAIL_TITLE}}</title>
+  <!--[if mso]>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+<style type="text/css">
+  :root { color-scheme: light; supported-color-schemes: light; }
+  body,table,td,a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;}
+  table,td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
+  img{-ms-interpolation-mode:bicubic; border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+  body{margin:0 !important; padding:0 !important; width:100% !important;}
+  /* Links are the palette green. Gold is the CTA and nothing else. */
+  a{color:#1F6B54;}
+
+  @media screen and (max-width:600px){
+    /* The bands are already 100% wide, so there is nothing to unstick. Only
+       the 600px inner tables need to go fluid. */
+    .container{width:100% !important;}
+    .px{padding-left:20px !important; padding-right:20px !important;}
+    .hero-h1{font-size:30px !important; line-height:37px !important;}
+    .sec-h2{font-size:23px !important; line-height:29px !important;}
+    /* The module numeral cell narrows but does NOT stack. See the mobile note
+       at the top of this file before changing that. */
+    .mnum{width:42px !important;}
+    .foot-col{display:block !important; width:100% !important; text-align:center !important; padding:7px 0 !important;}
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; background-color:#16352C;">
+
+<!-- BAND 0: PREHEADER, REQUIRED. 40 to 90 chars, continues the subject line.
+     Pine on pine, matching the body background. -->
+<div style="display:none; font-size:1px; color:#16352C; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
+  {{PREHEADER}}
+  &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+</div>
+<!-- /BAND 0 -->
+
+<!-- BAND 1: MASTHEAD, REQUIRED. Stone.
+     The band cell fills edge to edge because it carries a background and
+     align="center". The badge cell inside must NOT fill, which is why it sits
+     in its own nested table. Both cases are in this one band. -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#ECEFE8" style="background-color:#ECEFE8;">
+  <tr>
+    <td align="center" class="px" style="padding:20px 34px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+        <tr>
+          <td align="left" valign="middle" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:18px; font-weight:bold; color:#1B2A24;">
+            <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53204c68457e9ff5c02539eb771d79d942d/assets/summer_is_here_campaign/ticketmagiclogo.png" width="120" height="61" alt="Ticket Magic" style="display:block; width:120px; height:61px; border:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:18px; font-weight:bold; color:#1B2A24;">
+          </td>
+          <td align="right" valign="middle">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right"><tr>
+              <td bgcolor="#E3E8DC" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:11px; font-weight:bold; color:#1B2A24; letter-spacing:1.5px; text-transform:uppercase; background-color:#E3E8DC; border:1px solid #D9DED0; padding:6px 11px; white-space:nowrap;">
+                {{HEADER_BADGE}}
+              </td>
+            </tr></table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- /BAND 1 -->
+
+<!-- BAND 2: HERO, REQUIRED. Paper. Display band, so centred.
+     No dark slab behind the headline. The one dark field in this email is the
+     ask band directly below, which is where the colour is doing work. -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#FBFAF6" style="background-color:#FBFAF6;">
+  <tr>
+    <td align="center" class="px" style="padding:54px 34px 48px 34px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+        <tr>
+          <td align="center">
+            <p style="margin:0 0 14px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#5F6C64;">
+              {{EYEBROW}}
+            </p>
+            <h1 class="hero-h1" style="margin:0 0 18px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:40px; line-height:46px; font-weight:bold; color:#1B2A24;">
+              {{HEADLINE}}
+            </h1>
+            <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:17px; line-height:26px; color:#44534B;">
+              {{HERO_BODY}}
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- /BAND 2 -->
+
+<!-- BAND 3: ASK, REQUIRED. Pine. The payoff line and the primary CTA together.
+     This is the only dark field in the email and the only gold in the email,
+     which is the whole point: the darkest band holds the thing you want
+     clicked.
+     {{CTA_URL}} must already carry its own query string, because the UTM below
+     is appended with an ampersand. If the CTA is a WhatsApp link, delete the
+     utm_content: WhatsApp discards it. -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#16352C" style="background-color:#16352C;">
+  <tr>
+    <td align="center" class="px" style="padding:38px 34px 42px 34px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+        <tr>
+          <td align="center" style="padding-bottom:26px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:19px; line-height:27px; font-weight:bold; color:#FFFFFF; letter-spacing:0.2px;">
+            {{PAYOFF_LINE}}
+          </td>
+        </tr>
+        <tr>
+          <td align="center">
+            <!--[if mso]>
+            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA_URL}}&amp;utm_content=hero_cta" style="height:56px;v-text-anchor:middle;width:532px;" strokecolor="#FFC24B" fillcolor="#FFC24B">
+              <w:anchorlock/><center style="color:#16352C;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;letter-spacing:0.5px;">{{CTA_TEXT}}</center>
+            </v:rect>
+            <![endif]-->
+            <!--[if !mso]><!-- -->
+            <a href="{{CTA_URL}}&amp;utm_content=hero_cta" target="_blank" style="background-color:#FFC24B; color:#16352C; display:block; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; letter-spacing:0.5px; line-height:56px; text-align:center; text-decoration:none; width:100%;">
+              {{CTA_TEXT}}
+            </a>
+            <!--<![endif]-->
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- /BAND 3 -->
+
+<!-- BAND 4: LETTER, optional. Paper. Reading band, so left aligned.
+     Plain prose, no styling tricks. This is what makes a cold email read as a
+     note from a person rather than as a campaign. Keep it to two short
+     paragraphs. -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#FBFAF6" style="background-color:#FBFAF6;">
+  <tr>
+    <td align="center" class="px" style="padding:44px 34px 42px 34px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+        <tr>
+          <td align="left">
+            <p style="margin:0 0 18px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:25px; color:#44534B;">
+              {{GREETING}}
+            </p>
+            <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:25px; color:#44534B;">
+              {{LETTER_BODY}}
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- /BAND 4 -->
+
+<!-- BAND 5: SECTION LABEL, optional. Stone. Display band, so centred.
+     A band of its own rather than a heading sitting on top of the first
+     module. It announces the set, so it gets its own section. -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#ECEFE8" style="background-color:#ECEFE8;">
+  <tr>
+    <td align="center" class="px" style="padding:36px 34px 34px 34px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+        <tr>
+          <td align="center">
+            <p style="margin:0 0 10px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#1F6B54;">
+              {{SECTION_EYEBROW}}
+            </p>
+            <h2 class="sec-h2" style="margin:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:28px; line-height:34px; font-weight:bold; color:#1B2A24;">
+              {{SECTION_TITLE}}
+            </h2>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- /BAND 5 -->
+
+<!-- BAND 6: MODULE 01, optional. Paper. Reading band, so left aligned.
+     One module per band. The numeral is the mark: there is no icon token in
+     this template. The numeral cell is fixed at 54px and does not stack on
+     mobile, it narrows to 42px.
+     To change the number of modules, delete whole bands and re-alternate the
+     tints below. Deleting a PAIR keeps the rhythm on its own. -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#FBFAF6" style="background-color:#FBFAF6;">
+  <tr>
+    <td align="center" class="px" style="padding:28px 34px 30px 34px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+        <tr>
+          <td class="mnum" width="54" valign="top" style="width:54px; font-family:'Courier New',Consolas,monospace; font-size:19px; font-weight:bold; letter-spacing:1px; color:#3A6D5A; padding-top:2px;">
+            01
+          </td>
+          <td valign="top">
+            <p style="margin:0 0 7px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:19px; font-weight:bold; color:#1B2A24;">{{M1_NAME}}</p>
+            <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#5F6C64;">{{M1_DESC}}</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- /BAND 6 -->
+
+<!-- BAND 7: MODULE 02, optional. Stone. -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#ECEFE8" style="background-color:#ECEFE8;">
+  <tr>
+    <td align="center" class="px" style="padding:28px 34px 30px 34px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+        <tr>
+          <td class="mnum" width="54" valign="top" style="width:54px; font-family:'Courier New',Consolas,monospace; font-size:19px; font-weight:bold; letter-spacing:1px; color:#3A6D5A; padding-top:2px;">
+            02
+          </td>
+          <td valign="top">
+            <p style="margin:0 0 7px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:19px; font-weight:bold; color:#1B2A24;">{{M2_NAME}}</p>
+            <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#5F6C64;">{{M2_DESC}}</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- /BAND 7 -->
+
+<!-- BAND 8: MODULE 03, optional. Paper. -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#FBFAF6" style="background-color:#FBFAF6;">
+  <tr>
+    <td align="center" class="px" style="padding:28px 34px 30px 34px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+        <tr>
+          <td class="mnum" width="54" valign="top" style="width:54px; font-family:'Courier New',Consolas,monospace; font-size:19px; font-weight:bold; letter-spacing:1px; color:#3A6D5A; padding-top:2px;">
+            03
+          </td>
+          <td valign="top">
+            <p style="margin:0 0 7px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:19px; font-weight:bold; color:#1B2A24;">{{M3_NAME}}</p>
+            <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#5F6C64;">{{M3_DESC}}</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- /BAND 8 -->
+
+<!-- BAND 9: MODULE 04, optional. Stone. -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#ECEFE8" style="background-color:#ECEFE8;">
+  <tr>
+    <td align="center" class="px" style="padding:28px 34px 30px 34px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+        <tr>
+          <td class="mnum" width="54" valign="top" style="width:54px; font-family:'Courier New',Consolas,monospace; font-size:19px; font-weight:bold; letter-spacing:1px; color:#3A6D5A; padding-top:2px;">
+            04
+          </td>
+          <td valign="top">
+            <p style="margin:0 0 7px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:19px; font-weight:bold; color:#1B2A24;">{{M4_NAME}}</p>
+            <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#5F6C64;">{{M4_DESC}}</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- /BAND 9 -->
+
+<!-- BAND 10: CLOSE, optional. Paper. Reading band, so left aligned, and the
+     secondary button is left aligned under the sign off rather than centred.
+     It is the end of a letter, not a second offer.
+     Navy is not in this palette, so the secondary CTA is an outlined button
+     rather than a filled dark one. Never fill it gold: the ask band owns the
+     only gold in the email.
+     If this points at WhatsApp, use api.whatsapp.com and delete the
+     utm_content. -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#FBFAF6" style="background-color:#FBFAF6;">
+  <tr>
+    <td align="center" class="px" style="padding:40px 34px 46px 34px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+        <tr>
+          <td align="left">
+            <p style="margin:0 0 16px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:25px; color:#44534B;">
+              {{CLOSING_ASK}}
+            </p>
+            <p style="margin:0 0 26px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:25px; color:#44534B;">
+              {{SIGNOFF}}
+            </p>
+            <!--[if mso]>
+            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA2_URL}}&amp;utm_content=footer_cta" style="height:48px;v-text-anchor:middle;width:250px;" strokecolor="#1B2A24" fillcolor="#FBFAF6">
+              <w:anchorlock/><center style="color:#1B2A24;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;">{{CTA2_TEXT}}</center>
+            </v:rect>
+            <![endif]-->
+            <!--[if !mso]><!-- -->
+            <a href="{{CTA2_URL}}&amp;utm_content=footer_cta" target="_blank" style="background-color:#FBFAF6; border:1px solid #1B2A24; color:#1B2A24; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; line-height:46px; text-align:center; text-decoration:none; width:248px;">
+              {{CTA2_TEXT}}
+            </a>
+            <!--<![endif]-->
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- /BAND 10 -->
+
+<!-- BAND 11: FOOTER, REQUIRED. Pine. Legal. Never delete, never shrink.
+     Contact details are constants: update here, not per campaign.
+     The logo sits straight on the pine with no white plate. The plaque
+     interior is opaque gold and only the rounded corners are transparent, so
+     the mark holds on a dark ground. The alt text carries the wordmark's
+     styling, so with images blocked the footer still opens on the name. -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#16352C" style="background-color:#16352C;">
+  <tr>
+    <td align="center" class="px" style="padding:36px 34px 30px 34px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+        <tr>
+          <td align="center" style="padding-bottom:20px;">
+            <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53204c68457e9ff5c02539eb771d79d942d/assets/summer_is_here_campaign/ticketmagiclogo.png" width="130" height="66" alt="Ticket Magic" style="display:block; margin:0 auto; width:130px; height:66px; border:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:20px; font-weight:bold; color:#FFFFFF;">
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom:18px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+              <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#C3D3CA; padding-right:10px;">
+                <span style="color:#9CC8B4; font-weight:bold;">Head Office</span><br>
+                Office 1506, Saheel Tower 02,<br>Al Nahda 01, Dubai
+              </td>
+              <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:19px; color:#C3D3CA;">
+                <span style="color:#9CC8B4; font-weight:bold;">Get in touch</span><br>
+                WhatsApp: <a href="https://api.whatsapp.com/send?phone=971527064878" style="color:#C3D3CA; text-decoration:none;">+971 52 706 4878</a><br>
+                <a href="mailto:support@ticketmagic.me" style="color:#C3D3CA; text-decoration:none;">support@ticketmagic.me</a>
+              </td>
+            </tr></table>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" style="padding:6px 0 16px 0; border-top:1px solid #2E4E43;">
+            <div style="padding-top:14px;">
+              <a href="https://www.facebook.com/ticketmagicdxb" style="color:#B9C9C0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Facebook</a>
+              <a href="https://www.instagram.com/ticketmagicdxb/" style="color:#B9C9C0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Instagram</a>
+              <a href="https://x.com/ticketmagicdxb" style="color:#B9C9C0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">X</a>
+              <a href="https://www.linkedin.com/company/ticketmagic/" style="color:#B9C9C0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">LinkedIn</a>
+              <a href="https://www.youtube.com/@ticketmagic6234" style="color:#B9C9C0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">YouTube</a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" style="font-family:Arial,Helvetica,sans-serif; font-size:11px; line-height:17px; color:#93A69C;">
+            {{FOOTER_TERMS}}<br>
+            {{PERMISSION_LINE}}<br>
+            Ticket Magic, Office 1506, Saheel Tower 02, Al Nahda 01, Dubai, United Arab Emirates<br>
+            <a href="*|UNSUB|*" style="color:#B9C9C0; text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
+            <a href="*|UPDATE_PROFILE|*" style="color:#B9C9C0; text-decoration:underline;">Update preferences</a><br><br>
+            {{YEAR}} &copy; Ticket Magic. All rights reserved.<br>
+            Developed by Pure Magic Information Technology Services.
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- /BAND 11 -->
+
+</body>
+</html>

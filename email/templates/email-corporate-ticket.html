@@ -1,0 +1,714 @@
+<!--
+================================================================================
+  CORPORATE TICKET EMAIL TEMPLATE, Ticket Magic
+  Paste into Mailchimp: Campaign > Design > Code your own > Paste in code
+================================================================================
+
+  WHICH TEMPLATE DO I USE?
+    email-consumer.html          offers to ticket buyers. Photo hero, product
+                                 grid with prices. Supersedes email.html.
+    email.html                   the old consumer template. Three known
+                                 defects. Do not start anything new on it.
+    email-corporate.html         B2B. Navy and white, teal, CSS gradients.
+    email-corporate-bold.html    B2B. Ink on bone, 48px left type, no gradients.
+    email-corporate-soft.html    B2B. Pale blue, baked gradient hero, pills.
+    email-corporate-rail.html    B2B. Two column indigo rail.
+    email-corporate-ticket.html  THIS FILE. B2B. The email built as an actual
+                                 ticket: petrol counterfoil, warm cream stock,
+                                 a tear line with notched edges near the foot,
+                                 and a stub carrying a serial and a barcode.
+
+  A NOTE ON THE PREVIOUS VERSION, BECAUSE THIS FILE USED TO ARGUE THE OPPOSITE
+    The first draft said the ticket idea should be "played straight", with no
+    barcode, no serial and no ticket furniture, on the grounds that a novelty
+    reads as a gimmick to a director being cold pitched. That was a judgement
+    call and it has been overruled deliberately: the brief is now to look like
+    a real ticket. This file no longer contains that argument, so nobody reads
+    a warning that contradicts what they were asked to build.
+
+    THE CAUTION BEHIND IT STILL APPLIES, though, and it is worth keeping in a
+    smaller form: the difference between a ticket and a prop is restraint in
+    the TYPE, not in the furniture. The serial and barcode are set small, in
+    the stub, in the position a real ticket puts them. They are not the hero.
+    If you enlarge them or move them above the fold, this becomes a costume.
+
+  WHAT CHANGED FROM THE FIRST VERSION, AND WHY
+    1. THE TEAR LINE MOVED TO THE FOOT. It used to sit directly under the hero,
+       where it divided nothing: a headline above and a payoff line below, with
+       no reason for either half to be separable. On a real ticket the
+       perforation is near the END, because the part you tear off is the part
+       you keep. It now sits after the close, and what follows it is a genuine
+       stub.
+    2. THERE IS NOW A STUB. Petrol ground, and it carries exactly what a stub
+       carries: a reference, a barcode, and the thing you keep it for. Here
+       that is the secondary CTA, so the metaphor does real work instead of
+       being decoration.
+    3. THE PALETTE IS WARM. It was near black on cool grey, which is austere
+       and reads as a receipt rather than a ticket. Cream card stock, deep
+       petrol ink and brass gold is what an admission ticket actually looks
+       like, and it stays close to the house navy and gold without repeating
+       any other template in the folder.
+    4. THE CORNERS ARE ROUNDED. A square card with two notches reads as a form.
+       Rounded corners plus notches read as a ticket. Outlook squares them,
+       which is fine: the notches still cut the silhouette there.
+
+  BLOCKS
+    1   PREHEADER          REQUIRED
+    2   COUNTERFOIL        REQUIRED, the petrol header band
+    3   TICKET FACE + CTA  REQUIRED
+    4   TERMS STRIP        optional, carries the payoff line
+    5   LETTER             optional, plain prose. Use it for cold outreach.
+    6   SECTION LABEL      optional
+    7   DETAIL GRID        optional, four ruled cells, two by two
+    8   CLOSE              optional
+    9   TEAR LINE          REQUIRED, it is the structure, do not delete it
+    10  STUB               REQUIRED with block 9, serial, barcode, second CTA
+    11  FOOTER             REQUIRED, legal. Never delete, never shrink.
+
+    BLOCKS 9 AND 10 ARE A PAIR. The tear line without a stub is a rule across
+    the page with nothing beneath it, and the stub without the tear line is
+    just a coloured band. Keep both or delete both, and if you delete both you
+    no longer have a ticket and should use a different template.
+
+  HOW THE TEAR LINE IS BUILT
+    A three cell row. The outer two cells are 16px wide, filled with the PAGE
+    GROUND colour and rounded on their inner corners, so they read as
+    semicircular bites taken out of the card at both edges. The middle cell
+    carries the dotted rule.
+
+    IN OUTLOOK THE NOTCHES RENDER AS SQUARES, because the Word engine ignores
+    border-radius. That is fine and was chosen over the alternatives: a notch
+    made from a background image needs an asset and a pin, and one made from
+    overlapping absolutely positioned divs does not survive email at all. A
+    square bite still cuts the silhouette.
+
+    THE NOTCH COLOUR MUST EQUAL THE PAGE GROUND. That is what makes it look
+    like the card has been cut rather than like two squares have been glued on.
+    If you change the page ground, change both notches with it.
+
+    THE PERFORATION IS A DARKER RULE THAN THE HAIRLINES, at #A9997A against the
+    grid's #CFC5AE, and that is not an inconsistency. A hairline divides
+    information and should stay quiet; a perforation is a physical feature of
+    the card and the one thing telling the reader this tears. Set at hairline
+    weight it disappeared into the cream, which was the first thing the render
+    showed. Do not quieten it back down to match the grid.
+
+  THE BARCODE IS TABLE CELLS, NOT AN IMAGE
+    41 table cells of varying width, alternating cream and petrol. No image, so
+    it needs no asset, no CDN pin and no alt text, it cannot be blocked, and it
+    renders in Outlook exactly as everywhere else.
+
+    IT IS DECORATIVE AND IT DOES NOT SCAN. Nothing is encoded in it and nothing
+    should be: a barcode in an email that looks scannable but is not would be
+    worse than none. It is ticket furniture, in the way a printed pattern is.
+    If you ever need a real scannable code, that is an image with a payload and
+    a pin, and it belongs in a transactional template rather than this one.
+
+    The bar pattern is fixed, not generated per send. It was produced once from
+    a seeded random sequence and pasted in. Do not hand edit individual bars:
+    if you want a different pattern, regenerate the whole row so the widths
+    stay in the same family.
+
+  THE SERIAL IS LITERAL TEXT, NOT A PLACEHOLDER
+    Like the field numbers in the detail grid, the serial in the stub is
+    written into the markup and edited per campaign. That is deliberate and
+    keeps this template on the same token count as the rest: a wrong serial is
+    obvious on sight, a wrong placeholder is not.
+
+    Use a real reference that means something to you, for example the segment
+    and version from the copy library. A random number is worse than nothing,
+    because someone will eventually quote it back to you.
+
+  PALETTE: TEN COLOURS, ONE JOB EACH
+    Petrol    #0F3B41   the counterfoil and the stub
+    Deep      #0A2A2E   the footer, petrol a step down
+    Stock     #F7F2E7   the ticket face, warm cream card
+    Strip     #EFE8D8   the terms strip only, stock a step down
+    Page      #DED5C1   the page ground and the notches
+    Gold      #FFC24B   ONE job: the primary CTA. Nowhere else, ever.
+    Gold edge #E0A536   a 1px rule on the gold buttons, see below
+    Rule      #CFC5AE   hairlines and the detail grid
+    Perf      #A9997A   the tear rule only, and deliberately stronger
+    Text      #2B2C27   body copy and detail values
+    Meta      #6A6355   field labels, eyebrows, detail lines
+    On petrol #FFFFFF headings, #A9C4C6 body and social, #7E9DA0 legal only
+
+    WHY WARM AND NOT COOL. The first version was near black on cool grey. It
+    was clean, and it read as a receipt or an invoice rather than as a ticket,
+    because receipts are printed on cold white thermal stock and tickets are
+    printed on warm card. The palette is doing the work the barcode cannot.
+
+    THE GOLD BUTTON CARRIES A 1px DARKER EDGE, which the other templates do not
+    need. Gold on cream is a warm figure on a warm ground and separates at a
+    ratio of only 1.44, so the edge is what gives the button a defined boundary
+    on the card. It is a shade of the same gold, not a second colour.
+
+    THE YELLOW RULE HOLDS. Gold appears on the two CTAs and nowhere else. The
+    stub is the one place it would be tempting to add a second gold element,
+    and that is exactly where the second CTA already is.
+
+  CONTRAST: MEASURED, FLAT, NOTHING TIGHT
+    No gradients, so every text colour sits on exactly one background and each
+    pair is a flat measurement. Every pair:
+
+      headline       text on stock   12.60    payoff on strip  9.99
+      body copy      text on stock   12.60    meta on strip    4.88
+      meta label     meta on stock    5.33    CTA text        7.59
+      stub heading   white on petrol 12.19    stub body       6.62
+      counterfoil    white on petrol 12.19    footer body     8.24
+      footer legal   #7E9DA0 on deep  5.22    barcode bar    10.92
+
+    The tightest pair is the meta label on the terms strip at 4.88. Everything
+    else clears 5. If you lighten the strip or the stock, re-measure that one
+    first.
+
+  GRADIENTS: WHERE THEY ARE, AND WHICH ONES SURVIVE OUTLOOK
+    This template used to have none, and said so. It has them now, and the only
+    thing that matters is that OUTLOOK 2007 THROUGH 2021 RUNS THE WORD ENGINE,
+    WHICH DOES NOT SUPPORT CSS background-image AT ALL. A CSS gradient is simply
+    absent there. So the gradients here are in three tiers, deliberately:
+
+    TIER 1, BAKED, RENDERS EVERYWHERE. The gradient circles on the counterfoil
+    and the stub are an image, assets/email/ticket-blooms.jpg, pinned to commit
+    9376804. Outlook does honour the HTML background attribute on a td, so an
+    image is the only way a gradient circle reaches every client. It is also the
+    only way it stays a CIRCLE: the Word engine ignores border-radius too, so a
+    CSS orb would be both absent and square there.
+
+      Each panel carries three things, in this order, all load bearing:
+        bgcolor="#0F3B41"     images off, and Outlook's own fallback
+        background="URL"      Outlook and everyone else
+        style="background-color; background-image:url(); background-size:cover"
+
+    TIER 2, VML, RENDERS EVERYWHERE. Both gold buttons carry a v:fill of type
+    gradient inside their mso conditional. VML gradients ARE supported by the
+    Word engine, so the buttons keep their gradient in Outlook. angle="180" is
+    top to bottom, color at the top and color2 at the bottom.
+
+    TIER 3, CSS ONLY, ALLOWED TO GO FLAT. The terms strip. It is a tonal lift
+    inside one hue family, its background-color is written FIRST, and that solid
+    is a colour the design works in on its own. Outlook gets the flat version
+    and it looks deliberate rather than broken.
+
+    THE PAGE GROUND CANNOT HAVE ONE, AND THIS IS THE INTERESTING CONSTRAINT.
+    A gradient was put on it and taken straight back off. The notches in the
+    tear line are filled with the page ground colour, which is the whole reason
+    they read as bites cut out of the card rather than as two squares glued on.
+    A gradient ground changes value down the page, so a flat notch stops
+    matching it, and matching it properly would mean knowing the pixel height of
+    the email above the tear line, which varies with the copy. Worse, Outlook
+    would paint the flat fallback and the notches WOULD match there, so the bug
+    would appear only in good clients. The page ground stays flat.
+
+    NEVER WRITE A GRADIENT WITHOUT A SOLID BEHIND IT, or Outlook renders
+    transparent. Every gradient in this file has one.
+
+    EVERY GRADIENT IS TONAL, INSIDE ONE HUE FAMILY. A gradient that swings hue
+    reads as a promotion, which is the register a cold B2B letter exists to
+    avoid. The blooms are teal on teal, the buttons gold on gold, the grounds
+    cream on cream. If you add one, stay inside a family.
+
+    THE BLOOMS ARE TEAL AND NOT GOLD, and that is not an aesthetic preference.
+    Gold has exactly one job in this palette, the CTA. A gold bloom on the
+    counterfoil would put yellow somewhere else and the button would stop being
+    the only warm thing on the page.
+
+  MEASURE CONTRAST AGAINST THE WORST END, NOT THE MIDPOINT
+    This is the trap that comes with gradients, and it is why the blooms were
+    tuned rather than eyeballed. A gradient gives text a RANGE of backgrounds
+    and the text has to clear AA against the end that fights it hardest.
+
+    White text sits on the counterfoil and the stub, so EVERY PIXEL of
+    ticket-blooms.jpg has to clear 4.5 against white, not the average and not
+    the corners. The generator refuses to write an image that fails, and it
+    re-checks after JPEG compression because compression moves pixels. That
+    guard fired once during tuning at 4.45, the blooms were dialled back, and
+    the shipped image is 5.19 at its worst pixel.
+
+    The gold buttons are dark text on a gradient, so they are checked against
+    the DARKEST stop rather than the midpoint: #0F3B41 on #F0A62C is 5.92.
+
+    IF YOU RETUNE THE BLOOMS, RERUN THE GENERATOR. Do not edit the image by
+    hand: the per pixel check is the only thing standing between a nice looking
+    counterfoil and white text at 4.1 that nobody notices.
+
+  TOKENS: 28, A STRICT SUBSET OF THE OTHER B2B TEMPLATES
+    The bold, soft and rail templates share a 32 token set. This one uses 28 of
+    them: everything except the four module icon placeholders, because the
+    detail grid has no images in it.
+
+    THE PRACTICAL EFFECT IS THAT COPY STILL DROPS IN UNCHANGED from any of the
+    other B2B templates. The four icon values simply go unused. Nothing needs
+    rewriting to move a letter onto or off this design.
+
+    THE BODY HAS ONE CDN DEPENDENCY, AND IT USED TO HAVE NONE. Adding the
+    gradient circles cost that: ticket-blooms.jpg is a real asset with a real
+    pin. The barcode is still markup rather than a picture, and there are still
+    no module icons, so this is three images against the nine outreach letters'
+    six, but it is no longer the zero it was. If the blooms ever stop being
+    worth a pinned asset, deleting the background attribute and the CSS
+    background-image from blocks 2 and 10 returns the template to flat petrol
+    and to no dependency, with nothing else to change.
+
+  IMAGES: THREE. THE LOGO TWICE, AND THE GRADIENT CIRCLES
+    Use jsDelivr pinned to a TAG or COMMIT SHA. Never raw.githubusercontent
+    (not a CDN, rate limited, blocked by some corporate filters). Never @main
+    (jsDelivr caches it up to 7 days, so a swapped image can show one version to
+    one subscriber and a different version to the next).
+
+    THE ORDER MATTERS AND THE FAILURE IS SILENT: push the new bytes FIRST, then
+    repoint every URL at the new SHA. Editing a file on disk on its own changes
+    nothing a recipient sees, because these URLs address a commit and not a
+    working tree. A squash merge breaks a pin the same way. Merge with a real
+    merge commit.
+
+  THE CTA URL TOKEN CARRIES ITS OWN QUERY STRING
+    Nothing is appended to the href. If you want a UTM, put it in the token. If
+    the CTA is a mailto or a WhatsApp link, do not, and nothing will try to for
+    you. email-corporate.html appends its own parameter and therefore quietly
+    malforms a mailto, which is what every letter in email/outreach uses.
+
+  WHATSAPP LINKS: api.whatsapp.com, NOT wa.me
+    On 2026-08-24 wa.me was found intercepted by a network content filter: it
+    resolved outside any Meta range and served a forged certificate. Because
+    wa.me is HSTS preloaded the browser offers no click-through, so the
+    recipient gets a hard security warning and stops.
+
+      https://api.whatsapp.com/send?phone=9715XXXXXXXX&amp;text=URL_ENCODED_MSG
+
+    Write the and-sign as an entity; it sits in an href. WhatsApp discards query
+    params other than its own, so a UTM there reports nothing. Put the SEGMENT
+    in the prefilled text, not the module: module names repeat across segments,
+    and once two letters lead on the same module the inbound message stops
+    telling you which one produced it.
+
+  MAILCHIMP MERGE TAGS AND PERSONALISATION
+    The two footer tags are per recipient URLs the platform generates. They
+    resolve on send and WILL look unresolved in preview. They sit inside href
+    attributes, so an unresolved tag leaves the footer looking right while the
+    unsubscribe link is dead. That is a legal problem, so check a real seed send.
+    Not Mailchimp? Apollo, Brevo and HubSpot each use their own. Swap both.
+
+    Mailchimp has no inline fallback syntax for audience fields, so a name token
+    means trusting an Audience default or shipping a blank mid sentence. For
+    cold outreach resolve tokens into fixed wording: "Hi there," cannot break.
+
+  HOW TO USE
+  1. Copy this file into your campaign folder. Never edit this original.
+  2. Delete any block marked optional that this campaign does not need. Blocks
+     run from BLOCK n to /BLOCK n. Delete whole blocks only.
+  3. Replace every placeholder. They are written in double curly braces.
+  4. Edit the serial in block 10. It is literal text, not a placeholder, so the
+     search in step 5 will not catch it.
+  5. Search the file for the double curly brace before sending. Zero hits, or
+     you ship a placeholder. Nothing in these comments uses that character
+     pair, precisely so the search stays trustworthy.
+
+  DO NOT REMOVE (looks like clutter, is not)
+    - The mso conditional blocks: buttons collapse to plain links in Outlook
+    - The two notch cells in block 9: they are the tear line
+    - The invisible entities after the preheader: they stop Gmail pulling body
+      copy into the inbox snippet
+    - color-scheme meta tags: they stop Apple Mail and Outlook.com auto
+      inverting a palette that was chosen deliberately
+    - Inline styles: Gmail strips a style element in some contexts
+    - The nested table around the badge. A background-color on an align="right"
+      cell fills the ENTIRE cell, so a bare badge stretches edge to edge.
+      email.html still has that bug; do not copy its markup here.
+    - The zeroed padding in the mobile stack rule, or the detail cells sit 14px
+      right of one another once stacked.
+
+  LIMITS
+    - Total HTML under 100 KB. Gmail clips above roughly 102 KB, which hides the
+      footer and breaks the unsubscribe link.
+    - The logo is 147x75 shown at 116px, so slightly soft on a retina screen. A
+      2x export at the same path fixes that without touching markup.
+
+  NO EM DASHES
+    House rule. This file contains none, in markup or in comments. Recast the
+    sentence with a period, colon, comma or brackets rather than swapping the
+    character for a hyphen. Keep to it when you edit.
+================================================================================
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <title>{{EMAIL_TITLE}}</title>
+  <!--[if mso]>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+<style type="text/css">
+  :root { color-scheme: light; supported-color-schemes: light; }
+  body,table,td,a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;}
+  table,td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
+  img{-ms-interpolation-mode:bicubic; border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+  body{margin:0 !important; padding:0 !important; width:100% !important;}
+  /* Links are petrol with an underline. There is no accent to spend on them
+     and a coloured link would be a hue the palette does not have. */
+  a{color:#0F3B41;}
+
+  @media screen and (max-width:600px){
+    .container{width:100% !important;}
+    /* Zeroing the horizontal padding is the point of this rule. Without it the
+       14px gutter survives the stack and the right hand detail cells sit 14px
+       in from the left. email.html has this bug latently. */
+    .stack{display:block !important; width:100% !important; max-width:100% !important; padding-left:0 !important; padding-right:0 !important;}
+    /* Once stacked, the vertical divider between the two columns has to go or
+       it draws a stray line down the middle of a full width cell. */
+    .celldiv{border-left:0 !important;}
+    .hero-h1{font-size:29px !important; line-height:36px !important;}
+    .px{padding-left:22px !important; padding-right:22px !important;}
+    .foot-col{display:block !important; width:100% !important; text-align:center !important; padding:7px 0 !important;}
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; background-color:#DED5C1;">
+
+<!-- BLOCK 1: PREHEADER, REQUIRED. 40 to 90 chars, continues the subject line. -->
+<div style="display:none; font-size:1px; color:#DED5C1; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
+  {{PREHEADER}}
+  &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+</div>
+<!-- /BLOCK 1 -->
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#DED5C1;">
+  <tr>
+    <td align="center" style="padding:34px 12px;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#F7F2E7;">
+
+        <!-- BLOCK 2: COUNTERFOIL, REQUIRED.
+             The petrol band at the head of the ticket. Logo left, badge right.
+             The badge sits in its own nested table: a background-color on an
+             align="right" cell fills the entire cell, so a bare badge would
+             stretch edge to edge. See the DO NOT REMOVE note. -->
+        <tr>
+          <td class="px" bgcolor="#0F3B41" background="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@93768044cfdbc6ac20060976564fa444a0a639a4/assets/email/ticket-blooms.jpg" style="background-color:#0F3B41; background-image:url('https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@93768044cfdbc6ac20060976564fa444a0a639a4/assets/email/ticket-blooms.jpg'); background-position:left top; background-repeat:no-repeat; background-size:cover; border-radius:8px 8px 0 0; padding:22px 30px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="left" valign="middle" style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#FFFFFF;">
+                  <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53204c68457e9ff5c02539eb771d79d942d/assets/summer_is_here_campaign/ticketmagiclogo.png" width="116" height="59" alt="Ticket Magic" style="display:block; width:116px; height:59px; border:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; font-weight:bold; color:#FFFFFF;">
+                </td>
+                <td align="right" valign="middle">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right"><tr>
+                    <td style="font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:10px; font-weight:bold; color:#FFFFFF; letter-spacing:2px; text-transform:uppercase; border:1px solid #3F6B70; padding:7px 12px; white-space:nowrap;">
+                      {{HEADER_BADGE}}
+                    </td>
+                  </tr></table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <!-- /BLOCK 2 -->
+
+        <!-- BLOCK 3: TICKET FACE + PRIMARY CTA, REQUIRED.
+             Type on card stock. There is no dark hero panel: the counterfoil
+             above is the dark element and a second one would leave the ticket
+             face with no face.
+             {{CTA_URL}} is the WHOLE href. Nothing is appended to it. -->
+        <tr>
+          <td class="px" align="left" style="background-color:#F7F2E7; padding:38px 30px 34px 30px;">
+            <p style="margin:0 0 14px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#6A6355;">
+              {{EYEBROW}}
+            </p>
+            <h1 class="hero-h1" style="margin:0 0 16px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:36px; line-height:44px; mso-line-height-rule:exactly; font-weight:bold; color:#2B2C27;">
+              {{HEADLINE}}
+            </h1>
+            <p style="margin:0 0 28px 0; font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:26px; color:#2B2C27;">
+              {{HERO_BODY}}
+            </p>
+            <!--[if mso]>
+            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA_URL}}" style="height:52px;v-text-anchor:middle;width:268px;" strokecolor="#E0A536" fillcolor="#FFC24B">
+              <v:fill type="gradient" color="#FFD77A" color2="#F0A62C" angle="180" />
+              <w:anchorlock/><center style="color:#0F3B41;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;">{{CTA_TEXT}}</center>
+            </v:rect>
+            <![endif]-->
+            <!--[if !mso]><!-- -->
+            <a href="{{CTA_URL}}" target="_blank" style="background-color:#FFC24B; background-image:linear-gradient(180deg,#FFD77A 0%,#FFC24B 52%,#F0A62C 100%); border:1px solid #E0A536; color:#0F3B41; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; line-height:50px; text-align:center; text-decoration:none; width:266px;">
+              {{CTA_TEXT}}
+            </a>
+            <!--<![endif]-->
+          </td>
+        </tr>
+        <!-- /BLOCK 3 -->
+
+        <!-- BLOCK 4: TERMS STRIP, OPTIONAL.
+             The payoff line, set the way a conditions line is set on a real
+             ticket: small, uppercase, letterspaced. Quiet on purpose.
+             Its ground is a step darker than the ticket face so it reads as a
+             printed panel rather than as a gap. Carry the payoff here and do
+             NOT repeat that sentence in the body. If there is no real
+             deadline, do not invent one. Invented scarcity in a B2B letter
+             reads as a mailshot and costs more credibility than it buys. -->
+        <tr>
+          <td class="px" align="center" style="background-color:#EFE8D8; background-image:linear-gradient(180deg,#F4EEE1 0%,#EAE2CF 100%); border-top:1px solid #CFC5AE; border-bottom:1px solid #CFC5AE; padding:16px 30px; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; line-height:19px; font-weight:bold; letter-spacing:1.4px; text-transform:uppercase; color:#0F3B41;">
+            {{PAYOFF_LINE}}
+          </td>
+        </tr>
+        <!-- /BLOCK 4 -->
+
+        <!-- BLOCK 5: LETTER, OPTIONAL.
+             Plain prose, no styling tricks. This is what makes a cold email
+             read as a note from a person rather than as a campaign. Keep it to
+             two short paragraphs. -->
+        <tr>
+          <td class="px" style="background-color:#F7F2E7; padding:32px 30px 4px 30px;">
+            <p style="margin:0 0 16px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:25px; color:#2B2C27;">
+              {{GREETING}}
+            </p>
+            <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:25px; color:#2B2C27;">
+              {{LETTER_BODY}}
+            </p>
+          </td>
+        </tr>
+        <!-- /BLOCK 5 -->
+
+        <!-- BLOCK 6: SECTION LABEL, OPTIONAL -->
+        <tr>
+          <td class="px" align="left" style="background-color:#F7F2E7; padding:30px 30px 0 30px;">
+            <p style="margin:0 0 8px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#6A6355;">
+              {{SECTION_EYEBROW}}
+            </p>
+            <h2 style="margin:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:25px; line-height:32px; mso-line-height-rule:exactly; font-weight:bold; color:#2B2C27;">
+              {{SECTION_TITLE}}
+            </h2>
+          </td>
+        </tr>
+        <!-- /BLOCK 6 -->
+
+        <!-- BLOCK 7: DETAIL GRID, OPTIONAL. THE SIGNATURE BLOCK.
+             Four ruled cells in a two by two grid, set the way the back of a
+             ticket sets out gate, seat and time: a tiny field number, a value,
+             and a line of detail. NO boxes, NO backgrounds, NO icons, NO
+             rounded corners. The rules do all the dividing.
+
+             The field numbers are literal text, not placeholders, so
+             renumbering is a manual edit. That is deliberate: a wrong number
+             is obvious, a wrong placeholder is not.
+
+             The vertical divider is on the RIGHT hand cells and is removed on
+             mobile by the celldiv class, or it draws a stray line down the
+             middle of a full width cell once the columns stack. -->
+        <tr>
+          <td class="px" style="background-color:#F7F2E7; padding:22px 30px 0 30px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 14px 0 0; border-top:1px solid #CFC5AE;">
+                <p style="margin:18px 0 7px 0; font-family:'Courier New',Courier,monospace; font-size:11px; letter-spacing:2px; color:#6A6355;">01</p>
+                <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; mso-line-height-rule:exactly; font-weight:bold; color:#2B2C27;">{{M1_NAME}}</p>
+                <p style="margin:0 0 20px 0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#6A6355;">{{M1_DESC}}</p>
+              </td>
+
+              <td class="stack celldiv" width="50%" valign="top" style="padding:0 0 0 14px; border-top:1px solid #CFC5AE; border-left:1px solid #CFC5AE;">
+                <p style="margin:18px 0 7px 0; font-family:'Courier New',Courier,monospace; font-size:11px; letter-spacing:2px; color:#6A6355;">02</p>
+                <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; mso-line-height-rule:exactly; font-weight:bold; color:#2B2C27;">{{M2_NAME}}</p>
+                <p style="margin:0 0 20px 0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#6A6355;">{{M2_DESC}}</p>
+              </td>
+
+            </tr></table>
+          </td>
+        </tr>
+        <tr>
+          <td class="px" style="background-color:#F7F2E7; padding:0 30px 0 30px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+
+              <td class="stack" width="50%" valign="top" style="padding:0 14px 0 0; border-top:1px solid #CFC5AE;">
+                <p style="margin:18px 0 7px 0; font-family:'Courier New',Courier,monospace; font-size:11px; letter-spacing:2px; color:#6A6355;">03</p>
+                <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; mso-line-height-rule:exactly; font-weight:bold; color:#2B2C27;">{{M3_NAME}}</p>
+                <p style="margin:0 0 20px 0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#6A6355;">{{M3_DESC}}</p>
+              </td>
+
+              <td class="stack celldiv" width="50%" valign="top" style="padding:0 0 0 14px; border-top:1px solid #CFC5AE; border-left:1px solid #CFC5AE;">
+                <p style="margin:18px 0 7px 0; font-family:'Courier New',Courier,monospace; font-size:11px; letter-spacing:2px; color:#6A6355;">04</p>
+                <p style="margin:0 0 5px 0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:17px; line-height:23px; mso-line-height-rule:exactly; font-weight:bold; color:#2B2C27;">{{M4_NAME}}</p>
+                <p style="margin:0 0 20px 0; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:22px; color:#6A6355;">{{M4_DESC}}</p>
+              </td>
+
+            </tr></table>
+          </td>
+        </tr>
+        <tr>
+          <td class="px" style="background-color:#F7F2E7; padding:0 30px 0 30px; font-size:0; line-height:0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+              <td style="border-top:1px solid #CFC5AE; font-size:0; line-height:0; height:1px;">&nbsp;</td>
+            </tr></table>
+          </td>
+        </tr>
+        <!-- /BLOCK 7 -->
+
+        <!-- BLOCK 8: CLOSE, OPTIONAL. The last thing on the ticket face. -->
+        <tr>
+          <td class="px" style="background-color:#F7F2E7; padding:28px 30px 34px 30px;">
+            <p style="margin:0 0 14px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:25px; color:#2B2C27;">
+              {{CLOSING_ASK}}
+            </p>
+            <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:25px; color:#2B2C27;">
+              {{SIGNOFF}}
+            </p>
+          </td>
+        </tr>
+        <!-- /BLOCK 8 -->
+
+        <!-- BLOCK 9: TEAR LINE, REQUIRED. THIS IS THE STRUCTURE.
+             It sits HERE, near the foot, and not under the hero, because on a
+             real ticket the perforation is near the end: the part you tear off
+             is the part you keep. Everything above is the ticket, everything
+             below is the stub.
+             Three cells. The outer two are 16px of PAGE GROUND colour, rounded
+             on their inner corners, so they read as bites cut out of the card
+             at both edges. Outlook squares them, which still cuts the
+             silhouette. THE NOTCH COLOUR MUST EQUAL THE PAGE GROUND. -->
+        <tr>
+          <td style="padding:0; font-size:0; line-height:0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+              <td width="16" height="24" style="width:16px; height:24px; background-color:#DED5C1; border-radius:0 999px 999px 0; font-size:0; line-height:0;">&nbsp;</td>
+              <td height="24" style="height:24px; background-color:#F7F2E7; border-bottom:2px dotted #A9997A; font-size:0; line-height:0;">&nbsp;</td>
+              <td width="16" height="24" style="width:16px; height:24px; background-color:#DED5C1; border-radius:999px 0 0 999px; font-size:0; line-height:0;">&nbsp;</td>
+            </tr></table>
+          </td>
+        </tr>
+        <!-- /BLOCK 9 -->
+
+        <!-- BLOCK 10: STUB, REQUIRED with block 9.
+             Petrol ground, and it carries what a stub carries: a reference, a
+             barcode, and the thing you keep it for. Here that is the secondary
+             CTA, so the metaphor is doing work rather than decorating.
+
+             THE SERIAL IS LITERAL TEXT. Edit it per campaign, and use a real
+             reference such as the segment and version from the copy library.
+             The double curly brace search will not catch it.
+
+             THE BARCODE IS 41 TABLE CELLS, not an image, so it needs no asset,
+             no pin and no alt text, and it renders in Outlook. IT IS
+             DECORATIVE AND DOES NOT SCAN. Nothing is encoded and nothing
+             should be. Do not hand edit single bars; regenerate the row if you
+             want a different pattern.
+             {{CTA2_URL}} is the whole href. Nothing is appended to it. -->
+        <tr>
+          <td class="px" bgcolor="#0F3B41" background="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@93768044cfdbc6ac20060976564fa444a0a639a4/assets/email/ticket-blooms.jpg" style="background-color:#0F3B41; background-image:url('https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@93768044cfdbc6ac20060976564fa444a0a639a4/assets/email/ticket-blooms.jpg'); background-position:left top; background-repeat:no-repeat; background-size:cover; padding:26px 30px 28px 30px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="left" valign="top" style="font-family:'Courier New',Courier,monospace; font-size:11px; line-height:18px; letter-spacing:1.5px; color:#A9C4C6; padding-bottom:16px;">
+                  No. TM-2026-S02-VA
+                </td>
+              </tr>
+              <tr>
+                <td align="left" valign="top" style="padding-bottom:18px; font-size:0; line-height:0;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" height="34" style="height:34px;"><tr>
+                <td width="7" style="width:7px; background-color:#F7F2E7;">&nbsp;</td><td width="7" style="width:7px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="5" style="width:5px; background-color:#F7F2E7;">&nbsp;</td><td width="3" style="width:3px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="4" style="width:4px; background-color:#F7F2E7;">&nbsp;</td><td width="3" style="width:3px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="3" style="width:3px; background-color:#F7F2E7;">&nbsp;</td><td width="5" style="width:5px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="7" style="width:7px; background-color:#F7F2E7;">&nbsp;</td><td width="5" style="width:5px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="3" style="width:3px; background-color:#F7F2E7;">&nbsp;</td><td width="4" style="width:4px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="3" style="width:3px; background-color:#F7F2E7;">&nbsp;</td><td width="5" style="width:5px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="3" style="width:3px; background-color:#F7F2E7;">&nbsp;</td><td width="3" style="width:3px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="7" style="width:7px; background-color:#F7F2E7;">&nbsp;</td><td width="7" style="width:7px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="5" style="width:5px; background-color:#F7F2E7;">&nbsp;</td><td width="3" style="width:3px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="3" style="width:3px; background-color:#F7F2E7;">&nbsp;</td><td width="5" style="width:5px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="4" style="width:4px; background-color:#F7F2E7;">&nbsp;</td><td width="5" style="width:5px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="3" style="width:3px; background-color:#F7F2E7;">&nbsp;</td><td width="5" style="width:5px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="5" style="width:5px; background-color:#F7F2E7;">&nbsp;</td><td width="4" style="width:4px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="4" style="width:4px; background-color:#F7F2E7;">&nbsp;</td><td width="7" style="width:7px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="4" style="width:4px; background-color:#F7F2E7;">&nbsp;</td><td width="3" style="width:3px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="7" style="width:7px; background-color:#F7F2E7;">&nbsp;</td><td width="4" style="width:4px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="3" style="width:3px; background-color:#F7F2E7;">&nbsp;</td><td width="7" style="width:7px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="5" style="width:5px; background-color:#F7F2E7;">&nbsp;</td><td width="3" style="width:3px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="7" style="width:7px; background-color:#F7F2E7;">&nbsp;</td><td width="7" style="width:7px; background-color:#0F3B41;">&nbsp;</td>
+                <td width="3" style="width:3px; background-color:#F7F2E7;">&nbsp;</td>
+                  </tr></table>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" valign="top">
+                  <!--[if mso]>
+                  <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA2_URL}}" style="height:46px;v-text-anchor:middle;width:236px;" strokecolor="#E0A536" fillcolor="#FFC24B">
+                    <v:fill type="gradient" color="#FFD77A" color2="#F0A62C" angle="180" />
+                    <w:anchorlock/><center style="color:#0F3B41;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;">{{CTA2_TEXT}}</center>
+                  </v:rect>
+                  <![endif]-->
+                  <!--[if !mso]><!-- -->
+                  <a href="{{CTA2_URL}}" target="_blank" style="background-color:#FFC24B; background-image:linear-gradient(180deg,#FFD77A 0%,#FFC24B 52%,#F0A62C 100%); border:1px solid #E0A536; color:#0F3B41; display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; line-height:44px; text-align:center; text-decoration:none; width:234px;">
+                    {{CTA2_TEXT}}
+                  </a>
+                  <!--<![endif]-->
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <!-- /BLOCK 10 -->
+
+        <!-- BLOCK 11: FOOTER, REQUIRED. Legal. Never delete, never shrink.
+             Petrol a step down, so the stub and the footer read as one dark
+             foot to the ticket without being flat against each other.
+             Contact details are constants: update here, not per campaign.
+             The logo sits straight on the ground with no white plate. The
+             plaque interior is opaque gold and only the rounded corners are
+             transparent, so the mark holds on a dark ground. The alt text
+             carries the wordmark styling, so with images blocked the footer
+             still opens on the name rather than on a gap. -->
+        <tr>
+          <td class="px" style="background-color:#0A2A2E; border-radius:0 0 8px 8px; padding:32px 30px 28px 30px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="center" style="padding-bottom:20px;">
+                  <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@ec8ba53204c68457e9ff5c02539eb771d79d942d/assets/summer_is_here_campaign/ticketmagiclogo.png" width="126" height="64" alt="Ticket Magic" style="display:block; margin:0 auto; width:126px; height:64px; border:0; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:20px; font-weight:bold; color:#FFFFFF;">
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:18px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                    <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:20px; color:#A9C4C6; padding-right:10px;">
+                      <span style="color:#FFFFFF; font-weight:bold;">Head Office</span><br>
+                      Office 1506, Saheel Tower 02,<br>Al Nahda 01, Dubai
+                    </td>
+                    <td class="foot-col" width="50%" valign="top" style="font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:20px; color:#A9C4C6;">
+                      <span style="color:#FFFFFF; font-weight:bold;">Get in touch</span><br>
+                      WhatsApp: <a href="https://api.whatsapp.com/send?phone=971527064878" style="color:#A9C4C6; text-decoration:none;">+971 52 706 4878</a><br>
+                      <a href="mailto:support@ticketmagic.me" style="color:#A9C4C6; text-decoration:none;">support@ticketmagic.me</a>
+                    </td>
+                  </tr></table>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="padding:6px 0 16px 0; border-top:1px solid #245055;">
+                  <div style="padding-top:16px;">
+                    <a href="https://www.facebook.com/ticketmagicdxb" style="color:#A9C4C6; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Facebook</a>
+                    <a href="https://www.instagram.com/ticketmagicdxb/" style="color:#A9C4C6; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Instagram</a>
+                    <a href="https://x.com/ticketmagicdxb" style="color:#A9C4C6; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">X</a>
+                    <a href="https://www.linkedin.com/company/ticketmagic/" style="color:#A9C4C6; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">LinkedIn</a>
+                    <a href="https://www.youtube.com/@ticketmagic6234" style="color:#A9C4C6; font-family:'Trebuchet MS',Tahoma,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">YouTube</a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="font-family:Arial,Helvetica,sans-serif; font-size:11px; line-height:18px; color:#7E9DA0;">
+                  {{FOOTER_TERMS}}<br>
+                  {{PERMISSION_LINE}}<br>
+                  Ticket Magic, Office 1506, Saheel Tower 02, Al Nahda 01, Dubai, United Arab Emirates<br>
+                  <a href="*|UNSUB|*" style="color:#A9C4C6; text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
+                  <a href="*|UPDATE_PROFILE|*" style="color:#A9C4C6; text-decoration:underline;">Update preferences</a><br><br>
+                  {{YEAR}} &copy; Ticket Magic. All rights reserved.<br>
+                  Developed by Pure Magic Information Technology Services.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <!-- /BLOCK 11 -->
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

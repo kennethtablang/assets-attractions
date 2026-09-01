@@ -8,6 +8,11 @@ Public asset repository for **Dubai Ticket Magic / Pure Magic** marketing campai
 
 The full operating system this repo supports is documented in [`docs/marketing-campaign-os.md`](docs/marketing-campaign-os.md).
 
+**Photomagic runs a separate pipeline.** Photomagic (photomagic.io) is a different
+product with a different audience, sender, template and Mailchimp list. Its workflow is
+[`docs/photomagic-campaign-workflow.md`](docs/photomagic-campaign-workflow.md); do not
+read the Ticket Magic operating system as if it covers it.
+
 ---
 
 ## Folder structure
