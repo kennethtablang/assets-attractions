@@ -83,16 +83,17 @@ a two-cell average against single cells.
 
 ## Before this can send
 
-Images are pinned to **`b0c928e`**, the commit that added `assets/photomagic/`
-and nothing else. Searching any of the three files for `{{` now returns **one
+Images are pinned to **`79584fd`**, the head of this branch and the first commit
+that carries every asset the three files reference, `logo-photomagic.png`
+included. Searching any of the three files for `{{` now returns **one
 line**: the postal address.
 
 | | Status |
 |---|---|
-| `{{ASSET_SHA}}` ×7 | **Resolved.** Pinned to `b0c928e`. |
+| `{{ASSET_SHA}}` ×7 | **Resolved.** Pinned to `79584fd`. |
 | `{{POSTAL_ADDRESS}}` | **Outstanding.** photomagic.io publishes a phone number and an email address and no postal address. One is legally required in bulk commercial email. It cannot be invented or borrowed from Ticket Magic's office. |
 
-**The pins cannot resolve until the branch is pushed.** Until `b0c928e` is on
+**The pins cannot resolve until the branch is pushed.** Until `79584fd` is on
 origin, jsDelivr has no commit to serve and every image is a broken box. After
 pushing:
 
