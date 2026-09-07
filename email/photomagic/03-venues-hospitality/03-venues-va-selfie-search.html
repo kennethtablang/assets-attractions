@@ -1,0 +1,723 @@
+<!--
+  SUBJECT A  🏨 Every guest finds themselves
+  SUBJECT B  👥 Thousands of photos, sorted
+  PREVIEW    One selfie, and every photo that guest is in.
+================================================================================
+  PHOTOMAGIC OUTREACH: Segment 03, Venues and hospitality
+  VERSION A, the control, leads on AI SELFIE SEARCH
+
+  Campaign ID   PM-2026-09-VENUES
+  UTM campaign  photomagic_venues_2026
+  Layout        email/templates/email-photomagic-card.html, the DARK card, by
+                way of ../02-event-planners-teams/
+  Audience      ../apollo-audience-targeting.md, section 3, "03. Venues and
+                hospitality"
+  Plan          ../03-venues-hospitality/README.md
+  Workflow      ../../../docs/photomagic-campaign-workflow.md
+
+  THIS IS A PHOTOMAGIC LETTER AND NOT A TICKET MAGIC ONE. Different product,
+  different domain, different sender, different WhatsApp number, different
+  unsubscribe list. Nothing from ../../outreach/ belongs in here: not the navy
+  and teal palette, not the boarding pass perforation, not the Ticket Magic
+  wordmark, not the Saheel Tower address, not support@ticketmagic.me, and not
+  the 971527064878 or 971529521204 numbers. Those strings are named in this
+  comment on purpose, as the things not to use, so any grep for them must be
+  scoped below the markup declaration or it hits this paragraph and people
+  learn to ignore a check worth keeping.
+
+  THE BODY IS A CLONE OF SEGMENT 02, NOT OF THE TEMPLATE
+    Built from ../02-event-planners-teams/02-event-planners-va-same-day.html,
+    which was itself built from ../01-launch/. Cloning the shipped sibling is
+    the house rule across this repository, and it is why these campaigns are
+    guaranteed to share a layout rather than merely intended to: same blocks,
+    same order, same measurements, same feature shots, same 441-line body.
+
+    IF YOU RESTYLE ONE, RESTYLE ALL OF THEM. That is now campaign 01, segment
+    02, and segments 03, 04 and 05: a padding change here that does not land in
+    the others leaves campaigns that look like one brand in the repo and like
+    several in an inbox.
+
+    WHAT MOVED FROM SEGMENT 02, and nothing else did:
+
+      1 title  2 preheader  3 hero chip  4 headline, including which words
+      carry the orange span  5 hero subhead  6 opening card heading  7 opening
+      card paragraph  8 the lead line above the primary button  9 the closing
+      band heading  10 the closing band paragraph  11 the permission line
+      12 utm_campaign and utm_content on both buttons
+
+    HELD BYTE-IDENTICAL TO SEGMENT 02: the header bar and badge, all four
+    feature shots with their names, captions and alt text, both benefit columns
+    and all eight bullets, the three How It Works steps, the band photograph,
+    the testimonial, the whole pricing strip, both button labels, both
+    destinations, the footer, and every measurement.
+
+    Segments 04 and 05 were cut from this same clone. SEGMENT 04 DEPARTS FROM
+    THE HELD-IDENTICAL BODY IN NINE LINES and its header says why; this file
+    and segment 05 do not depart from it at all except where noted there.
+
+  THE LIST IS COLD AND THE LAYOUT IS THE WARM ONE
+    The workflow doc pairs the dark card with a warm list and pairs cold
+    outreach with email-photomagic.html, the flat white letter. This campaign
+    uses the card layout on an Apollo-sourced list, which is the same
+    deliberate departure segment 02 made and recorded.
+
+    WHAT THAT COSTS, so nobody is surprised by the numbers: a stranger's first
+    email looking like a product announcement sets a different expectation than
+    a plain note from a person, and cold reply rates on a designed email are
+    usually lower than on a plain one even when the click rate is higher.
+
+    JUDGE THIS AGAINST SEGMENT 02 AND CAMPAIGN 01, which share its layout,
+    rather than against the EMS cold letters in ../../outreach/, which do not.
+    If the reply rate comes back poor, THE LAYOUT IS THE FIRST THING TO TEST,
+    NOT THE COPY: a flat version of the winning letter is a cheap experiment
+    and email-photomagic.html already exists for it.
+
+  WHY VERSION A LEADS ON SELFIE SEARCH
+    The plan predicts it wins here: high guest counts are exactly where face
+    search earns its keep, and a ballroom at capacity is the clearest version
+    of the problem it solves. Versions B and C, when they are built, are
+    same-day delivery and private galleries, and they are challengers. If a
+    challenger wins, the targeting doc is wrong about this segment, which is a
+    more useful finding than a feature preference, and it is written down
+    before the send rather than after for that reason.
+
+    CLIENT PHOTO SELECTION IS THE FEATURE NO VERSION HERE LEADS ON,
+    deliberately. A venue hosts the event, it does not proof the shoot. It
+    still appears in the showcase and in the benefit columns, because those
+    describe the product rather than the pitch.
+
+  THE BUYER SITS IN TWO DIFFERENT CHAIRS
+    The plan's title list runs from Director of Sales and Marketing to Banquet
+    Manager, and those two people read this letter differently. A banquet
+    manager wants the gate to move. A marketing manager wants the content. This
+    copy leans marketing, which matches the plan's own lean.
+
+    SO CHECK WHICH TITLES APOLLO ACTUALLY RETURNED BEFORE READING THE RESULT. A
+    weak number on an operations-heavy list means the list, not the message.
+
+  WHERE THE SHARED NOTES LIVE
+    The palette, the floating card construction, the Raleway fallback stack,
+    what Outlook does with the radial hero, the jsDelivr pinning rule, the
+    api.whatsapp.com decision and the Mailchimp merge tag notes are documented
+    once, at the top of email/templates/email-photomagic-card.html. They are
+    NOT repeated here. What follows is only what is specific to this letter.
+
+  SET IN THE SENDING TOOL (these are not in the HTML)
+    Subject     the two SUBJECT lines at the top of this file.
+    Preheader   the PREVIEW line at the top of this file. 45 chars.
+    Reply-To    inquiry@photomagic.io, from a photomagic.io address,
+                authenticated as photomagic.io. NEVER a Ticket Magic inbox.
+
+  THE SUBJECT LINES, AND WHY THERE ARE TWO
+      A  Every guest finds themselves   30 chars with the emoji, the promise
+      B  Thousands of photos, sorted    29 chars with the emoji, the problem
+
+    THE AXIS is the guest's experience against the venue's pile. A is what the
+    marketing manager wants to be able to say. B is what the operations side
+    actually feels. The winner says which chair this list is sitting in, which
+    is the same question the targeting note above raises.
+
+    PICK ONE AND KEEP THE SPARE FOR THE RESEND unless the list is large. Three
+    versions split two ways is six cells out of one UAE hospitality search, and
+    that is not a lot of addresses per cell. If you do run the subject test,
+    run it on all three versions or you are comparing a two-cell average
+    against single cells.
+
+    EMOJI. One per subject, at the front, where it survives truncation. Both
+    are single code point emoji (U+1F3E8 and U+1F465) with no variation
+    selector, so no client is left choosing between a text glyph and a colour
+    glyph. NEITHER APPEARS ANYWHERE ELSE IN THE PHOTOMAGIC PIPELINE: campaign
+    01 and segment 02 between them use U+26A1, U+2728, U+1F4C1, U+1F4C5, U+1F4F8, U+1F50D, U+1F512, U+1F550, U+1F933.
+    A contact who lands on two of our lists should not get two letters wearing
+    the same emoji.
+
+    Both sit at or under 30 characters. A phone inbox shows roughly 35 before
+    it truncates, so these land whole.
+
+    Judge by REPLY RATE, not open rate. Apple Mail Privacy Protection inflates
+    opens enough that a subject can win the open and lose the send.
+
+    THIS FILE IS UTF-8, NOT ASCII, because of those two emoji. Copy the
+    subjects out of here rather than retyping them.
+
+  THE HERO CHIP IS THE VERSION MARKER
+    "AI Selfie Search". Campaign 01 uses that chip for "Now Live", which is a
+    launch announcement and says nothing on a cold letter, so it carries the
+    feature under test instead. It is the one place above the fold where this
+    segment's three versions will differ visibly, so a reply that quotes it
+    tells you which version produced it.
+
+    THE HEADER BADGE IS NOT THE MARKER and is identical everywhere. It says
+    "Free Plan Included", which is the offer, not the version. It also carries
+    class="hide-sm" and drops out at 320px, because the wordmark has to keep
+    its width.
+
+  THE OFFER: FREE PLAN, NOT A SEVEN DAY TRIAL
+    Campaign 01 puts "Free 7 Day Trial" in the badge and then shows a pricing
+    strip whose first tier is a PERMANENT free plan. Those are two different
+    offers one screen apart. Segment 02 fixed that by saying "Free Plan
+    Included" and leading the button on the free plan, which is what the strip
+    actually shows, and this letter inherits the fix.
+
+    IF PHOTOMAGIC GENUINELY RUNS A SEVEN DAY TRIAL ON TOP OF THE FREE TIER,
+    campaign 01 is right and this is worth reverting. Check the live signup
+    flow, not the marketing page, then make every campaign say the same thing.
+
+  PRICES GO STALE AND A SENT EMAIL IS FROZEN
+    The strip says Free $0, Pro $55, Corporate $150 with their quotas, read off
+    the live page on 2026-09-01 and inherited unchanged from segment 02.
+    RE-CHECK EVERY FIGURE ON SEND DAY. A wrong price in an inbox is a refund
+    conversation later. Enterprise is a contact-us tier and stays on the
+    pricing page, not in a strip that has to stack on a phone.
+
+  IMAGES: SEVEN URLS, ALL PINNED TO 79584fd AND ALL VERIFIED
+    Verified against the CDN on 2026-09-03, not against disk: every URL
+    returned HTTP 200 with an image content type, and the served bytes match
+    the files in assets/photomagic/ by sha256, not merely by length.
+
+      logo-photomagic.png                             12052 bytes
+      photomagic-logo-white-682x162.png                9514 bytes
+      photomagic-feature-instant-sharing-580x580.jpg  41352 bytes
+      photomagic-feature-selfie-search-580x580.jpg    41627 bytes
+      photomagic-feature-photo-selection-580x580.jpg  39858 bytes
+      photomagic-feature-secure-gallery-580x580.jpg   39481 bytes
+      photomagic-band-photographer-1100x550.jpg       44323 bytes
+
+    THE HEADER WORDMARK IS logo-photomagic.png AND THE FOOTER IS THE WHITE
+    FILE. The header bar is white so the colour mark is legible; the footer is
+    on the violet ground where the colour mark disappears. Not interchangeable.
+
+    MERGE WITH A REAL MERGE COMMIT, NOT A SQUASH. A squash replays the asset
+    bytes under a new commit and leaves this pin dangling at a SHA on no
+    branch. jsDelivr serves from cache for a while and then stops: it passes
+    every check today and fails silently later.
+
+  THE TESTIMONIAL IS NOT SEGMENT SPECIFIC, ON PURPOSE
+    Steevan Vas, verbatim from photomagic.io, inherited from segment 02. It is
+    the only attributed review this repository holds, and the template's rule
+    is attributed quotes only: an unattributed quote in a cold B2B email reads
+    as invented, and this reader is one search away from checking it on the
+    site.
+
+    A venue-specific quote would be better and does not exist yet. Get one in
+    writing from a hotel or ballroom client and swap it in. Do not write one.
+
+  PERSONALISATION: NONE, DELIBERATELY
+    Every recipient gets byte-identical copy. There is no audience field to
+    create, no default value to set, and no way for a blank to appear mid
+    sentence. Mailchimp has no inline fallback syntax for audience fields.
+
+  LINKS
+    Primary CTA     https://app.photomagic.io/signup with the campaign UTMs and
+                    utm_content=card_cta_va_selfie_search
+    Closing CTA     https://photomagic.io/ with the same campaign UTMs and
+                    utm_content=closing_cta_va_selfie_search
+
+    THE VERSION RIDES IN utm_content ON BOTH BUTTONS, which is the improvement
+    segment 02 made over campaign 01 and it costs nothing: same layout, same
+    destinations, one longer string. Campaign 01 sends card_cta from all three
+    of its versions and cannot tell them apart; consider backfilling it.
+
+    The subject variant is still invisible in link data. Read it off the
+    sending report.
+
+    The footer WhatsApp number is 971582591702, which is PHOTOMAGIC'S.
+    api.whatsapp.com, never wa.me: see the template for the forged certificate
+    observed on 2026-08-24. There is no X account and no YouTube channel, so
+    three social links is what exists. Do not pad the row for symmetry.
+
+  SENDING
+    Split the segment into EVEN RANDOM THIRDS once B and C exist, all at the
+    same time of day. Sending C a week later to non-openers is a follow-up, not
+    a test, and it puts one venue in front of three cold letters from a company
+    they do not know.
+
+    THIS LIST IS COLD AND APOLLO SOURCED, WHICH DECIDES WHERE IT SENDS FROM.
+    Apollo contacts never enter Mailchimp: cold third-party contacts in an
+    opt-in audience is an account-termination risk, not a style preference.
+    Send from the cold outreach tool. If you send from a tool other than
+    Mailchimp, swap the two Mailchimp opt-out tags in the footer for that
+    tool's own; nothing else resolves Mailchimp syntax.
+
+    PHOTOMAGIC NEEDS ITS OWN AUDIENCE, NOT A TICKET MAGIC SEGMENT. An
+    unsubscribe here must not suppress a Ticket Magic contact or the reverse.
+
+    IF THIS AND SEGMENT 02 GO OUT NEAR EACH OTHER, CHECK THE LISTS ARE
+    ACTUALLY DISJOINT rather than assuming it. They now share a layout as well
+    as a sender, so a contact on both lists gets two letters that look like one
+    campaign sent twice.
+
+  BEFORE THIS CAN SEND
+    Asset SHA x7        Resolved. Pinned to 79584fd, verified against the CDN.
+    Postal address      OUTSTANDING, AND IT IS A LEGAL BLOCKER, NOT A
+                        PLACEHOLDER TO TIDY UP LATER. photomagic.io publishes a
+                        phone number and an email address and no postal
+                        address. One is required in bulk commercial email in
+                        most jurisdictions this list touches. It cannot be
+                        invented, guessed, or borrowed from Ticket Magic's
+                        office. Searching this file for the double curly brace
+                        returns EXACTLY ONE LINE and that line is the address.
+    Free plan vs trial  Unresolved across the pipeline. This letter takes
+                        segment 02's answer. See above.
+    Prices and quotas   Read off the live page 2026-09-01. Re-check on send day.
+    Register it         Not yet in docs/campaign-register.csv. Add a row with
+                        campaign ID PM-2026-09-VENUES. The PM- prefix is
+                        Photomagic; DTM- is Ticket Magic and must not be reused
+                        here. Campaign 01 and segment 02 have no rows either;
+                        add them together rather than leaving the register
+                        describing part of the pipeline.
+
+    Then a REAL SEED SEND, not a preview. The two Mailchimp opt-out tags
+    resolve on send and look broken in preview, and they sit inside an href, so
+    an unresolved tag leaves the footer looking correct while the unsubscribe
+    link is dead. That is a legal problem, not a cosmetic one.
+
+  NO EM DASHES
+    House rule. This file contains none, in markup or in comments. No en
+    dashes and no smart quote characters either: the copy uses HTML entities.
+
+  SPELLING
+    American throughout, matching the shipped Photomagic letters.
+================================================================================
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <title>Photomagic: Every guest finds their own photos</title>
+  <!--[if mso]>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+  <!-- Raleway, the brand face. Hidden from Outlook, which cannot use it. The
+       mockup's Trebuchet stack sits behind it and is what most people see. -->
+  <!--[if !mso]><!-- -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <!--<![endif]-->
+<style type="text/css">
+  :root { color-scheme: light; supported-color-schemes: light; }
+  body,table,td,a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;}
+  table,td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
+  img{-ms-interpolation-mode:bicubic; border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+  body{margin:0 !important; padding:0 !important; width:100% !important;}
+  a{color:#FF9E44;}
+
+  @media screen and (max-width:600px){
+    .container{width:100% !important;}
+    /* Zero the gutter when the benefit columns stack, or the second column
+       sits inset from the first. */
+    .stack{display:block !important; width:100% !important; max-width:100% !important; padding-left:0 !important; padding-right:0 !important;}
+    .stack-gap{padding-bottom:14px !important;}
+    .hero-h1{font-size:25px !important; line-height:33px !important;}
+    .hero-px{padding-left:22px !important; padding-right:22px !important;}
+    .card-px{padding-left:20px !important; padding-right:20px !important;}
+    .card-gut{padding-left:12px !important; padding-right:12px !important;}
+    .cta-btn{width:100% !important; max-width:280px !important;}
+    .card-img img{width:100% !important; height:auto !important;}
+    .price-col{display:block !important; width:100% !important; padding:0 0 10px 0 !important;}
+    /* The header badge is the first thing to go at 320px: the wordmark has to
+       keep its width and a badge beside it forces the logo to shrink. */
+    .hide-sm{display:none !important;}
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; background-color:#1A1330;">
+
+<!-- PREHEADER -->
+<div style="display:none; font-size:1px; color:#1A1330; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
+  One selfie, and every photo that guest is in.
+  &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#1A1330; background-image:linear-gradient(180deg,#3D2C7D 0px,#3D2C7D 200px,#2D2059 262px,#1A1330 322px); background-repeat:no-repeat;">
+  <tr>
+    <td align="center" style="padding:0;">
+      <table role="presentation" class="container" width="640" cellpadding="0" cellspacing="0" border="0" style="width:640px; max-width:640px; background-color:#1A1330; background-image:linear-gradient(180deg,#2A1E52 0%,#1A1330 100%);">
+
+        <!-- HEADER BAR: white, so the colour wordmark is legible. See the template. -->
+        <tr>
+          <td class="hero-px" style="background-color:#FFFFFF; padding:18px 32px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="left" valign="middle" style="font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:19px; font-weight:bold; color:#3C2B7A;">
+                  <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@79584fde155ed040a6865f7556c5b4e7139f97d7/assets/photomagic/logo-photomagic.png" width="158" height="38" alt="Photomagic" style="display:block; width:158px; height:38px; border:0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:19px; font-weight:bold; color:#3C2B7A;">
+                </td>
+                <td align="right" valign="middle">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right"><tr>
+                    <td class="hide-sm" style="font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:11px; font-weight:bold; color:#3C2B7A; letter-spacing:1.5px; text-transform:uppercase; background-color:#F6F3FF; border:1px solid #E2DCFA; padding:6px 12px; border-radius:12px; white-space:nowrap;">
+                      Free Plan Included
+                    </td>
+                  </tr></table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- HERO: chip, headline with one orange word, subhead -->
+        <tr>
+          <td class="hero-px" align="center" style="background-color:#3C2B7A; background-image:radial-gradient(circle at 82% 4%, rgba(255,158,68,0.30) 0%, rgba(255,158,68,0) 34%), linear-gradient(180deg, rgba(26,19,48,0) 58%, rgba(26,19,48,1) 100%), radial-gradient(circle at 30% 20%, #4A3596 0%, #3C2B7A 45%, #1A1330 100%); padding:42px 32px 60px 32px;">
+
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr>
+                <td style="font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:11px; font-weight:bold; color:#FFFFFF; letter-spacing:1.5px; text-transform:uppercase; background-color:#5A47A0; border:1px solid #8877C4; padding:6px 16px; border-radius:20px; white-space:nowrap;">
+                  AI Selfie Search
+                </td>
+              </tr></table>
+
+            <h1 class="hero-h1" style="margin:18px 0 14px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:31px; line-height:40px; font-weight:bold; color:#FFFFFF;">
+              Every Guest Finds <span style="color:#FF9E44;">Their Own Photos</span>
+            </h1>
+            <p style="margin:0 auto; max-width:440px; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:15px; line-height:24px; color:#D9D0F5;">
+              A ballroom at capacity produces thousands of frames, and the guest who wants one gives up before they find it.
+            </p>
+          </td>
+        </tr>
+
+        <!-- CARD OPENS HERE. It closes after the CTA. -->
+        <tr>
+          <td class="card-gut" style="background-color:#1A1330; padding:0 20px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border-radius:20px;">
+              <tr>
+                <td class="card-px" style="padding:32px 28px 0 28px;">
+                  <h2 style="margin:0 0 10px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:19px; line-height:26px; font-weight:bold; color:#3C2B7A;">
+                    One selfie, and the gallery does the finding
+                  </h2>
+                  <p style="margin:0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:15px; line-height:25px; color:#6B6480;">
+                    Photomagic puts a QR code on the table and a live gallery behind it. A guest takes one selfie and gets back every frame they appear in, so the night ends with the room sharing your venue instead of scrolling past two thousand photos looking for themselves.
+                  </p>
+                </td>
+              </tr>
+
+              <!-- FEATURE SHOWCASE. Identical in all three versions. -->
+              <tr>
+                <td class="card-px" style="padding:26px 28px 0 28px;">
+                  <h2 style="margin:0 0 16px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:19px; line-height:26px; font-weight:bold; color:#3C2B7A;">
+                    Everything in one place
+                  </h2>
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                    <td class="stack stack-gap" width="50%" valign="top" style="padding:0 7px 18px 0;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
+                          <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@79584fde155ed040a6865f7556c5b4e7139f97d7/assets/photomagic/photomagic-feature-instant-sharing-580x580.jpg" width="265" alt="A guest opening a live event gallery on a phone" style="display:block; width:100%; height:auto; border-radius:14px; border:0;">
+                        </td></tr>
+                        <tr><td style="padding:12px 2px 0 2px;">
+                          <p style="margin:0 0 4px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:15px; font-weight:bold; color:#3C2B7A;">Instant sharing</p>
+                          <p style="margin:0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:20px; color:#6B6480;">Photos reach the gallery as you shoot, and guests download in HD from their own phones.</p>
+                        </td></tr>
+                      </table>
+                    </td>
+                    <td class="stack stack-gap" width="50%" valign="top" style="padding:0 0 18px 7px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
+                          <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@79584fde155ed040a6865f7556c5b4e7139f97d7/assets/photomagic/photomagic-feature-selfie-search-580x580.jpg" width="265" alt="A guest taking a selfie to find their photos" style="display:block; width:100%; height:auto; border-radius:14px; border:0;">
+                        </td></tr>
+                        <tr><td style="padding:12px 2px 0 2px;">
+                          <p style="margin:0 0 4px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:15px; font-weight:bold; color:#3C2B7A;">AI selfie search</p>
+                          <p style="margin:0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:20px; color:#6B6480;">One selfie matches a guest to every frame they appear in. No scrolling, no app to install.</p>
+                        </td></tr>
+                      </table>
+                    </td>
+                  </tr></table>
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                    <td class="stack" width="50%" valign="top" style="padding:0 7px 0 0;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
+                          <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@79584fde155ed040a6865f7556c5b4e7139f97d7/assets/photomagic/photomagic-feature-photo-selection-580x580.jpg" width="265" alt="A client shortlisting photos in a gallery" style="display:block; width:100%; height:auto; border-radius:14px; border:0;">
+                        </td></tr>
+                        <tr><td style="padding:12px 2px 0 2px;">
+                          <p style="margin:0 0 4px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:15px; font-weight:bold; color:#3C2B7A;">Client selection</p>
+                          <p style="margin:0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:20px; color:#6B6480;">Your client shortlists and approves from any device, which ends the back and forth over email.</p>
+                        </td></tr>
+                      </table>
+                    </td>
+                    <td class="stack" width="50%" valign="top" style="padding:0 0 0 7px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr><td class="card-img" style="padding:0; font-size:0; line-height:0;">
+                          <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@79584fde155ed040a6865f7556c5b4e7139f97d7/assets/photomagic/photomagic-feature-secure-gallery-580x580.jpg" width="265" alt="A private, secured event gallery" style="display:block; width:100%; height:auto; border-radius:14px; border:0;">
+                        </td></tr>
+                        <tr><td style="padding:12px 2px 0 2px;">
+                          <p style="margin:0 0 4px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:15px; font-weight:bold; color:#3C2B7A;">Secure galleries</p>
+                          <p style="margin:0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:20px; color:#6B6480;">Every event has its own guest login, so the data stays with you and follow up is a real list.</p>
+                        </td></tr>
+                      </table>
+                    </td>
+                  </tr></table>
+                </td>
+              </tr>
+
+              <!-- BENEFIT COLUMNS. Identical in all three versions. -->
+              <tr>
+                <td class="card-px" style="padding:26px 28px 0 28px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+
+                    <td class="stack stack-gap" width="50%" valign="top" style="padding:0 7px 0 0;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" height="100%" style="height:100%; background-color:#F6F3FF; border-radius:14px;">
+                        <tr><td style="padding:18px 18px 16px 18px;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+                            <td style="font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:11px; font-weight:bold; color:#2B1E5C; letter-spacing:0.5px; text-transform:uppercase; background-color:#FF9E44; padding:4px 11px; border-radius:12px; white-space:nowrap;">
+                              For Your Events
+                            </td>
+                          </tr></table>
+                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td width="16" valign="top" style="padding:9px 7px 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:21px; font-weight:bold; color:#3C2B7A;">&#10022;</td>
+                              <td valign="top" style="padding:9px 0 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13.5px; line-height:21px; color:#3C2B7A;">Effortless photo sharing</td>
+                            </tr>
+                            <tr>
+                              <td width="16" valign="top" style="padding:9px 7px 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:21px; font-weight:bold; color:#3C2B7A;">&#10022;</td>
+                              <td valign="top" style="padding:9px 0 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13.5px; line-height:21px; color:#3C2B7A;">Swift event creation</td>
+                            </tr>
+                            <tr>
+                              <td width="16" valign="top" style="padding:9px 7px 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:21px; font-weight:bold; color:#3C2B7A;">&#10022;</td>
+                              <td valign="top" style="padding:9px 0 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13.5px; line-height:21px; color:#3C2B7A;">Sponsor branding and insights</td>
+                            </tr>
+                            <tr>
+                              <td width="16" valign="top" style="padding:9px 7px 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:21px; font-weight:bold; color:#3C2B7A;">&#10022;</td>
+                              <td valign="top" style="padding:9px 0 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13.5px; line-height:21px; color:#3C2B7A;">Bulk upload support</td>
+                            </tr>
+                          </table>
+                        </td></tr>
+                      </table>
+                    </td>
+
+                    <td class="stack" width="50%" valign="top" style="padding:0 0 0 7px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" height="100%" style="height:100%; background-color:#F6F3FF; border-radius:14px;">
+                        <tr><td style="padding:18px 18px 16px 18px;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+                            <td style="font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:11px; font-weight:bold; color:#2B1E5C; letter-spacing:0.5px; text-transform:uppercase; background-color:#FF9E44; padding:4px 11px; border-radius:12px; white-space:nowrap;">
+                              For Your Clients
+                            </td>
+                          </tr></table>
+                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td width="16" valign="top" style="padding:9px 7px 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:21px; font-weight:bold; color:#3C2B7A;">&#10022;</td>
+                              <td valign="top" style="padding:9px 0 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13.5px; line-height:21px; color:#3C2B7A;">Delivered while it still matters</td>
+                            </tr>
+                            <tr>
+                              <td width="16" valign="top" style="padding:9px 7px 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:21px; font-weight:bold; color:#3C2B7A;">&#10022;</td>
+                              <td valign="top" style="padding:9px 0 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13.5px; line-height:21px; color:#3C2B7A;">Shortlist and approve in one place</td>
+                            </tr>
+                            <tr>
+                              <td width="16" valign="top" style="padding:9px 7px 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:21px; font-weight:bold; color:#3C2B7A;">&#10022;</td>
+                              <td valign="top" style="padding:9px 0 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13.5px; line-height:21px; color:#3C2B7A;">Guests find their own photos by selfie</td>
+                            </tr>
+                            <tr>
+                              <td width="16" valign="top" style="padding:9px 7px 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:21px; font-weight:bold; color:#3C2B7A;">&#10022;</td>
+                              <td valign="top" style="padding:9px 0 0 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13.5px; line-height:21px; color:#3C2B7A;">One private gallery per event</td>
+                            </tr>
+                          </table>
+                        </td></tr>
+                      </table>
+                    </td>
+
+                  </tr></table>
+                </td>
+              </tr>
+
+              <!-- HOW IT WORKS. Identical in all three versions. -->
+              <tr>
+                <td class="card-px" style="padding:28px 28px 0 28px;">
+                  <h2 style="margin:0 0 16px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:19px; line-height:26px; font-weight:bold; color:#3C2B7A;">
+                    How It Works
+                  </h2>
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td width="46" valign="top" style="padding:0 14px 16px 0;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+                          <td width="32" height="32" align="center" valign="middle" style="width:32px; height:32px; background-color:#3C2B7A; border-radius:16px; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; font-weight:bold; color:#FFFFFF;">1</td>
+                        </tr></table>
+                      </td>
+                      <td valign="top" style="padding:0 0 16px 0;">
+                        <p style="margin:0 0 3px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:14.5px; font-weight:bold; color:#3C2B7A;">Create your event</p>
+                        <p style="margin:0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:20px; color:#6B6480;">Add the date, title and a short welcome message, then generate your QR code.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="46" valign="top" style="padding:0 14px 16px 0;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+                          <td width="32" height="32" align="center" valign="middle" style="width:32px; height:32px; background-color:#3C2B7A; border-radius:16px; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; font-weight:bold; color:#FFFFFF;">2</td>
+                        </tr></table>
+                      </td>
+                      <td valign="top" style="padding:0 0 16px 0;">
+                        <p style="margin:0 0 3px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:14.5px; font-weight:bold; color:#3C2B7A;">Display your QR code</p>
+                        <p style="margin:0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:20px; color:#6B6480;">Post it at the event, or send the link straight to your guests.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="46" valign="top" style="padding:0 14px 16px 0;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+                          <td width="32" height="32" align="center" valign="middle" style="width:32px; height:32px; background-color:#3C2B7A; border-radius:16px; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; font-weight:bold; color:#FFFFFF;">3</td>
+                        </tr></table>
+                      </td>
+                      <td valign="top" style="padding:0 0 16px 0;">
+                        <p style="margin:0 0 3px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:14.5px; font-weight:bold; color:#3C2B7A;">Deliver the same day</p>
+                        <p style="margin:0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:20px; color:#6B6480;">Photos roll into the gallery in real time, and your client is sharing them from the room.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <!-- BAND IMAGE. Identical in all three versions. -->
+              <tr>
+                <td class="card-px" style="padding:28px 28px 0 28px; font-size:0; line-height:0;">
+                  <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@79584fde155ed040a6865f7556c5b4e7139f97d7/assets/photomagic/photomagic-band-photographer-1100x550.jpg" width="544" alt="A photographer shooting a corporate event" style="display:block; width:100%; height:auto; border-radius:14px; border:0;">
+                </td>
+              </tr>
+
+              <!-- TESTIMONIAL. Real and attributed. Identical in all three versions. -->
+              <tr>
+                <td class="card-px" style="padding:26px 28px 0 28px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFF4E8; border-left:4px solid #FF9E44; border-radius:0 10px 10px 0;">
+                    <tr><td style="padding:18px 20px;">
+                      <p style="margin:0 0 8px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:14.5px; line-height:23px; color:#4A3D29; font-style:italic;">
+                        &ldquo;I have recently used Photo Magic for my event. The client was very impressed and is super happy with the output. Highly recommended!&rdquo;
+                      </p>
+                      <p style="margin:0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; font-weight:bold; color:#985408;">
+                        Steevan Vas
+                      </p>
+                    </td></tr>
+                  </table>
+                </td>
+              </tr>
+
+              <!-- PRICING. Check every figure against the live page on send day. -->
+              <tr>
+                <td class="card-px" style="padding:28px 28px 0 28px;">
+                  <h2 style="margin:0 0 6px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:19px; line-height:26px; font-weight:bold; color:#3C2B7A;">
+                    Pricing that fits every event size
+                  </h2>
+                  <p style="margin:0 0 16px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:22px; color:#6B6480;">
+                    Start free, and upgrade when the event calendar needs it.
+                  </p>
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                    <td class="price-col" width="33%" valign="top" style="padding:0 5px 0 0;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" height="100%" style="height:100%; background-color:#FFFFFF; border:1px solid #E7E2F5; border-radius:14px;">
+                        <tr><td align="center" style="padding:16px 8px;">
+                          <p style="margin:0 0 4px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:11px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase; color:#6B6480;">Free</p>
+                          <p style="margin:0 0 4px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:23px; font-weight:bold; color:#3C2B7A;">$0</p>
+                          <p style="margin:0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; line-height:18px; color:#6B6480;">1 event, 100 photos, 1 GB</p>
+                        </td></tr>
+                      </table>
+                    </td>
+                    <td class="price-col" width="33%" valign="top" style="padding:0 5px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" height="100%" style="height:100%; background-color:#F6F3FF; border:2px solid #3C2B7A; border-radius:14px;">
+                        <tr><td align="center" style="padding:15px 8px;">
+                          <p style="margin:0 0 4px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:11px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase; color:#3C2B7A;">Pro</p>
+                          <p style="margin:0 0 4px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:23px; font-weight:bold; color:#3C2B7A;">$55</p>
+                          <p style="margin:0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; line-height:18px; color:#6B6480;">5 events, 1000 photos, 10 GB</p>
+                        </td></tr>
+                      </table>
+                    </td>
+                    <td class="price-col" width="33%" valign="top" style="padding:0 0 0 5px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" height="100%" style="height:100%; background-color:#FFFFFF; border:1px solid #E7E2F5; border-radius:14px;">
+                        <tr><td align="center" style="padding:16px 8px;">
+                          <p style="margin:0 0 4px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:11px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase; color:#6B6480;">Corporate</p>
+                          <p style="margin:0 0 4px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:23px; font-weight:bold; color:#3C2B7A;">$150</p>
+                          <p style="margin:0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; line-height:18px; color:#6B6480;">10 events, 3000 photos, 30 GB</p>
+                        </td></tr>
+                      </table>
+                    </td>
+                  </tr></table>
+                </td>
+              </tr>
+
+              <!-- CTA. Button text is #2B1E5C on the orange, never white. -->
+              <tr>
+                <td align="center" style="padding:28px 28px 34px 28px;">
+                  <p style="margin:0 0 16px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:16px; line-height:24px; font-weight:bold; color:#3C2B7A;">
+                    Run your next function on Photomagic. Start free, no credit card required.
+                  </p>
+                  <!--[if mso]>
+                  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://app.photomagic.io/signup?utm_source=email&amp;utm_medium=campaign&amp;utm_campaign=photomagic_venues_2026&amp;utm_content=card_cta_va_selfie_search" style="height:50px;v-text-anchor:middle;width:280px;" arcsize="50%" strokecolor="#FF7A3D" fillcolor="#FF9E44">
+                    <v:fill type="gradient" color="#FF9E44" color2="#FF7A3D" angle="270" />
+                    <w:anchorlock/><center style="color:#2B1E5C;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;">Start Free</center>
+                  </v:roundrect>
+                  <![endif]-->
+                  <!--[if !mso]><!-- -->
+                  <a class="cta-btn" href="https://app.photomagic.io/signup?utm_source=email&amp;utm_medium=campaign&amp;utm_campaign=photomagic_venues_2026&amp;utm_content=card_cta_va_selfie_search" target="_blank" style="background-color:#FF9E44; background-image:linear-gradient(90deg,#FF9E44 0%,#FF7A3D 100%); border-radius:30px; color:#2B1E5C; display:inline-block; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:15px; font-weight:bold; line-height:50px; text-align:center; text-decoration:none; width:280px;">
+                    Start Free &rarr;
+                  </a>
+                  <!--<![endif]-->
+                </td>
+              </tr>
+
+        <!-- CARD CLOSES -->
+            </table>
+          </td>
+        </tr>
+
+        <!-- CLOSING BAND. Second ask. Violet button, never a second orange. -->
+        <tr>
+          <td class="hero-px" align="center" style="background-color:#1A1330; padding:38px 32px 34px 32px;">
+            <h2 style="margin:0 0 10px 0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:21px; line-height:29px; font-weight:bold; color:#FFFFFF;">
+              Try it on your next function
+            </h2>
+            <p style="margin:0 auto 22px auto; max-width:430px; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:23px; color:#A79BD1;">
+              Set up an event in a couple of minutes, put the QR code on the tables, and see how much of the night ends up on your guests&rsquo; own feeds. The free plan covers one event, which is enough to find out.
+            </p>
+            <!--[if mso]>
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://photomagic.io/?utm_source=email&amp;utm_medium=campaign&amp;utm_campaign=photomagic_venues_2026&amp;utm_content=closing_cta_va_selfie_search" style="height:46px;v-text-anchor:middle;width:240px;" arcsize="50%" strokecolor="#8877C4" fillcolor="#3C2B7A">
+              <w:anchorlock/><center style="color:#FFFFFF;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;">See how it works</center>
+            </v:roundrect>
+            <![endif]-->
+            <!--[if !mso]><!-- -->
+            <a class="cta-btn" href="https://photomagic.io/?utm_source=email&amp;utm_medium=campaign&amp;utm_campaign=photomagic_venues_2026&amp;utm_content=closing_cta_va_selfie_search" target="_blank" style="background-color:#3C2B7A; border:1px solid #8877C4; border-radius:26px; color:#FFFFFF; display:inline-block; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; font-weight:bold; line-height:46px; text-align:center; text-decoration:none; width:240px;">
+              See how it works
+            </a>
+            <!--<![endif]-->
+          </td>
+        </tr>
+
+        <!-- FOOTER, legal. Never delete, never shrink. -->
+        <tr>
+          <td class="hero-px" align="center" style="background-color:#1A1330; padding:34px 32px 34px 32px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="center" style="padding-bottom:16px;">
+                  <img src="https://cdn.jsdelivr.net/gh/kennethtablang/assets-attractions@79584fde155ed040a6865f7556c5b4e7139f97d7/assets/photomagic/photomagic-logo-white-682x162.png" width="150" height="36" alt="Photomagic" style="display:block; margin:0 auto; width:150px; height:36px; border:0; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:19px; font-weight:bold; color:#FFFFFF;">
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="padding-bottom:14px; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:12.5px; line-height:21px; color:#A79BD1;">
+                  <a href="https://photomagic.io" style="color:#FF9E44; text-decoration:none;">photomagic.io</a> &nbsp;|&nbsp;
+                  <a href="mailto:inquiry@photomagic.io" style="color:#FF9E44; text-decoration:none;">inquiry@photomagic.io</a> &nbsp;|&nbsp;
+                  <a href="https://api.whatsapp.com/send?phone=971582591702" style="color:#FF9E44; text-decoration:none;">+971 58 259 1702</a>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="padding:4px 0 14px 0; border-top:1px solid #362A5E;">
+                  <div style="padding-top:14px;">
+                    <a href="https://www.facebook.com/people/Photomagicio/61578734952760/" style="color:#A79BD1; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Facebook</a>
+                    <a href="https://www.instagram.com/photomagic.io/" style="color:#A79BD1; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">Instagram</a>
+                    <a href="https://www.linkedin.com/company/photomagic-io/" style="color:#A79BD1; font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; font-weight:bold; text-decoration:none; padding:0 7px;">LinkedIn</a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="font-family:'Raleway','Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif; font-size:11px; line-height:18px; color:#8B7FB5;">
+                  You are receiving this because we work with hotels, venues and hospitality teams hosting events across the UAE.<br>Not the right person? Reply and tell us who is.<br>
+                  {{POSTAL_ADDRESS}}<br>
+                  <a href="https://photomagic.io/privacy-policy" style="color:#A79BD1; text-decoration:underline;">Privacy</a> &nbsp;|&nbsp;
+                  <a href="https://photomagic.io/terms-of-service" style="color:#A79BD1; text-decoration:underline;">Terms</a> &nbsp;|&nbsp;
+                  <a href="*|UNSUB|*" style="color:#A79BD1; text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
+                  <a href="*|UPDATE_PROFILE|*" style="color:#A79BD1; text-decoration:underline;">Update preferences</a><br><br>
+                  2026 &copy; Photomagic. All rights reserved.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

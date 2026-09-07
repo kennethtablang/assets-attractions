@@ -64,6 +64,63 @@ Numbered to match the folder convention in [`README.md`](README.md). Build one
 Apollo saved search per segment, never one combined search, because the copy
 differs per segment and a merged list cannot be split back apart cleanly.
 
+**Nine segments, 01 to 09.** Segments 01 to 05 were planned when this file was
+written. Segments 06 to 09 were promoted out of the expansion table below on
+2026-09-02, when the folders were created. Four expansion candidates were left
+behind and the reasons are recorded there, because a rejected segment that gets
+silently dropped comes back as somebody's good idea six months later.
+
+### The version plan, and why every segment has one
+
+Photomagic has exactly **four sellable features**, one per card image in the
+templates:
+
+| Feature | Card image | The pain it answers |
+|---|---|---|
+| Same-day delivery | `instant-sharing` | The photos arrive days after the moment |
+| AI selfie search | `selfie-search` | Nobody scrolls two thousand frames to find themselves |
+| Client photo selection | `photo-selection` | Proofing runs over email and never converges |
+| Private galleries | `secure-gallery` | The photos end up on a public link that travels |
+
+**Every segment runs three versions, A/B/C, each leading on one of those four.**
+All three show all four features; only the lead promise changes, so a difference
+in reply rate is attributable to the promise and to nothing else. Which three,
+and in which order, is the segment's own bet and it is written into each entry
+below as **A/B/C**.
+
+**A is always the control**, and it is always the feature this file predicts will
+win for that segment. B and C are the challengers. If a challenger wins, this
+file was wrong about that segment, which is a more useful finding than a feature
+preference and is the reason to write the prediction down before sending rather
+than after.
+
+**No segment runs all four.** A fourth version splits an already small cold list
+into a fourth cell for a feature the segment was never expected to want. The
+feature left out of each A/B/C is a deliberate omission, not an oversight.
+
+The whole plan on one screen. **A** is the control, **B** and **C** the
+challengers, and a dash is the feature that segment does not lead on:
+
+| # | Segment | Same-day | Selfie search | Selection | Private galleries | Folder |
+|---|---|:---:|:---:|:---:|:---:|---|
+| 01 | Photographers and studios | A | B | C | - | not built |
+| 02 | Event planners and teams | **A** | **B** | - | **C** | **BUILT** |
+| 03 | Venues and hospitality | B | A | - | C | not built |
+| 04 | Schools and education | B | **never** | C | A | not built |
+| 05 | Wedding planners and bridal | B | C | A | - | not built |
+| 06 | Sports, races and academies | B | A | - | C | not built |
+| 07 | Corporate HR and internal | B | **never** | C | A | not built |
+| 08 | Nonprofits and community | A | C | - | B | not built |
+| 09 | Real estate launches | A | C | - | B | not built |
+
+Read the columns as well as the rows. **Same-day delivery leads four segments
+and appears in all nine**, which is what it means for it to be the core promise.
+**AI selfie search leads two and is banned from two**, and those two bans are the
+only hard rules in this table: segments 04 and 07 must never receive a
+face-search letter, for reasons written into their entries below. **Client photo
+selection leads only segment 05** and is absent from five, which is the honest
+read of a feature built for studios being sold to people who commission them.
+
 ### 01. Photographers and studios
 
 The core segment. They feel the delivery pain daily and they pay for tools
@@ -81,6 +138,10 @@ themselves.
 - **Employee count:** 1 to 20. Most will be 1 to 3.
 - **Lead with:** client photo selection for wedding and portrait studios,
   same-day delivery for event shooters
+- **A/B/C:** A same-day delivery · B AI selfie search · C client photo selection
+  · *omits* private galleries. A studio already owns its client relationship and
+  does not feel the public-link problem the way a corporate buyer does.
+- **Folder:** `01-photographers-studios/` · **not built**
 - **Watch for:** this segment is heavily sole-trader, so Apollo coverage is
   thinner than the result count suggests. Expect a high share of generic `info@`
   addresses. Budget for that in the send plan rather than discovering it at
@@ -104,6 +165,11 @@ client, which makes the same-day angle the whole pitch.
   Founder
 - **Employee count:** 2 to 200
 - **Lead with:** same-day delivery, then AI selfie search for the large formats
+- **A/B/C:** A same-day delivery · B AI selfie search · C private galleries
+  · *omits* client photo selection, which this file assigns to studios rather
+  than to the agency that commissioned them.
+- **Folder:** `02-event-planners-teams/` · **BUILT**, three letters on the dark
+  card layout. See that folder's README.
 
 ### 03. Venues and hospitality
 
@@ -125,6 +191,14 @@ rather than operations.
 - **Employee count:** 10 to 500, with the decision maker check applied. A large
   chain needs a named marketing contact, not a head office switchboard.
 - **Lead with:** AI selfie search. High guest counts are exactly where it wins.
+- **A/B/C:** A AI selfie search · B same-day delivery · C private galleries
+  · *omits* client photo selection. A venue hosts the event, it does not proof
+  the shoot.
+- **Folder:** `03-venues-hospitality/` · **not built**
+- **Watch for:** the buyer usually sits in marketing, not operations, and the two
+  read a letter differently. A banquet manager wants the gate to move; a
+  marketing manager wants the content. The A/B/C split above leans marketing, so
+  check which titles the Apollo list actually returned before reading the result.
 
 ### 04. Schools and education (EduMagic)
 
@@ -142,9 +216,24 @@ in privacy posture that it carries its own product name in the folder plan.
   Events Coordinator
 - **Employee count:** 20 to 500
 - **Lead with:** secure private galleries, then same-day delivery
-- **Watch for:** **children's images carry consent obligations the other four
+- **A/B/C:** A private galleries · B same-day delivery · C client photo selection
+  · **omits AI selfie search, and that omission is a rule, not a preference.**
+- **Folder:** `04-schools-education/` · **not built**
+- **Watch for:** **children's images carry consent obligations the other
   segments do not.** Do not send this segment copy that implies open or public
   galleries. Lead on access control, or do not send to this segment at all.
+
+  **THERE IS NO VERSION C ON SELFIE SEARCH FOR THIS SEGMENT.** Every other
+  segment gets a face-search letter and this one does not. Running face
+  recognition against photographs of children is the single claim in this
+  product most likely to end a conversation with a school, and a cold email is
+  the worst possible place to raise it. The capability still appears in the
+  feature showcase, because the showcase is held identical across a segment's
+  three versions and describes the product rather than the pitch. Nothing leads
+  on it, no subject line mentions it, and the letter never asks a school to
+  picture it. If somebody later decides schools should get a selfie-search
+  version, that is a product and legal conversation first and a copy decision
+  second.
 
 ### 05. Wedding planners and bridal
 
@@ -161,21 +250,174 @@ gets its own search rather than a keyword bolted onto photographers.
 - **Employee count:** 1 to 30
 - **Lead with:** client photo selection. Proofing and picking favourites is
   language this segment already uses with couples.
+- **A/B/C:** A client photo selection · B same-day delivery · C AI selfie search
+  · *omits* private galleries, which a couple hears as a feature for somebody
+  else's compliance department.
+- **Folder:** `05-wedding-planners/` · **not built**
+- **Watch for:** the sharpest seasonality in the file. UAE wedding season runs
+  roughly October to April and this segment is close to unreachable in July. A
+  flat result in August means the month, not the message.
 
-### Expansion segments, not yet in the folder plan
+### 06. Sports, races and academies
 
-Real fit, no copy written. Do not search these until a letter exists for them.
+Mass participation and competitive sport: road races, tournaments, leagues,
+academies. Promoted from the expansion table on 2026-09-02.
 
-| Segment | Apollo industries | Why it fits |
-|---|---|---|
-| Sports clubs, races, academies | `sports`, `health, wellness and fitness` | Marathons and tournaments are the strongest selfie-search case there is, thousands of finishers each wanting their own frame |
-| Conferences and exhibitions | `events services`, `computer software`, `information technology and services` | Delegate photos are a sponsor deliverable with a deadline attached |
-| Nonprofits and charity galas | `nonprofit organization management`, `civic & social organization`, `philanthropy`, `fund-raising` | Fundraiser photos have a short news cycle, so same-day matters |
-| Government and civic events | `government administration`, `government relations` | The UAE public event calendar is dense and heavily photographed |
-| Museums, galleries, performing arts | `museums and institutions`, `performing arts`, `music` | Opening nights and season launches |
-| Corporate HR and internal comms | any industry, filtered on title | Staff parties, town halls, annual days, bought on the employer-brand budget |
-| Real estate launches | `real estate`, `commercial real estate` | Launch events and handover ceremonies |
-| Car shows and automotive events | `automotive` | Crowd events with strong enthusiast photo demand |
+**This is the strongest selfie-search case the product has**, and it is worth
+being precise about why. A marathon photographer shoots five thousand runners.
+The incumbent solution is bib-number search, which fails whenever the bib is
+obscured by an arm, a jacket, a water station or another runner, and that is a
+large fraction of frames. A selfie does not depend on the bib being visible at
+all. This is the one segment where the feature is not a convenience but a
+straight replacement for a tool they already run and already complain about.
+
+- **Apollo industries:** `sports`, `health, wellness and fitness`,
+  `recreational facilities and services`, `events services`
+- **Company keywords:** marathon, half marathon, triathlon, sportive, cycling
+  club, running club, race organiser, race organizer, race timing, chip timing,
+  padel, tennis academy, football academy, sports academy, sports club,
+  tournament, league, obstacle race, endurance, CrossFit, fitness competition,
+  school sport, sports event management
+- **Titles:** Race Director, Event Director, Founder, Owner, Operations Manager,
+  Marketing Manager, Head of Marketing, Community Manager, Academy Director,
+  Club Manager, General Manager, Head of Events
+- **Employee count:** 1 to 100
+- **Lead with:** AI selfie search, and lead hard. Nothing else in the product
+  matters to a race director by comparison.
+- **A/B/C:** A AI selfie search · B same-day delivery · C private galleries
+  · *omits* client photo selection. Nobody proofs a race.
+- **Folder:** `06-sports-races-academies/` · **not built**
+- **Watch for:** two things. **Season:** UAE outdoor sport runs roughly October
+  to April and the race calendar is nearly empty in summer, so send in season or
+  do not send. **Minors:** an academy is a school in everything but name, so
+  apply segment 04's posture to any list that returns youth academies. Split
+  them out rather than sending them the selfie-search letter.
+
+### 07. Corporate HR, internal comms and employer brand
+
+Staff parties, annual days, town halls, long-service awards, family days,
+offsites, CSR days. Promoted from the expansion table on 2026-09-02.
+
+**This segment is found by title, not by industry.** The company can be a bank,
+a contractor, a logistics firm or a software house; what makes it a prospect is
+that somebody inside it owns the employee-experience budget and runs four
+photographed events a year on it. Filtering by industry here produces noise.
+Filter by title and employee count, and let the industry fall where it falls.
+
+- **Apollo industries:** any. If a bias is needed for a first list, the UAE
+  headcount sits in `oil & energy`, `banking`, `construction`,
+  `logistics and supply chain`, `retail`, `information technology and services`,
+  `real estate`, `hospitality`.
+- **Company keywords:** not the primary filter. Leave the keyword field empty and
+  let title plus headcount do the work.
+- **Titles:** Head of Internal Communications, Internal Communications Manager,
+  Employer Brand Manager, Employee Engagement Manager, People and Culture
+  Manager, Head of People, Culture Manager, HR Manager, HR Director, Head of HR,
+  CSR Manager, Sustainability Manager, Office Manager, Executive Assistant
+- **Employee count:** 200 to 2,000
+- **Lead with:** private galleries. Staff photographs are internal by default and
+  the first question this buyer asks is who else can see them.
+- **A/B/C:** A private galleries · B same-day delivery · C client photo selection
+  · *omits* AI selfie search. Face recognition applied to a company's own
+  employees is a works-council and data-protection conversation, not a cold
+  email opener, and the reasoning is the same one that governs segment 04 even
+  though the subjects are adults.
+- **Folder:** `07-corporate-hr-internal/` · **not built**
+- **Watch for:** **this is the one segment that deliberately breaks the size
+  exclusion in section 8.** The usual rule caps the list at 1,000 employees
+  because the buying cycle costs more than the contract. Here the headcount is
+  the qualifier rather than the disqualifier: a 1,500 person company has an
+  engagement manager, a discretionary budget and an annual day, and the photos
+  never leave the building, so no procurement is triggered. That reasoning holds
+  only while the buyer really can spend on a card. **Verify that on the first
+  fifty contacts before scaling the list**, because if it turns out these
+  purchases route through procurement, this segment is not a fit at this price
+  and should be dropped rather than nurtured.
+
+  Section 8 also excludes HR roles by default. This segment is the exception the
+  exclusion already names. Do not apply both.
+
+### 08. Nonprofits, charity galas and community events
+
+Fundraising galas, awards nights, community iftars, volunteer days, member
+events. Promoted from the expansion table on 2026-09-02.
+
+**The pitch is the news cycle, not the photography.** A fundraiser's thank-you
+email goes out within forty-eight hours or it does not go out at all, and the
+photographs are what makes it worth opening. A gallery that arrives the following
+week arrives after the moment the whole event was staged to create.
+
+- **Apollo industries:** `nonprofit organization management`,
+  `civic & social organization`, `philanthropy`, `fund-raising`,
+  `religious institutions`, `international affairs`
+- **Company keywords:** charity, foundation, nonprofit, non-profit, NGO,
+  fundraising, fundraiser, gala dinner, awards night, volunteer, community
+  centre, community center, humanitarian, endowment, social impact, CSR,
+  donor relations, member events
+- **Titles:** Executive Director, Development Manager, Head of Fundraising,
+  Fundraising Manager, Communications Manager, Head of Communications, Marketing
+  Manager, Events Manager, Programme Manager, Program Manager, Community
+  Manager, Founder
+- **Employee count:** 2 to 200
+- **Lead with:** same-day delivery, then private galleries for donor events.
+- **A/B/C:** A same-day delivery · B private galleries · C AI selfie search
+  · *omits* client photo selection. There is no client to proof for.
+- **Folder:** `08-nonprofits-community/` · **not built**
+- **Watch for:** **price sensitivity is real here and the letters must respect
+  it.** Lead on the free tier and let the pricing strip do the rest. Do not open
+  a nonprofit letter on Corporate at 150 dollars a month. Separately, a
+  meaningful share of UAE charities are government linked or royal foundations,
+  which reintroduces exactly the procurement cycle this ICP is built to avoid.
+  Expect to split the list into independents and government linked, and expect
+  the independents to be the ones that reply.
+
+### 09. Real estate launches and handovers
+
+Off-plan launches, sales gallery openings, broker roadshows, handover ceremonies,
+master community events. Promoted from the expansion table on 2026-09-02.
+
+**This is the most UAE-specific segment in the file**, which is both why it is
+here and why it is last. Developers run a dense photographed event calendar,
+brokers are commission funded and buy their own tools without asking anyone, and
+launch photography has a publication deadline measured in days because the
+listing goes live either way.
+
+- **Apollo industries:** `real estate`, `commercial real estate`,
+  `architecture & planning`, `construction`
+- **Company keywords:** property developer, real estate developer, off plan,
+  off-plan, sales gallery, show apartment, property brokerage, real estate
+  brokerage, real estate agency, master community, handover, property launch,
+  broker event, investor event, property management, owners association,
+  property exhibition
+- **Titles:** Marketing Manager, Head of Marketing, Brand Manager, Events
+  Manager, Head of Events, Head of Sales, Sales Director, Broker Relations
+  Manager, Community Manager, Managing Director, Founder
+- **Employee count:** 5 to 500
+- **Lead with:** same-day delivery for launches, then private galleries for
+  broker and investor events.
+- **A/B/C:** A same-day delivery · B private galleries · C AI selfie search
+  · *omits* client photo selection.
+- **Folder:** `09-real-estate-launches/` · **not built**
+- **Watch for:** **this is the segment most likely to collide with Ticket
+  Magic.** EMS outreach segment 03 is real estate and is being sold an Event
+  Management System to the same job titles at the same companies. Rule 2 in
+  section 1 applies at full force: a company can be in both lists, but it holds
+  two sender identities and two independent opt-outs, and the two letters must
+  not arrive in the same week. **Diff this Apollo list against the EMS segment 03
+  list before importing either.** Nothing in either tool will warn you.
+
+### Expansion segments, still not in the folder plan
+
+Real fit, no copy written, and **not promoted on 2026-09-02 for the reasons
+given**. Do not search these until a letter exists for them, and read the reason
+before reviving one.
+
+| Segment | Apollo industries | Why it fits | Why it was not promoted |
+|---|---|---|---|
+| Conferences and exhibitions | `events services`, `computer software`, `information technology and services` | Delegate photos are a sponsor deliverable with a deadline attached | **Overlaps segment 02 too heavily to be a clean list.** Segment 02 already searches `conference organiser`, `exhibition organiser` and `trade show`. The organizers that would be left over are the large recurring show operators, and those are exactly the enterprises the ICP rules out on cycle time. A separate list here would mostly re-find segment 02 and attribute its replies to the wrong letter. |
+| Government and civic events | `government administration`, `government relations` | The UAE public event calendar is dense and heavily photographed | **Fails the third ICP property.** Government buying runs through procurement by design, and this product is priced for a person with a card. It is a real fit on need and a poor fit on how the money moves. Revisit if an enterprise tier and a tender-capable process ever exist. |
+| Museums, galleries, performing arts | `museums and institutions`, `performing arts`, `music` | Opening nights and season launches | **Volume, not fit.** The UAE count for these industries is small enough that a segment would not fill a send, and most venues that qualify are already reachable through segment 03. Fold the good ones into 03 rather than running a ninth list. |
+| Car shows and automotive events | `automotive` | Crowd events with strong enthusiast photo demand | **Too narrow to justify its own copy.** The buyers are event agencies and venues running automotive formats, which are segments 02 and 03 with a keyword attached. Add `car show`, `auto show` and `motor show` to Block D instead. |
 
 ---
 
@@ -215,7 +457,8 @@ catering, yacht charter, desert safari
 ```
 wedding, bridal, engagement, graduation, sports day, annual day, festival,
 concert, marathon, tournament, expo, summit, conference, seminar, retreat,
-family day, staff party, iftar, gala
+family day, staff party, iftar, gala, car show, auto show, motor show,
+town hall, awards night, volunteer day, property launch, handover
 ```
 
 **Block E, the pain. Highest intent, lowest volume.**
@@ -251,30 +494,42 @@ and correct this file if any differ.
 | 2 | higher education | 04 |
 | 2 | marketing and advertising | 02 |
 | 2 | media production | 01 |
+| 2 | sports | 06 |
+| 2 | real estate | 09 |
 | 3 | restaurants | 03 |
-| 3 | recreational facilities and services | 03 |
+| 3 | recreational facilities and services | 03, 06 |
 | 3 | food & beverages | 03 |
-| 3 | sports | expansion |
 | 3 | motion pictures and film | 01 |
 | 3 | public relations and communications | 02 |
-| 3 | performing arts | expansion |
-| 3 | museums and institutions | expansion |
-| 3 | nonprofit organization management | expansion |
+| 3 | nonprofit organization management | 08 |
+| 3 | health, wellness and fitness | 06 |
+| 3 | commercial real estate | 09 |
 | 3 | consumer services | 05 |
 | 3 | individual & family services | 05 |
-| 4 | music | expansion |
+| 3 | fund-raising | 08 |
 | 4 | fine art | 01 |
 | 4 | apparel & fashion | 05 |
-| 4 | real estate | expansion |
-| 4 | government administration | expansion |
-| 4 | civic & social organization | expansion |
-| 4 | religious institutions | expansion |
-| 4 | automotive | expansion |
+| 4 | philanthropy | 08 |
+| 4 | civic & social organization | 08 |
+| 4 | religious institutions | 08 |
+| 4 | international affairs | 08 |
+| 4 | architecture & planning | 09 |
+| 4 | construction | 09, 07 |
 | 4 | wine and spirits | 03 |
 | 4 | gambling & casinos | 03 |
+| 4 | performing arts | see expansion table |
+| 4 | museums and institutions | see expansion table |
+| 4 | music | see expansion table |
+| 4 | government administration | see expansion table |
+| 4 | automotive | see expansion table |
 
 Priority 1 and 2 are the first thousand contacts. Priority 3 and 4 wait until the
 first three sends have said which message lands.
+
+**Segment 07 is missing from this table on purpose.** Corporate HR and internal
+comms is found by job title across every industry, so an industry row for it
+would be every row. Filter that segment on title and headcount and leave the
+industry field alone. See its entry in section 3.
 
 ### NAICS and SIC, for the codes filter
 
@@ -291,9 +546,21 @@ wherever a code exists for exactly the thing you want.
 | 721110 | NAICS | Hotels and motels |
 | 722320 | NAICS | Caterers |
 | 611110 | NAICS | Elementary and secondary schools |
+| 611620 | NAICS | Sports and recreation instruction, segment 06 |
+| 713940 | NAICS | Fitness and recreational sports centers, segment 06 |
+| 813211 | NAICS | Grantmaking foundations, segment 08 |
+| 813410 | NAICS | Civic and social organizations, segment 08 |
+| 531210 | NAICS | Offices of real estate agents and brokers, segment 09 |
+| 237210 | NAICS | Land subdivision, the developer code, segment 09 |
 | 7221 | SIC | Photographic studios, portrait |
 | 7335 | SIC | Commercial photography |
 | 7999 | SIC | Amusement and recreation services |
+| 8641 | SIC | Civic and social associations, segment 08 |
+| 6552 | SIC | Land subdividers and developers, segment 09 |
+
+There is **no useful code for segment 07**, for the same reason it has no
+industry row: the code describes the employer, not the job, and the job is the
+qualifier.
 
 ---
 
@@ -385,7 +652,18 @@ PM-<segment number>-<segment slug>-<geo>-<yyyymm>
 PM-01-photographers-UAE-202610
 PM-02-planners-UAE-202610
 PM-03-venues-DXB-202610
+PM-04-schools-UAE-202610
+PM-05-weddings-UAE-202610
+PM-06-sports-UAE-202610
+PM-07-corphr-UAE-202610
+PM-08-nonprofits-UAE-202610
+PM-09-realestate-DXB-202610
 ```
+
+The slug is the segment's short name, not its folder name. Folder names carry
+more words for readability; a saved search name has to stay short enough to read
+in Apollo's sidebar. The number is what ties the two together, which is the other
+reason not to renumber a segment once it exists.
 
 Log every search in the campaign register with its result count on the day it was
 run. Apollo counts drift, and a count with no date cannot be compared to anything
@@ -396,8 +674,10 @@ later.
 ## 10. Before you trust this file
 
 Written 2026-09-01 from the product positioning, the pricing strip in the launch
-letters, and the segment plan in [`README.md`](README.md). **No part of it has
-been run in Apollo.** Three things need checking before it drives a real send:
+letters, and the segment plan in [`README.md`](README.md). Extended 2026-09-02
+with segments 06 to 09 and an A/B/C plan per segment, written the same way: from
+the product and the positioning, not from data. **No part of it has been run in
+Apollo.** Three things need checking before it drives a real send:
 
 1. **Every industry string, against the live dropdown.** Apollo's taxonomy
    changes, and a value that is not in the list fails silently by returning
@@ -412,5 +692,22 @@ been run in Apollo.** Three things need checking before it drives a real send:
    full list. Apollo's own verification is not sufficient on its own, and this
    category runs heavy on `info@` catch-alls that verify clean and then bounce.
 
+Two more, added with segments 06 to 09:
+
+4. **The segment 07 buying assumption**, which is the largest unverified claim in
+   this file. It says an engagement or internal-comms manager at a company of
+   200 to 2,000 people can put this on a card without procurement. If that is
+   wrong, segment 07 is not a fit at this price and should be dropped rather
+   than nurtured. Fifty contacts and a handful of replies will settle it.
+5. **The segment 09 overlap with Ticket Magic.** EMS outreach segment 03 sells
+   an Event Management System to the same job titles at the same UAE developers
+   and brokerages. Diff the two lists before importing either, and keep the
+   sends apart in time. Nothing in either tool will warn you.
+
 Then update this file with what the counts actually were. A targeting doc that
 never absorbs its own results is a guess that grows more confident with age.
+
+**Nine of nine segments now have a plan. One of nine has letters.** Segment 02 is
+built; 01 and 03 to 09 are folders with a README and nothing else. That gap is
+the honest state of this pipeline and it is recorded in each folder rather than
+tracked somewhere central, so a folder always says whether it can send.
