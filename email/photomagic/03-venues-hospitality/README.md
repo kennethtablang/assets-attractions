@@ -1,6 +1,6 @@
 # Segment 03: Venues and hospitality
 
-**Status** Versions A and B built. C outstanding.
+**Status** Versions A, B and C built. Complete.
 **Audience** [`apollo-audience-targeting.md`](../apollo-audience-targeting.md), section 3, "03. Venues and hospitality"
 **Layout** [`email/templates/email-photomagic-card.html`](../../templates/email-photomagic-card.html), the dark card, by way of [`../02-event-planners-teams/`](../02-event-planners-teams/)
 **Campaign ID** `PM-2026-09-VENUES` · **UTM** `photomagic_venues_2026`
@@ -28,7 +28,7 @@ The full keyword blocks, industry values and exclusions live in the targeting
 doc. They are not duplicated here, because a filter recipe copied into nine
 folders is a filter recipe that will disagree with itself within a month.
 
-## The three versions to build
+## The three versions
 
 | Version | Leads on | Why |
 |---|---|---|
@@ -43,18 +43,16 @@ challengers. **If a challenger wins, the targeting doc was wrong about this
 segment**, which is a more useful finding than a feature preference and is the
 reason the prediction is written down before the send rather than after.
 
-Filenames, following the convention segment 02 already uses. A and B exist;
-C does not yet:
+Filenames, following the convention segment 02 already uses. All three exist:
 
 ```
 03-venues-va-selfie-search.html      BUILT, the control
 03-venues-vb-same-day.html           BUILT, challenger
-03-venues-vc-private-galleries.html  not built
+03-venues-vc-private-galleries.html  BUILT, challenger
 ```
 
-**A and B together are a two-way test, not the three-way one above.** That is
-sendable as it stands. It is just not the whole experiment, and a result read
-off two cells says nothing about private galleries in this segment.
+**This is the three-way test the table above describes**, and it is the second
+segment in the pipeline to reach that state after segment 02.
 
 ## The body is a clone of segment 02
 
@@ -85,24 +83,31 @@ than against the EMS cold letters in [`../../outreach/`](../../outreach/), which
 do not. If the reply rate comes back poor, **the layout is the first thing to
 test, not the copy**, and the light template already exists for that experiment.
 
-## When you build C
+## What Version C says
 
-**Clone `03-venues-vb-same-day.html` or the Version A file, not the template.**
-Either is a shipped sibling for this segment, and both carry the same 441-line
-body as segment 02 and campaign 01. Cloning the template instead would put a
-layout variable into an A/B/C test that is supposed to carry only a copy
-variable.
+| | |
+|---|---|
+| **File** | [`03-venues-vc-private-galleries.html`](03-venues-vc-private-galleries.html) |
+| **Leads on** | private galleries |
+| **Headline** | Every Function Gets Its Own Gallery |
+| **Hero chip** | the version marker, so a reply that quotes it names the version |
+| **Subjects** | 🍾 One gallery per function / 🔐 Who can open your photos? |
+| **Offer** | Free plan, inherited from Version A unchanged |
 
-Version C leads on **private galleries**, per the table above.
-The slots that may differ, and the long list of what is held byte-identical,
-are written out in the header comment of the Version A file, and Version B's
-header repeats the short form of it.
+Built from `03-venues-vb-same-day.html`. The same nine copy slots moved that
+Version B moved from Version A, and nothing else did, so all three versions of
+this segment differ in exactly nine places.
 
-**Two of those slots are held identical anyway in this segment.** The lead line
-above the primary button and the closing band heading both say "function"
+**It frames access as something the venue's clients ask for, not as
+compliance,** and it never uses the word. That is the difference between this
+letter and segment 04's control, which leads on the same feature into an
+audience that raises the question itself. A hotel does not.
+
+**Two of the nine slots are held identical anyway in this segment.** The lead
+line above the primary button and the closing band heading both say "function"
 rather than "event", which is what a hotel or a ballroom calls the thing it
-hosts. That word belongs to the segment, not to the version. Version C carries
-it too.
+hosts. That word belongs to the segment, not to the version, so all three
+versions carry it. Version C's first subject line and its headline use it too.
 
 ## What Version B says
 

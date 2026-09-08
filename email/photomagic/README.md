@@ -25,17 +25,20 @@ convention:
   02-event-planners-vb-selfie-search.html
   02-event-planners-vc-private-galleries.html
   README.md
-03-venues-hospitality/                     A and B BUILT, card layout
+03-venues-hospitality/                     BUILT, 3 letters, CARD layout
   03-venues-va-selfie-search.html
   03-venues-vb-same-day.html
+  03-venues-vc-private-galleries.html
   README.md
-04-schools-education/        EduMagic      A and B BUILT, card layout
+04-schools-education/        EduMagic      BUILT, 3 letters, CARD layout
   04-schools-va-private-galleries.html
   04-schools-vb-same-day.html
+  04-schools-vc-photo-selection.html
   README.md
-05-wedding-planners/                       A and B BUILT, card layout
+05-wedding-planners/                       BUILT, 3 letters, CARD layout
   05-wedding-planners-va-photo-selection.html
   05-wedding-planners-vb-same-day.html
+  05-wedding-planners-vc-selfie-search.html
   README.md
 06-sports-races-academies/                 B and C BUILT, no A
   06-sports-vb-same-day.html
@@ -52,24 +55,24 @@ convention:
 09-real-estate-launches/                   plan only
 ```
 
-**Nine segments have a plan. Seven have letters, and only one is complete.**
+**Nine segments have a plan. Seven have letters, and four are complete.**
 
 | Segment | Built | Missing |
 |---|---|---|
 | 02 event planners | A, B, C | nothing |
-| 03 venues | A, B | C |
-| 04 schools | A, B | C |
-| 05 wedding planners | A, B | C |
+| 03 venues | A, B, C | nothing |
+| 04 schools | A, B, C | nothing |
+| 05 wedding planners | A, B, C | nothing |
 | 06 sports | B, C | **A, the control** |
 | 07 corporate HR | B, C | **A, the control** |
 | 08 nonprofits | B, C | **A, the control** |
 | 09 real estate | nothing | all three |
 
-**Segments 03, 04 and 05 now hold a control and one challenger.** That is a
-two-way test and it is sendable as it stands, unlike the row below it. Version C
-still has to be built before any of them runs the three-way test its plan
-describes, and a two-cell result says nothing about the feature version C was
-going to lead on. **In all three, Version B leads on same-day delivery.**
+**Segments 03, 04 and 05 now run the three-way test their plans describe.** In
+all three, Version A is the control the targeting doc predicts will win and
+Version B leads on same-day delivery. Version C leads on private galleries in
+03, on client photo selection in 04, and on AI selfie search in 05, which is the
+feature each plan's table assigns it.
 
 **Segments 06, 07 and 08 have challengers and no control**, which is the one
 shape in this table that cannot be sent as a test: two challengers with nothing
@@ -83,10 +86,10 @@ versions lead on. It says what to clone when somebody builds it.
 
 **Every letter in this folder is on the dark card template**, cloned sibling to
 sibling: campaign 01, then segment 02 from it, then segment 03 from segment 02,
-then segments 04 to 08 from segment 03, and each Version B in segments 03 to 05
-from its own Version A. They share one 441-line body, so a restyle has to land
-in all eighteen or the pipeline looks like one brand in the repo and several in
-an inbox.
+then segments 04 to 08 from segment 03, each Version B in segments 03 to 05 from
+its own Version A, and each Version C in those three from its own Version B.
+They share one 441-line body, so a restyle has to land in all twenty-one or the
+pipeline looks like one brand in the repo and several in an inbox.
 
 **A handful of body lines differ per segment, and every one is deliberate.**
 Segment 02's body sells a guest list as a lead list, which is right for an event

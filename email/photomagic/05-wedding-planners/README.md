@@ -1,6 +1,6 @@
 # Segment 05: Wedding planners and bridal
 
-**Status** Versions A and B built. C outstanding.
+**Status** Versions A, B and C built. Complete.
 **Audience** [`apollo-audience-targeting.md`](../apollo-audience-targeting.md), section 3, "05. Wedding planners and bridal"
 **Layout** [`email/templates/email-photomagic-card.html`](../../templates/email-photomagic-card.html), the dark card, by way of [`../02-event-planners-teams/`](../02-event-planners-teams/)
 **Campaign ID** `PM-2026-09-WEDDINGS` · **UTM** `photomagic_weddings_2026`
@@ -29,7 +29,7 @@ The full keyword blocks, industry values and exclusions live in the targeting
 doc. They are not duplicated here, because a filter recipe copied into nine
 folders is a filter recipe that will disagree with itself within a month.
 
-## The three versions to build
+## The three versions
 
 | Version | Leads on | Why |
 |---|---|---|
@@ -44,17 +44,15 @@ challengers. **If a challenger wins, the targeting doc was wrong about this
 segment**, which is a more useful finding than a feature preference and is the
 reason the prediction is written down before the send rather than after.
 
-Filenames, following the convention segment 02 already uses. A and B exist;
-C does not yet:
+Filenames, following the convention segment 02 already uses. All three exist:
 
 ```
 05-wedding-planners-va-photo-selection.html  BUILT, the control
 05-wedding-planners-vb-same-day.html         BUILT, challenger
-05-wedding-planners-vc-selfie-search.html    not built
+05-wedding-planners-vc-selfie-search.html    BUILT, challenger
 ```
 
-**A and B together are a two-way test, not the three-way one above.** That is
-sendable as it stands. It is just not the whole experiment.
+**This is the three-way test the table above describes.**
 
 ## The body is a clone of segment 02
 
@@ -85,23 +83,42 @@ than against the EMS cold letters in [`../../outreach/`](../../outreach/), which
 do not. If the reply rate comes back poor, **the layout is the first thing to
 test, not the copy**, and the light template already exists for that experiment.
 
-## When you build C
+## What Version C says
 
-**Clone `05-wedding-planners-vb-same-day.html` or the Version A file, not the
-template.** Either is a shipped sibling for this segment, and both carry the
-same 441-line body as segment 02 and campaign 01. Cloning the template instead
-would put a layout variable into an A/B/C test that is supposed to carry only a
-copy variable.
+| | |
+|---|---|
+| **File** | [`05-wedding-planners-vc-selfie-search.html`](05-wedding-planners-vc-selfie-search.html) |
+| **Leads on** | AI selfie search |
+| **Headline** | One Selfie, and They Find Themselves |
+| **Hero chip** | the version marker, so a reply that quotes it names the version |
+| **Subjects** | 💒 Stop the photo requests / 🔎 Guests find their own shots |
+| **Offer** | Free plan, inherited from Version A unchanged |
 
-Version C leads on **AI selfie search**, per the table above.
-The slots that may differ, and the long list of what is held byte-identical,
-are written out in the header comment of the Version A file.
+Built from `05-wedding-planners-vb-same-day.html`. The same nine copy slots
+moved that Version B moved from Version A, and nothing else did.
+
+**The guest is the subject and the planner is the reader**, and that
+distinction carries the whole letter. Nothing here is a feature the planner
+uses. It is a fortnight of "which photos am I in" messages the planner stops
+receiving, which is why subject A is written about the reader rather than about
+the wedding. It is the only subject line in this segment that is.
+
+If this version wins, the finding is that selection is the couple's problem and
+the photographer's problem, while the thing that actually reaches the planner is
+three hundred guests wanting their own photographs one message at a time.
+
+## The three segment lines
 
 **Version A departs from segment 02's held-identical body in three lines**, all
 of them changing "the client" to "the couple". That is this segment's whole
 vocabulary argument. The header comment of the Version A file lists them.
-**Version B already carries all three and Version C must too**: they belong to
-the segment, not to the version.
+**Versions B and C carry all three**: they belong to the segment, not to the
+version.
+
+**Bullet 7 and showcase card 2 both state the selfie-search promise and are
+held identical anyway**, including in Version C, which leads on it. Rewriting
+them to match that hero would put a body variable into a test carrying only a
+lead-promise variable.
 
 ## What Version B says
 

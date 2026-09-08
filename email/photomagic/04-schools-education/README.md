@@ -1,6 +1,6 @@
 # Segment 04: Schools and education (EduMagic)
 
-**Status** Versions A and B built. C outstanding.
+**Status** Versions A, B and C built. Complete.
 **Audience** [`apollo-audience-targeting.md`](../apollo-audience-targeting.md), section 3, "04. Schools and education (EduMagic)"
 **Layout** [`email/templates/email-photomagic-card.html`](../../templates/email-photomagic-card.html), the dark card, by way of [`../02-event-planners-teams/`](../02-event-planners-teams/)
 **Campaign ID** `PM-2026-09-SCHOOLS` · **UTM** `photomagic_schools_2026`
@@ -27,7 +27,7 @@ The full keyword blocks, industry values and exclusions live in the targeting
 doc. They are not duplicated here, because a filter recipe copied into nine
 folders is a filter recipe that will disagree with itself within a month.
 
-## The three versions to build
+## The three versions
 
 | Version | Leads on | Why |
 |---|---|---|
@@ -42,17 +42,15 @@ challengers. **If a challenger wins, the targeting doc was wrong about this
 segment**, which is a more useful finding than a feature preference and is the
 reason the prediction is written down before the send rather than after.
 
-Filenames, following the convention segment 02 already uses. A and B exist;
-C does not yet:
+Filenames, following the convention segment 02 already uses. All three exist:
 
 ```
 04-schools-va-private-galleries.html  BUILT, the control
 04-schools-vb-same-day.html           BUILT, challenger
-04-schools-vc-photo-selection.html    not built
+04-schools-vc-photo-selection.html    BUILT, challenger
 ```
 
-**A and B together are a two-way test, not the three-way one above.** That is
-sendable as it stands. It is just not the whole experiment.
+**This is the three-way test the table above describes.**
 
 ## The body is a clone of segment 02
 
@@ -83,30 +81,59 @@ than against the EMS cold letters in [`../../outreach/`](../../outreach/), which
 do not. If the reply rate comes back poor, **the layout is the first thing to
 test, not the copy**, and the light template already exists for that experiment.
 
-## When you build C
+## What Version C says
 
-**Clone `04-schools-vb-same-day.html` or the Version A file, not the template.**
-Either is a shipped sibling for this segment, and both carry the same 441-line
-body as segment 02 and campaign 01. Cloning the template instead would put a
-layout variable into an A/B/C test that is supposed to carry only a copy
-variable.
+| | |
+|---|---|
+| **File** | [`04-schools-vc-photo-selection.html`](04-schools-vc-photo-selection.html) |
+| **Leads on** | client photo selection |
+| **Headline** | You Pick the Photos Before They Go Out |
+| **Hero chip** | "Photo Selection", not "Client Photo Selection". See below. |
+| **Subjects** | 📝 You pick what parents see / ⭐ Shortlist before you share |
+| **Offer** | Free plan, inherited from Version A unchanged |
 
-Version C leads on **client photo selection**, per the table above.
-The slots that may differ, and the long list of what is held byte-identical,
-are written out in the header comment of the Version A file.
+Built from `04-schools-vb-same-day.html`. The same nine copy slots moved that
+Version B moved from Version A, and nothing else did.
+
+**The chip drops the word "client" because this segment already did.** Showcase
+card 3 was renamed "Photo selection" in Version A, since a school does not have
+a client, and it is held identical across the segment. A chip reading "Client
+Photo Selection" above a showcase card reading "Photo selection" would disagree
+with itself on one screen. Segment 05 keeps the full name in its own chip, and
+that is not an inconsistency to fix: a wedding planner has a client.
+
+**Who selects is also different here.** Everywhere else the client shortlists
+and the photographer delivers. In a school the staff who ran the event decide
+what leaves the school before any family sees it, so selection is an approval
+step and the letter treats it as one.
+
+**The opening card still names the private gallery**, exactly as Version B's
+does. A letter about choosing photographs of children that never says where the
+chosen ones go reads as a company that has not thought about it. Naming it once
+in a supporting sentence is not leading on it.
+
+**Version C was the last slot where a selfie-search letter could have appeared,
+and it is not there either.** Neither subject line and none of the nine moved
+copy slots mentions faces or search. The capability is still named once in
+showcase card 2, held identical across the segment, because the showcase
+describes the product rather than the pitch.
+
+## The nine segment lines, and step 3
 
 **Version A departs from segment 02's held-identical body in nine lines**,
 because segment 02 sells a guest list as a lead list and that is the wrong claim
 in a school inbox. Every departure is listed and justified in the header comment
-of the Version A file. **Version B already carries all nine unchanged and
-Version C must too**: they belong to the segment, not to the version. Version
-B's header lists them again, with the reason each one survives a same-day pitch.
+of the Version A file. **Versions B and C carry all nine unchanged**: they
+belong to the segment, not to the version. Version B's header lists them again,
+with the reason each one survives a same-day pitch.
 
 **One of them will look wrong in any version that is not A, and is still
 right.** How It Works step 3 is called "Share with your list" rather than
 "Deliver the same day". Version B leads on same-day delivery and still does not
 touch it, because changing it would put a body variable into a test carrying
-only a lead-promise variable.
+only a lead-promise variable. **Version C has the same problem with showcase
+card 3**, which is the selection feature stated in the showcase and is likewise
+held identical.
 
 ## What Version B says
 
