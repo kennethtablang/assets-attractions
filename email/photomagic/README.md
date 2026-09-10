@@ -20,25 +20,28 @@ convention:
 
 ```
 01-photographers-studios/                  no folder yet
-02-event-planners-teams/                   BUILT, 3 letters, CARD layout
+02-event-planners-teams/                   BUILT, 4 letters, CARD layout
   02-event-planners-va-same-day.html
   02-event-planners-vb-selfie-search.html
   02-event-planners-vc-private-galleries.html
+  02-event-planners-vd-photo-selection.html
   README.md
-03-venues-hospitality/                     BUILT, 3 letters, CARD layout
+03-venues-hospitality/                     BUILT, 4 letters, CARD layout
   03-venues-va-selfie-search.html
   03-venues-vb-same-day.html
   03-venues-vc-private-galleries.html
+  03-venues-vd-photo-selection.html
   README.md
 04-schools-education/        EduMagic      BUILT, 3 letters, CARD layout
   04-schools-va-private-galleries.html
   04-schools-vb-same-day.html
   04-schools-vc-photo-selection.html
   README.md
-05-wedding-planners/                       BUILT, 3 letters, CARD layout
+05-wedding-planners/                       BUILT, 4 letters, CARD layout
   05-wedding-planners-va-photo-selection.html
   05-wedding-planners-vb-same-day.html
   05-wedding-planners-vc-selfie-search.html
+  05-wedding-planners-vd-private-galleries.html
   README.md
 06-sports-races-academies/                 B and C BUILT, no A
   06-sports-vb-same-day.html
@@ -52,27 +55,63 @@ convention:
   08-nonprofits-vb-private-galleries.html
   08-nonprofits-vc-selfie-search.html
   README.md
-09-real-estate-launches/                   plan only
+09-real-estate-launches/                   A BUILT, B and C to come
+  09-real-estate-va-same-day.html
+  README.md
 ```
 
-**Nine segments have a plan. Seven have letters, and four are complete.**
+**Nine segments have a plan. Eight have letters, and four are complete.**
 
 | Segment | Built | Missing |
 |---|---|---|
-| 02 event planners | A, B, C | nothing |
-| 03 venues | A, B, C | nothing |
-| 04 schools | A, B, C | nothing |
-| 05 wedding planners | A, B, C | nothing |
+| 02 event planners | A, B, C, **D** | nothing |
+| 03 venues | A, B, C, **D** | nothing |
+| 04 schools | A, B, C | nothing, and **no D is possible**, see below |
+| 05 wedding planners | A, B, C, **D** | nothing |
 | 06 sports | B, C | **A, the control** |
 | 07 corporate HR | B, C | **A, the control** |
 | 08 nonprofits | B, C | **A, the control** |
-| 09 real estate | nothing | all three |
+| 09 real estate | **A** | B and C, both challengers |
+
+Campaign 01 also carries a fourth version now, `01-launch-vd-private-galleries.html`,
+leading on the control the other three never mention.
 
 **Segments 03, 04 and 05 now run the three-way test their plans describe.** In
 all three, Version A is the control the targeting doc predicts will win and
 Version B leads on same-day delivery. Version C leads on private galleries in
 03, on client photo selection in 04, and on AI selfie search in 05, which is the
 feature each plan's table assigns it.
+
+**Segments 02, 03 and 05 and campaign 01 now carry a fourth version, and every
+one of them leads on the feature its own plan deliberately left out.** That is
+the point of them: each plan's omission is a written prediction about an
+audience, and a Version D is the cheapest way to find out whether the prediction
+was right. If D loses, the plan was right and the pipeline has a result instead
+of an assumption. **Do not promote a D to control on one send.**
+
+| Segment | D leads on | The omission it tests |
+|---|---|---|
+| campaign 01 | private galleries, as "the control" | A, B and C are all about what the product does for the reader; none is about what the sender keeps |
+| 02 event planners | client photo selection | the audience doc assigns selection to segments 01 and 05 |
+| 03 venues | client photo selection, as **permission not proofing** | "a venue hosts the event, it does not proof the shoot", which stays true |
+| 05 wedding planners | private galleries, **without the compliance register** | "a couple hears it as a feature for somebody else's compliance department" |
+
+**Adding a D changes the arithmetic in every one of those folders.** Each version
+now gets a quarter rather than a third, and the subject test inside each file
+halves that again, so a cell is an eighth of the segment. Segment 05 is the worst
+case: its Apollo filter runs 1 to 30 employees and eight cells is very likely
+more than the list can carry. Every folder's README now says so, and every one
+names the alternative: hold D back and run it as the follow-up to whichever of A,
+B or C wins, which is a sequence and not a test.
+
+**Segment 04 is the one segment that cannot have a Version D, and that is not an
+oversight.** Its three versions already use private galleries, same-day delivery
+and client photo selection. The only feature left is AI selfie search, and that
+segment's README rules it out in full: running face recognition against
+photographs of children is the single claim in this product most likely to end a
+conversation with a school, and a cold email is the worst place to raise it.
+Adding it "is a product and legal conversation first and a copy decision second".
+Segment 04 stays at three.
 
 **Segments 06, 07 and 08 have challengers and no control**, which is the one
 shape in this table that cannot be sent as a test: two challengers with nothing

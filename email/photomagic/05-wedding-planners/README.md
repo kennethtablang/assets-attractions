@@ -29,30 +29,74 @@ The full keyword blocks, industry values and exclusions live in the targeting
 doc. They are not duplicated here, because a filter recipe copied into nine
 folders is a filter recipe that will disagree with itself within a month.
 
-## The three versions
+## The four versions
 
 | Version | Leads on | Why |
 |---|---|---|
 | **A** (control) | Client photo selection | Proofing and shortlisting is the conversation this segment is already having every week, and it is the only segment where selection is the lead promise. |
 | **B** | Same-day delivery | Challenger. |
 | **C** | AI selfie search | Challenger. |
+| **D** | Private galleries | Challenger, and a test of the omission below rather than of a feature. |
 
-**Omits private galleries.** A couple hears it as a feature for somebody else's compliance department.
+**The plan omitted private galleries**, on the grounds that a couple hears it as
+a feature for somebody else's compliance department. **That objection is to a
+register, not to a capability**, and Version D takes it seriously: the feature is
+sold in the couple's own language, and the words *private, secure, security,
+access, control, permission, authorised, compliance, data* and *policy* appear
+nowhere in the copy it wrote. The headline says the photographs stay with the
+wedding. If D loses, the omission was right however it is worded. If D wins, the
+objection was to the vocabulary alone, which segment 08 could borrow.
 
 A is the control because the targeting doc predicts it will win here. B and C are
 challengers. **If a challenger wins, the targeting doc was wrong about this
 segment**, which is a more useful finding than a feature preference and is the
 reason the prediction is written down before the send rather than after.
 
-Filenames, following the convention segment 02 already uses. All three exist:
+Filenames, following the convention segment 02 already uses. All four exist:
 
 ```
-05-wedding-planners-va-photo-selection.html  BUILT, the control
-05-wedding-planners-vb-same-day.html         BUILT, challenger
-05-wedding-planners-vc-selfie-search.html    BUILT, challenger
+05-wedding-planners-va-photo-selection.html    BUILT, the control
+05-wedding-planners-vb-same-day.html           BUILT, challenger
+05-wedding-planners-vc-selfie-search.html      BUILT, challenger
+05-wedding-planners-vd-private-galleries.html  BUILT, challenger
 ```
 
-**This is the three-way test the table above describes.**
+**This is a four-way test now, and this folder is where that hurts most.** The
+Apollo filter here runs 1 to 30 employees, so it is the thinnest list in the
+pipeline before it is split at all. Four versions split two ways by subject is
+**eight cells out of one search**, which is very likely more cells than the list
+can carry. Pick one subject per version, and if four cells is still too many,
+hold D back as the follow-up to whichever of A, B or C wins. That is a sequence,
+not a test, and its numbers are not comparable.
+
+## What Version D says
+
+| | |
+|---|---|
+| **File** | [`05-wedding-planners-vd-private-galleries.html`](05-wedding-planners-vd-private-galleries.html) |
+| **Leads on** | private galleries, in the couple's language |
+| **Headline** | The Photos Stay With the Wedding |
+| **Hero chip** | "Private Galleries". The one place the word survives, and a deliberate exception |
+| **Subjects** | 💞 Only your guest list sees them / 👰 Photos stay with the wedding |
+| **Offer** | Free plan, inherited from Version A unchanged |
+
+Built from `05-wedding-planners-vc-selfie-search.html`. The same nine copy slots
+moved that Version C moved from Version B, and nothing else did. It carries the
+segment's three "couple, not client" lines unchanged.
+
+**The chip is the exception to the vocabulary rule and it is not a slip.** The
+chip is the version marker, so it has to name the module or the one visible
+signal that tells you which letter produced a reply is gone. Two words in a
+rounded label read as a category tag; the sentences underneath are where the
+register is held.
+
+**The warm emoji are carrying real weight.** A padlock in front of either subject
+line would undo the register decision in one character. U+1F512 was available and
+was deliberately not used. Do not add it.
+
+**The boundary against Version C is finding versus admitting.** C is a guest
+finding their own frames in a gallery they can already open; D is who can open it
+at all. D never mentions selfies, faces, matching or scrolling.
 
 ## The body is a clone of segment 02
 

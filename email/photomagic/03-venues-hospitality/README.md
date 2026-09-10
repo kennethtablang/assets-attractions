@@ -28,31 +28,44 @@ The full keyword blocks, industry values and exclusions live in the targeting
 doc. They are not duplicated here, because a filter recipe copied into nine
 folders is a filter recipe that will disagree with itself within a month.
 
-## The three versions
+## The four versions
 
 | Version | Leads on | Why |
 |---|---|---|
 | **A** (control) | AI selfie search | High guest counts are exactly where selfie search wins, and a ballroom at capacity is the clearest version of the problem it solves. |
 | **B** | Same-day delivery | Challenger. |
 | **C** | Private galleries | Challenger. |
+| **D** | Client photo selection | Challenger, and a test of the omission below rather than of a feature. |
 
-**Omits client photo selection.** A venue hosts the event, it does not proof the shoot.
+**The plan omitted client photo selection**, on the grounds that a venue hosts
+the event and does not proof the shoot. That is true, and Version D does not
+argue with it. It sells the other direction of the same feature: the venue wants
+photographs of its own ballroom for its own marketing, and the client whose event
+it was is the person who has to say yes. Selection here is **permission, not
+proofing**. If D loses, the omission was right and the pipeline has a result
+instead of an assumption. If D wins, the marketing-permission angle is worth
+trying in segment 08 too.
 
 A is the control because the targeting doc predicts it will win here. B and C are
 challengers. **If a challenger wins, the targeting doc was wrong about this
 segment**, which is a more useful finding than a feature preference and is the
 reason the prediction is written down before the send rather than after.
 
-Filenames, following the convention segment 02 already uses. All three exist:
+Filenames, following the convention segment 02 already uses. All four exist:
 
 ```
 03-venues-va-selfie-search.html      BUILT, the control
 03-venues-vb-same-day.html           BUILT, challenger
 03-venues-vc-private-galleries.html  BUILT, challenger
+03-venues-vd-photo-selection.html    BUILT, challenger
 ```
 
-**This is the three-way test the table above describes**, and it is the second
-segment in the pipeline to reach that state after segment 02.
+**This is a four-way test now, so the split is quarters and not thirds.** Every
+note written when there were three versions still says thirds. With the subject
+test inside each file, four versions split two ways is eight cells out of one
+search: count the list before you commit to both tests, or hold D back as the
+follow-up to whichever of A, B or C wins. That is a sequence, not a test, and
+its numbers are not comparable.
 
 ## The body is a clone of segment 02
 
@@ -107,7 +120,37 @@ audience that raises the question itself. A hotel does not.
 line above the primary button and the closing band heading both say "function"
 rather than "event", which is what a hotel or a ballroom calls the thing it
 hosts. That word belongs to the segment, not to the version, so all three
-versions carry it. Version C's first subject line and its headline use it too.
+versions carry it. Version C's first subject line and its headline use it too,
+and so does Version D's CTA lead line.
+
+## What Version D says
+
+| | |
+|---|---|
+| **File** | [`03-venues-vd-photo-selection.html`](03-venues-vd-photo-selection.html) |
+| **Leads on** | client photo selection, as permission rather than proofing |
+| **Headline** | The Client Picks What You Can Post |
+| **Hero chip** | "Client Photo Selection", the full name, matching segments 02 and 05 and not segment 04's shortened form |
+| **Subjects** | ✅ Approved before you post / 📣 Which shots you may use |
+| **Offer** | Free plan, inherited from Version A unchanged |
+
+Built from `03-venues-vc-private-galleries.html`. The same nine copy slots moved
+that Version C moved from Version B, and nothing else did.
+
+**It is the only version written the morning after**, and the only one whose
+reader is the marketing team rather than the banqueting team. A, B and C are all
+written from inside the event on the night.
+
+**The boundary against Version C is access versus use.** Version C is about who
+can open a gallery. Version D is about which frames the venue may publish. The
+copy holds them apart: D never mentions a login, a guest list, a drive link or
+forwarding, and C never mentions posting, marketing, a feed or approval.
+
+**It is not a rights or release tool, and the copy is careful about it.** Marking
+a frame in a gallery is not a model release, a licence, or legal clearance. The
+letter says the approved shots are "settled before anybody has posted anything",
+which describes the workflow. Do not upgrade that to cleared, licensed or
+consented.
 
 ## What Version B says
 

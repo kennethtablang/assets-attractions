@@ -16,20 +16,29 @@ know the name, so it gets the dark violet ground and the orange button.
 **If this list turns out to be cold, rebuild on the light template rather than
 softening the copy here.** The register is the decision, not the wording.
 
-## The three versions
+## The four versions
 
 | File | Leads on | Headline |
 |---|---|---|
 | `01-launch-va-moments.html` | **The memory** (control) | Capture the Best **Moments** of Your Life |
 | `01-launch-vb-same-day.html` | **The speed** | Deliver Event Photos **the Same Day** |
 | `01-launch-vc-selfie-search.html` | **The capability** | One Selfie, Every **Photo** of You |
+| `01-launch-vd-private-galleries.html` | **The control** | One Private Gallery for **Every Event** |
 
 Version A is the message the design was drawn around, which is why it is the
-control. B and C are challengers.
+control. B, C and D are challengers.
+
+**A, B and C are all about what the product does for the person holding the
+phone. D is the only one about what the sender keeps**: the gallery has a door,
+the person who ran the event decides who comes through it, and the guest list
+that results belongs to them rather than to whoever the link was forwarded to
+next. Its boundary against C is finding versus admitting, and the copy holds it:
+D never mentions selfies, faces or scrolling, and C never mentions a login or a
+link that travels.
 
 ## What is under test
 
-**Only the lead promise.** Exactly seven lines differ between the three files:
+**Only the lead promise.** Exactly seven lines differ between the four files:
 
 1. `<title>` 2. preheader 3. headline 4. hero subhead
 5. card title 6. card intro 7. CTA lead line
@@ -39,8 +48,8 @@ both benefit columns and all eight bullets, the three How It Works steps, the
 band photograph, the testimonial, the pricing strip, the button text, the button
 URL, the closing band, the footer, and every measurement in the layout.
 
-That is what makes this a test rather than three different emails. Verify before
-you send:
+That is what makes this a test rather than four different emails. Verify before
+you send. The script globs `01-launch-v*.html`, so it already picks up Version D:
 
 ```bash
 python - <<'PY'
@@ -57,14 +66,24 @@ for f, lines in L.items():
 PY
 ```
 
-If that prints anything but `IDENTICAL` three times, someone improved one file
+If that prints anything but `IDENTICAL` four times, someone improved one file
 and not the others, and the result will not mean what the report says.
+
+**The version is invisible in link data, and D does not change that.** This
+campaign holds the button URL byte-identical across its versions, so all four
+send `utm_content=card_cta` and `utm_content=closing_cta`. Read the version off
+the sending report, never off the clicks. Segment 02 solved this differently by
+putting the version in `utm_content`; do not import that here without changing
+all four files together.
+
+**The chip is not the version marker here either.** It says "Now Live", which is
+the launch, not the version, and it is identical in all four.
 
 ## Sending
 
-Split the list into **even random thirds**, all at the same time of day.
-Sending C a week later to non-openers is a follow-up, not a test, and it puts
-the same person in front of three launch emails.
+Split the list into **even random quarters**, all at the same time of day.
+Sending D a week later to non-openers is a follow-up, not a test, and it puts
+the same person in front of four launch emails.
 
 - **Reply-To** `inquiry@photomagic.io`, never a Ticket Magic inbox
 - **From** a photomagic.io address, authenticated as photomagic.io
@@ -73,13 +92,19 @@ the same person in front of three launch emails.
 
 ### Subject lines
 
-Each version carries two, listed at the top of its file. Three versions split
-two ways is **six cells out of one list**, and a launch list is usually the
-smallest a product ever has.
+Each version carries two, listed at the top of its file. Four versions split
+two ways is **eight cells out of one list**, and a launch list is usually the
+smallest a product ever has. At that size eight cells is not a test, it is eight
+anecdotes.
 
 **At launch size, pick one subject per version** and keep the spare for the
-resend. If you do run the subject test, run it on all three or you are comparing
+resend. If you do run the subject test, run it on all four or you are comparing
 a two-cell average against single cells.
+
+**If the list is too small for four cells**, hold D back and send it as the
+follow-up to whichever of A, B or C wins. That is a sequence, not a test, and its
+numbers are not comparable to the other three. Decide which you are doing before
+you send, because the report will not tell you afterwards.
 
 ## Before this can send
 
@@ -124,3 +149,10 @@ opens enough that a promise can win the open and lose the send.
 Version C is the one to watch most carefully: curiosity opens it, and the click
 is the only signal the curiosity survived contact with the claim. Version B is
 the riskiest to support, because a speed promise invites the reader to test it.
+
+**Version D is the one to watch on forwards rather than clicks.** It is the only
+letter that answers the question an agency's or a school's own compliance person
+asks first, so a forward means somebody needed it while a click only means
+somebody liked it. Expect it to be the most polarising of the four rather than
+the weakest on average: either the reader has lost control of a set of
+photographs before, or they have not.

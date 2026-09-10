@@ -34,8 +34,8 @@ lower than on a plain one even when the click rate is higher.
 
 **Judge this batch against Campaign 01**, which shares its layout, rather than
 against the EMS cold letters in `../../outreach/`, which do not. If the reply rate
-comes back poor, **the layout is the first thing to test, not the copy** — a flat
-version of the winning letter is a cheap experiment and `email-photomagic.html`
+comes back poor, **the layout is the first thing to test, not the copy**. A flat
+version of the winning letter is a cheap experiment, and `email-photomagic.html`
 already exists for it.
 
 ## Segment 01 does not exist yet
@@ -50,13 +50,14 @@ Segment 02 here is event planners. Segment 02 in [`../../outreach/`](../../outre
 is hospitality, a different product on a different list. The number means nothing
 across the two.
 
-## The three versions
+## The four versions
 
 | File | Leads on | Headline |
 |---|---|---|
 | `02-event-planners-va-same-day.html` | **Same-day delivery** (control) | Your Client Sees the Photos **Before They Leave** |
 | `02-event-planners-vb-selfie-search.html` | **AI selfie search** | Every Guest Finds **Themselves** |
 | `02-event-planners-vc-private-galleries.html` | **Private galleries** | One Private Gallery for **Every Client Event** |
+| `02-event-planners-vd-photo-selection.html` | **Client photo selection** | Your Client Picks **the Final Set** |
 
 **A is the control because the audience doc says so.** Section 3.02 reads: "They
 do not shoot, they commission. They buy Photomagic to look good to their own
@@ -64,15 +65,30 @@ client, which makes the same-day angle the whole pitch." B and C are challengers
 to that claim. If either wins, the audience doc is wrong about this segment,
 which is a more useful finding than a feature preference.
 
-**Client selection is the feature no version leads on**, deliberately. The
+**Client selection was the feature no version led on**, deliberately. The
 audience doc assigns it to wedding and portrait studios, which is segment 01 and
-segment 05. It still appears in the showcase and in the benefit columns of all
-three files, because it is part of the product, but leading on it here would test
-a feature this segment was never expected to want.
+segment 05, and leading on it here would test a feature this segment was never
+expected to want.
+
+**Version D now runs exactly that cell, and it is a test of the plan rather than
+of the copy.** The assignment above is a prediction about an audience, written
+down before anything was sent, and the cheapest way to find out whether a
+prediction is right is to run the case it rules out. If D loses, the audience doc
+was right and the pipeline has a documented result instead of an assumption. If D
+wins, the audience doc is wrong about who wants selection, and that finding is
+worth more than this segment's reply rate, because segments 04, 05 and 07 are all
+built on the same assignment. **Do not promote D to control on one send.** One
+result against a written prediction is a reason to run it again.
+
+**D's boundary against A and C.** A owns the clock: nothing in D says same day,
+before they leave, or in real time. C owns the container: nothing in D says
+login, public link, drive, forwarding, or who can see what. D is the only version
+about photographs being stopped before they move, which is the approval step and
+sits upstream of all three.
 
 ## What is under test
 
-**Only the lead promise.** Ten slots differ between the three files:
+**Only the lead promise.** Ten slots differ between the four files:
 
 1. `<title>` 2. preheader 3. hero chip 4. headline, including which words carry
 the orange span 5. hero subhead 6. opening card heading 7. opening card
@@ -88,8 +104,21 @@ strip, the button text, the button destinations, the closing band copy, the
 footer, the permission line, and every measurement.
 
 The showcase being identical is the point, and it is the thing most likely to get
-"improved" later. All three versions sell the same product and show the same four
+"improved" later. All four versions sell the same product and show the same four
 features; what differs is which one the letter walks in leading with.
+
+**Version D's promise is showcase card 3, and that card is still held
+identical.** So is bullet 6, "Shortlist and approve in one place". Rewriting
+either to match D's hero would put a body variable into a test that carries only
+a lead-promise variable. This is the mirror of a problem the other three already
+have: C does not touch showcase card 4 and B does not touch showcase card 2, for
+the same reason. It looks like an oversight in every version and is correct in
+all of them.
+
+**The split is quarters now, not thirds.** Every note written when there were
+three versions still says thirds. Four versions split two ways by subject is
+eight cells out of one search: count the list first, or hold D back as the
+follow-up to whichever of A, B or C wins.
 
 Verify before you send:
 
